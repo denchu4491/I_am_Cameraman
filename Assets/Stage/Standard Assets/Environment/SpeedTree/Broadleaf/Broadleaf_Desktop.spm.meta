@@ -42,7 +42,7 @@ SpeedTreeImporter:
     windQuality: 1
   enableSmoothLODTransition: 1
   animateCrossFading: 1
-  billboardTransitionCrossFadeWidth: 0.25
+  billboardTransitionCrossFadeWidth: 0.272
   fadeOutWidth: 0.25
   scaleFactor: 0.3048
   materialVersion: 3
