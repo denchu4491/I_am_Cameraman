@@ -72,9 +72,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4366536801918768}
   - component: {fileID: 54715337840891262}
-  - component: {fileID: 195144113941762320}
-  - component: {fileID: 114969136815099582}
-  - component: {fileID: 114644058546131104}
   - component: {fileID: 114314029967057748}
   m_Layer: 0
   m_Name: Enemy
@@ -229,18 +226,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   rotateSpeed: 0.05
---- !u!114 &114644058546131104
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1971931488923548}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f222f28598310724a9d3d3de007f2433, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
 --- !u!114 &114644496201396084
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -254,20 +239,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lookTarget: {fileID: 0}
   isDetectPlayer: 0
---- !u!114 &114969136815099582
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1971931488923548}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23c4a0ab0df26a847b7d4437ebe513ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  rotMax: 5
-  moveSpeed: 5
 --- !u!135 &135063598140549136
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -292,24 +263,3 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.51
   m_Center: {x: 0, y: -0.5, z: 0}
---- !u!195 &195144113941762320
-NavMeshAgent:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1971931488923548}
-  m_Enabled: 0
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0.5
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
