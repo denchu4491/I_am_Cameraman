@@ -254,6 +254,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 198207350791820016, guid: d6f256b7cd63a9b4199af21bcc78dca4,
+        type: 2}
+      propertyPath: LightsModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198207350791820016, guid: d6f256b7cd63a9b4199af21bcc78dca4,
+        type: 2}
+      propertyPath: randomSeed
+      value: 1378049427
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d6f256b7cd63a9b4199af21bcc78dca4, type: 2}
   m_IsPrefabParent: 0
@@ -388,12 +398,12 @@ Prefab:
     - target: {fileID: 182030008135324624, guid: a51cf72c055dce149ab5e2c6a7613d69,
         type: 2}
       propertyPath: m_WindMain
-      value: 0.2
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 182030008135324624, guid: a51cf72c055dce149ab5e2c6a7613d69,
         type: 2}
       propertyPath: m_WindTurbulence
-      value: 0.2
+      value: 0.15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a51cf72c055dce149ab5e2c6a7613d69, type: 2}
