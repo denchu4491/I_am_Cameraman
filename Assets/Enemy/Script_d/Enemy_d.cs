@@ -65,6 +65,7 @@ public class Enemy_d : MonoBehaviour {
                     transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(angle), rotateSpeed);
                 }
             }
+            else nowMove = false;
         }
     }
 
