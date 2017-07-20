@@ -12,26 +12,29 @@ public class PlayerController : MonoBehaviour {
     private Vector3 velosity = Vector3.zero;
     private bool isRun;
     Vector3 JumpCheck;
+    private Animator animator;
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
 	void Update () {
-        Animator motion = GetComponent<Animator>();
-        AnimatorStateInfo state = motion.GetCurrentAnimatorStateInfo(0);
         moveX = 0;
         moveZ = 0;
         isRun = false;
+        animator.SetBool("Run", false);
+        animator.SetBool("Jump", false);
+        animator.SetBool("Back", false);
         JumpCheck = transform.position + transform.up * -0.4f;
         if (Input.GetKey("up")) {
-            //moveX += 1;
+            animator.SetBool("Run", true);
             moveZ += 1;
         }
         if (Input.GetKey("down")) {
-            //moveX -= 1;
-            moveZ -= 1;
+            animator.SetBool("Back", true);
+            moveZ -= 1 * 0.5f;
         }
         if (Input.GetKey("right")) {
             transform.Rotate(new Vector3(0f, 90 * Time.deltaTime, 0f));
@@ -42,8 +45,13 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKey("space")) {
             if (Physics.CheckSphere(JumpCheck, 0.3f)) {
                 isJump = true;
+                animator.SetBool("Jump", true);
+                if (isRun == false) {
+                    animator.SetBool("IdleJump", true);
+                }
             }
         }
+        //animator.SetBool("Run", false);
         
     }
     void FixedUpdate() {
