@@ -20,15 +20,11 @@ public class CameraChange : MonoBehaviour {
                 //Debug.Log("ii");
                 thirdPersonCamera.enabled = false;
                 firstPersonCamera.enabled = true;
-                firstPersonCamera.tag = "MainCamera";
-                thirdPersonCamera.tag = "SubCamera";
             }
             else if (thirdPersonCamera.enabled == false) {
                 //Debug.Log("uu");
                 firstPersonCamera.enabled = false;
                 thirdPersonCamera.enabled = true;
-                thirdPersonCamera.tag = "MainCamera";
-                firstPersonCamera.tag = "SubCamera";
             }
         
         }
