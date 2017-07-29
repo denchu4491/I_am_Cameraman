@@ -5,9 +5,10 @@ using UnityEngine;
 public class Enemy_d : MonoBehaviour {
 
     public float moveSpeed, rotateSpeed;
-    protected bool canAction,isMovement, isRotation;
+    protected bool canAction, isMovement, isRotation, nowMove;
     protected EnemyActionRange_d enemyActionRange;
     protected Rigidbody rigidbodyE;
+    protected Animator animator;
 
     protected virtual void Awake()
     {
@@ -17,16 +18,26 @@ public class Enemy_d : MonoBehaviour {
 
         enemyActionRange = GetComponentInChildren<EnemyActionRange_d>();
         rigidbodyE = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
     }
 
 	// Use this for initialization
 	protected virtual void Start () {
 
-	}
+    }
 	
 	// Update is called once per frame
 	protected virtual void Update () {
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
+        if (nowMove)
+        {
+            animator.SetBool("Run", true);
+        }
+        else 
+        {
+            animator.SetBool("Run", false);
+        }
 	}
 
     protected virtual void FixedUpdate()
@@ -41,9 +52,11 @@ public class Enemy_d : MonoBehaviour {
 
                 if (isMovement && Vector3.Distance(enemyActionRange.lookTarget.position, transform.position) > 3.0f)
                 {
+                    nowMove = true;
                     Move();
                 }
-
+                else
+                    nowMove = false;
                 // 回転制御
                 if (isRotation && enemyActionRange.lookTarget != null)
                 {
@@ -52,6 +65,7 @@ public class Enemy_d : MonoBehaviour {
                     transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(angle), rotateSpeed);
                 }
             }
+            else nowMove = false;
         }
     }
 
