@@ -21,7 +21,6 @@ public class CameraMode : MonoBehaviour {
 	}
     // Update is called once per frame
     void Update () {
-        Debug.Log(flash.color.a);
         vector3Idlerotation = transform.rotation.eulerAngles;
         //Debug.Log(vector3Idlerotation.x);
         if (Input.GetKeyDown("z")) {
@@ -49,7 +48,6 @@ public class CameraMode : MonoBehaviour {
             }
             if (Input.GetKeyDown("x")) {
                 //TakePicture();
-                Debug.Log("take");
                 flash.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                 takeFlash = true;
             }
