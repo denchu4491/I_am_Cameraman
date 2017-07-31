@@ -71,7 +71,7 @@ ModelImporter:
     4300006: pCube4
     4300008: pCube5
     4300010: pCube6
-    7400000: Take 001
+    7400000: Walk
     9500000: //RootNode
     13700000: pCube2
     13700002: pCube3
@@ -100,7 +100,93 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Walk
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 150
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: imagePlane3
+        weight: 1
+      - path: imagePlane4
+        weight: 1
+      - path: L_ankle
+        weight: 1
+      - path: L_ankle/L_foot
+        weight: 1
+      - path: L_ankle/L_foot/L_foot_a
+        weight: 1
+      - path: L_forearm
+        weight: 1
+      - path: L_forearm/L_hand
+        weight: 1
+      - path: L_forearm/L_hand/hand_a
+        weight: 1
+      - path: pCube1
+        weight: 1
+      - path: pCube2
+        weight: 1
+      - path: pCube3
+        weight: 1
+      - path: pCube4
+        weight: 1
+      - path: pCube5
+        weight: 1
+      - path: pCube6
+        weight: 1
+      - path: persp1
+        weight: 1
+      - path: R_ankle
+        weight: 1
+      - path: R_ankle/R_foot
+        weight: 1
+      - path: R_ankle/R_foot/R_foot_a
+        weight: 1
+      - path: R_forearm
+        weight: 1
+      - path: R_forearm/R_hand
+        weight: 1
+      - path: R_forearm/R_hand/hand_a 1
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/COG
+        weight: 1
+      - path: root/COG/spain01
+        weight: 1
+      - path: root/COG/spain01/spain02
+        weight: 1
+      - path: root/COG/spain01/spain02/neck
+        weight: 1
+      - path: root/COG/spain01/spain02/neck/head
+        weight: 1
+      - path: root/COG/spain01/spain02/neck/head/head_a
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
