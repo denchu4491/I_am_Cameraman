@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraMode : MonoBehaviour {
     public GameObject unitychan;
@@ -10,6 +11,9 @@ public class CameraMode : MonoBehaviour {
     public Camera thirdPersonCamera;
     public Canvas canvas;
     private Vector3 vector3Idlerotation;
+    public Image flash;
+    private float decreaseFlash = 1.0f;
+    private bool takeFlash = false;
 
     // Use this for initialization
     void Start () {
@@ -17,10 +21,12 @@ public class CameraMode : MonoBehaviour {
 	}
     // Update is called once per frame
     void Update () {
+        Debug.Log(flash.color.a);
         vector3Idlerotation = transform.rotation.eulerAngles;
         //Debug.Log(vector3Idlerotation.x);
         if (Input.GetKeyDown("z")) {
             ModeCameraChange();
+            flash.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
         }
         if (cameraMode) {
             animator.SetBool("Run", false);
@@ -40,6 +46,22 @@ public class CameraMode : MonoBehaviour {
             }
             if (Input.GetKey("left")) {
                 transform.Rotate(new Vector3(0f, -90 * Time.deltaTime, 0f),Space.World);
+            }
+            if (Input.GetKeyDown("x")) {
+                //TakePicture();
+                Debug.Log("take");
+                flash.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                takeFlash = true;
+            }
+            if (takeFlash) {
+                decreaseFlash -= Time.deltaTime;
+                flash.color = new Color(1.0f, 1.0f, 1.0f, decreaseFlash);
+                if(decreaseFlash < 0) {
+                    flash.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+                    decreaseFlash = 1.0f;
+                    takeFlash = false;
+                    ModeCameraChange();
+                }
             }
         }
 	}
@@ -62,6 +84,9 @@ public class CameraMode : MonoBehaviour {
             canvas.enabled = false;
             transform.rotation = Quaternion.Euler(0f, vector3Idlerotation.y, 0f);
         }
+    }
+    void TakePicture() {
+        
     }
 
 }
