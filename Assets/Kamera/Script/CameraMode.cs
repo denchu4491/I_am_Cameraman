@@ -12,9 +12,8 @@ public class CameraMode : MonoBehaviour {
     public Canvas canvas;
     private Vector3 vector3Idlerotation;
     public Image flash;
-    private float decreaseFlash = 1.0f;
+    private float decreaseFlash = 0.8f;
     private bool takeFlash = false;
-
     // Use this for initialization
     void Start () {
         animator = GetComponent<Animator>();
@@ -48,7 +47,6 @@ public class CameraMode : MonoBehaviour {
             }
             if (Input.GetKeyDown("x")) {
                 //TakePicture();
-                flash.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                 takeFlash = true;
             }
             if (takeFlash) {
@@ -56,7 +54,7 @@ public class CameraMode : MonoBehaviour {
                 flash.color = new Color(1.0f, 1.0f, 1.0f, decreaseFlash);
                 if(decreaseFlash < 0) {
                     flash.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-                    decreaseFlash = 1.0f;
+                    decreaseFlash = 0.8f;
                     takeFlash = false;
                     ModeCameraChange();
                 }
