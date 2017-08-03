@@ -6,12 +6,8 @@ public class PlayerController : MonoBehaviour {
     Rigidbody rb;
     public float movespeed = 0.2f;
     public float jumpPower = 20;
-    float moveX;
-    float moveZ;
-    bool isJump;
-    bool isBack;
-    private Vector3 velosity = Vector3.zero;
-    private bool isRun;
+    float moveX,moveZ;
+    private bool isJump,isBack,isRun;
     Vector3 JumpCheck;
     private Animator animator;
 	// Use this for initialization
@@ -53,9 +49,7 @@ public class PlayerController : MonoBehaviour {
                     animator.SetBool("IdleJump", true);
                 }
             }
-        }
-        //animator.SetBool("Run", false);
-        
+        }        
     }
     void FixedUpdate() {
         
