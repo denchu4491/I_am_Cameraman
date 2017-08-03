@@ -254,6 +254,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 198207350791820016, guid: d6f256b7cd63a9b4199af21bcc78dca4,
+        type: 2}
+      propertyPath: LightsModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198207350791820016, guid: d6f256b7cd63a9b4199af21bcc78dca4,
+        type: 2}
+      propertyPath: randomSeed
+      value: 1378049427
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d6f256b7cd63a9b4199af21bcc78dca4, type: 2}
   m_IsPrefabParent: 0
@@ -269,6 +279,7 @@ GameObject:
   - component: {fileID: 1280986282}
   - component: {fileID: 1280986281}
   - component: {fileID: 1280986280}
+  - component: {fileID: 1280986285}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -346,6 +357,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 2.246, y: 60.154003, z: 3.9070003}
+--- !u!45 &1280986285
+Skybox:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1280986279}
+  m_Enabled: 0
+  m_CustomSkybox: {fileID: 2100000, guid: e423682d754377d44842597207b2dd63, type: 2}
 --- !u!1001 &1742996355
 Prefab:
   m_ObjectHideFlags: 0
@@ -388,12 +407,12 @@ Prefab:
     - target: {fileID: 182030008135324624, guid: a51cf72c055dce149ab5e2c6a7613d69,
         type: 2}
       propertyPath: m_WindMain
-      value: 0.2
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 182030008135324624, guid: a51cf72c055dce149ab5e2c6a7613d69,
         type: 2}
       propertyPath: m_WindTurbulence
-      value: 0.2
+      value: 0.15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a51cf72c055dce149ab5e2c6a7613d69, type: 2}

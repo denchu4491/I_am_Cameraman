@@ -1,0 +1,240 @@
+fileFormatVersion: 2
+guid: f204548c5a7ccb44d8577b3910612866
+timeCreated: 1501469244
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: COG
+    100002: hand_a
+    100004: hand_a 1
+    100006: head
+    100008: head_a
+    100010: imagePlane3
+    100012: imagePlane4
+    100014: L_ankle
+    100016: L_foot
+    100018: L_foot_a
+    100020: L_forearm
+    100022: L_hand
+    100024: //RootNode
+    100026: neck
+    100028: pCube1
+    100030: pCube2
+    100032: pCube3
+    100034: pCube4
+    100036: pCube5
+    100038: pCube6
+    100040: persp1
+    100042: persp2
+    100044: R_ankle
+    100046: R_foot
+    100048: R_foot_a
+    100050: R_forearm
+    100052: R_hand
+    100054: root
+    100056: spain01
+    100058: spain02
+    400000: COG
+    400002: hand_a
+    400004: hand_a 1
+    400006: head
+    400008: head_a
+    400010: imagePlane3
+    400012: imagePlane4
+    400014: L_ankle
+    400016: L_foot
+    400018: L_foot_a
+    400020: L_forearm
+    400022: L_hand
+    400024: //RootNode
+    400026: neck
+    400028: pCube1
+    400030: pCube2
+    400032: pCube3
+    400034: pCube4
+    400036: pCube5
+    400038: pCube6
+    400040: persp1
+    400042: persp2
+    400044: R_ankle
+    400046: R_foot
+    400048: R_foot_a
+    400050: R_forearm
+    400052: R_hand
+    400054: root
+    400056: spain01
+    400058: spain02
+    2300000: pCube1
+    3300000: pCube1
+    4300000: pCube1
+    4300002: pCube2
+    4300004: pCube3
+    4300006: pCube4
+    4300008: pCube5
+    4300010: pCube6
+    7400000: Idle
+    9500000: //RootNode
+    13700000: pCube2
+    13700002: pCube3
+    13700004: pCube4
+    13700006: pCube5
+    13700008: pCube6
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: imagePlane3
+        weight: 1
+      - path: imagePlane4
+        weight: 1
+      - path: L_ankle
+        weight: 1
+      - path: L_ankle/L_foot
+        weight: 1
+      - path: L_ankle/L_foot/L_foot_a
+        weight: 1
+      - path: L_forearm
+        weight: 1
+      - path: L_forearm/L_hand
+        weight: 1
+      - path: L_forearm/L_hand/hand_a
+        weight: 1
+      - path: pCube1
+        weight: 1
+      - path: pCube2
+        weight: 1
+      - path: pCube3
+        weight: 1
+      - path: pCube4
+        weight: 1
+      - path: pCube5
+        weight: 1
+      - path: pCube6
+        weight: 1
+      - path: persp1
+        weight: 1
+      - path: persp2
+        weight: 1
+      - path: R_ankle
+        weight: 1
+      - path: R_ankle/R_foot
+        weight: 1
+      - path: R_ankle/R_foot/R_foot_a
+        weight: 1
+      - path: R_forearm
+        weight: 1
+      - path: R_forearm/R_hand
+        weight: 1
+      - path: R_forearm/R_hand/hand_a 1
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/COG
+        weight: 1
+      - path: root/COG/spain01
+        weight: 1
+      - path: root/COG/spain01/spain02
+        weight: 1
+      - path: root/COG/spain01/spain02/neck
+        weight: 1
+      - path: root/COG/spain01/spain02/neck/head
+        weight: 1
+      - path: root/COG/spain01/spain02/neck/head/head_a
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
