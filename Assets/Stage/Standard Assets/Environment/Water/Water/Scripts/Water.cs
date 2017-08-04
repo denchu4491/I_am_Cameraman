@@ -255,6 +255,7 @@ namespace UnityStandardAssets.Water
             dest.fieldOfView = src.fieldOfView;
             dest.aspect = src.aspect;
             dest.orthographicSize = src.orthographicSize;
+            dest.useOcclusionCulling = false;
         }
 
 
