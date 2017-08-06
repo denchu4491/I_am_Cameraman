@@ -14,13 +14,14 @@ public class CameraMode : MonoBehaviour {
     public Image flash;
     private float decreaseFlash = 0.8f;
     private bool takeFlash = false;
+    //public LayerMask mask;
     // Use this for initialization
     void Start () {
         animator = GetComponent<Animator>();
 	}
     // Update is called once per frame
     void Update () {
-        vector3Idlerotation = transform.rotation.eulerAngles;
+        vector3Idlerotation = firstPersonCamera.transform.rotation.eulerAngles;
         //Debug.Log(vector3Idlerotation.x);
         if (Input.GetKeyDown("z") && (!takeFlash)) {
             ModeCameraChange();
@@ -83,8 +84,10 @@ public class CameraMode : MonoBehaviour {
         }
     }
     void TakePicture() {
-        Ray ray = new Ray(transform.position, transform.forward);
-        RaycastHit[] hits = Physics.RaycastAll(ray, 100.0f);
+        Ray ray = new Ray(firstPersonCamera.transform.position, firstPersonCamera.transform.forward);
+        Debug.Log("rrrrrr");
+        //RayCastALLでやってみたやつ
+        /*RaycastHit[] hits = Physics.RaycastAll(ray, 100.0f);
         foreach (RaycastHit hitObj in hits) {
             Debug.Log("aaaaa");
             if(hitObj.collider.tag == "EnemyBody") {
@@ -97,6 +100,15 @@ public class CameraMode : MonoBehaviour {
                 Debug.Log(distance);
             }
 
+        }*/
+        RaycastHit hitObj;
+        if (Physics.Raycast(ray,out hitObj, 100.0f)) {
+            if (hitObj.collider.tag == "EnemyBody") {
+                float distance = Vector3.Distance(hitObj.transform.position, transform.position);
+                Debug.Log(distance);
+                Debug.Log(hitObj.collider.tag);
+                Debug.DrawRay(ray.origin, ray.direction, Color.red, 10.0f);
+            }
         }
     }
 
