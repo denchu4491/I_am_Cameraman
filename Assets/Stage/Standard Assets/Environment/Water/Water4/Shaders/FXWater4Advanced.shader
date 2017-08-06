@@ -29,9 +29,9 @@ Properties {
 	_Foam ("Foam (intensity, cutoff)", Vector) = (0.1, 0.375, 0.0, 0.0)
 	
 	_GerstnerIntensity("Per vertex displacement", Float) = 1.0
-	_GAmplitude ("Wave Amplitude", Vector) = (0.3 ,0.35, 0.25, 0.25)
+	_GAmplitude ("Wave Amplitude", Vector) = (0.1 ,0.15, 0.1, 0.1)
 	_GFrequency ("Wave Frequency", Vector) = (1.3, 1.35, 1.25, 1.25)
-	_GSteepness ("Wave Steepness", Vector) = (1.0, 1.0, 1.0, 1.0)
+	_GSteepness ("Wave Steepness", Vector) = (1, 1, 1, 1)
 	_GSpeed ("Wave Speed", Vector) = (1.2, 1.375, 1.1, 1.5)
 	_GDirectionAB ("Wave Direction", Vector) = (0.3 ,0.85, 0.85, 0.25)
 	_GDirectionCD ("Wave Direction", Vector) = (0.1 ,0.9, 0.5, 0.5)

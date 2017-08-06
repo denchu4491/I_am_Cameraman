@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: b94341ebba866da4a86f82ff253f8363
+timeCreated: 1501944200
+licenseType: Free
+ShaderImporter:
+  defaultTextures:
+  - _WaveTex1: {instanceID: 0}
+  - _WaveTex2: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
