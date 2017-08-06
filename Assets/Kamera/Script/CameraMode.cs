@@ -22,7 +22,7 @@ public class CameraMode : MonoBehaviour {
     void Update () {
         vector3Idlerotation = transform.rotation.eulerAngles;
         //Debug.Log(vector3Idlerotation.x);
-        if (Input.GetKeyDown("z")) {
+        if (Input.GetKeyDown("z") && (!takeFlash)) {
             ModeCameraChange();
             flash.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
         }
@@ -31,12 +31,12 @@ public class CameraMode : MonoBehaviour {
             animator.SetBool("Back", false);
             if(vector3Idlerotation.x > 320 || vector3Idlerotation.x < 55) {
                 if (Input.GetKey("up")) {
-                    transform.Rotate(new Vector3(-90 * Time.deltaTime, 0f, 0f));
+                    firstPersonCamera.transform.Rotate(new Vector3(-90 * Time.deltaTime, 0f, 0f));
                 }
             }
             if(vector3Idlerotation.x > 315 || vector3Idlerotation.x < 40) {
                 if (Input.GetKey("down")) {
-                    transform.Rotate(new Vector3(90 * Time.deltaTime, 0f, 0f));
+                    firstPersonCamera.transform.Rotate(new Vector3(90 * Time.deltaTime, 0f, 0f));
                 }
             }
             if (Input.GetKey("right")) {
@@ -45,8 +45,8 @@ public class CameraMode : MonoBehaviour {
             if (Input.GetKey("left")) {
                 transform.Rotate(new Vector3(0f, -90 * Time.deltaTime, 0f),Space.World);
             }
-            if (Input.GetKeyDown("x")) {
-                //TakePicture();
+            if (Input.GetKeyDown("x") && (!takeFlash)) {
+                TakePicture();
                 takeFlash = true;
             }
             if (takeFlash) {
@@ -79,10 +79,25 @@ public class CameraMode : MonoBehaviour {
             thirdPersonCamera.enabled = true;
             canvas.enabled = false;
             transform.rotation = Quaternion.Euler(0f, vector3Idlerotation.y, 0f);
+            firstPersonCamera.transform.rotation = Quaternion.Euler(0f, vector3Idlerotation.y, 0f);
         }
     }
     void TakePicture() {
-        
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit[] hits = Physics.RaycastAll(ray, 100.0f);
+        foreach (RaycastHit hitObj in hits) {
+            Debug.Log("aaaaa");
+            if(hitObj.collider.tag == "EnemyBody") {
+                float distance,distanceX,distanceZ;
+                float playerPosX = transform.position.x, playerPosZ = transform.position.z;
+                float targetPosX = hitObj.collider.transform.position.x , targetPosZ = hitObj.collider.transform.position.z;
+                distanceX = playerPosX - targetPosX;
+                distanceZ = playerPosZ - targetPosZ;
+                distance = Mathf.Sqrt(distanceX * distanceX + distanceZ * distanceZ);
+                Debug.Log(distance);
+            }
+
+        }
     }
 
 }

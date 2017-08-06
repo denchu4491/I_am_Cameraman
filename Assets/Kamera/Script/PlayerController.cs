@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKey("left")) {
             transform.Rotate(new Vector3(0f, -90 * Time.deltaTime, 0f));
         }
-        if (Input.GetKey("space") && isBack == false) {
+        if (Input.GetKeyDown("space") && isBack == false) {
             if (Physics.CheckSphere(JumpCheck, 0.3f)) {
                 isJump = true;
                 animator.SetBool("Jump", true);
