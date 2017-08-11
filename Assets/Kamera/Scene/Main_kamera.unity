@@ -4816,6 +4816,8 @@ GameObject:
   - component: {fileID: 1363878669}
   - component: {fileID: 1363878664}
   - component: {fileID: 1363878670}
+  - component: {fileID: 1363878671}
+  - component: {fileID: 1363878672}
   m_Layer: 0
   m_Name: unitychan
   m_TagString: Player
@@ -4835,7 +4837,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movespeed: 10
-  jumpPower: 6
+  jumpPower: 7
 --- !u!4 &1363878665
 Transform:
   m_ObjectHideFlags: 0
@@ -4843,7 +4845,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1363878663}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.44, y: 4.03, z: 34.3}
+  m_LocalPosition: {x: 5.44, y: 4.5, z: 68.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1671075023}
@@ -4928,6 +4930,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstPersonCamera: {fileID: 1798638070}
   thirdPersonCamera: {fileID: 1253440557}
+--- !u!114 &1363878671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1363878663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0acd776b9f7f9234f9053a818ef4ae29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 2
+--- !u!114 &1363878672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1363878663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21bca7b9d135f1a4d80132f2f50a197e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravity: 0.3
 --- !u!1 &1387340331
 GameObject:
   m_ObjectHideFlags: 0
@@ -6031,7 +6057,7 @@ Prefab:
     - target: {fileID: 114548207394467364, guid: 415e68a4615f723459e6c045a92f3b40,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1012119224926794, guid: 415e68a4615f723459e6c045a92f3b40, type: 2}
       propertyPath: m_TagString
@@ -6053,6 +6079,36 @@ Prefab:
     - target: {fileID: 1146085364559850, guid: 415e68a4615f723459e6c045a92f3b40, type: 2}
       propertyPath: m_Layer
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 136159329422695038, guid: 415e68a4615f723459e6c045a92f3b40,
+        type: 2}
+      propertyPath: m_Height
+      value: 10.317402
+      objectReference: {fileID: 0}
+    - target: {fileID: 136159329422695038, guid: 415e68a4615f723459e6c045a92f3b40,
+        type: 2}
+      propertyPath: m_Center.z
+      value: 6.658701
+      objectReference: {fileID: 0}
+    - target: {fileID: 136159329422695038, guid: 415e68a4615f723459e6c045a92f3b40,
+        type: 2}
+      propertyPath: m_Radius
+      value: 2.6475763
+      objectReference: {fileID: 0}
+    - target: {fileID: 136159329422695038, guid: 415e68a4615f723459e6c045a92f3b40,
+        type: 2}
+      propertyPath: m_Center.x
+      value: -0.33885765
+      objectReference: {fileID: 0}
+    - target: {fileID: 136159329422695038, guid: 415e68a4615f723459e6c045a92f3b40,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 136159329422695038, guid: 415e68a4615f723459e6c045a92f3b40,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 415e68a4615f723459e6c045a92f3b40, type: 2}
