@@ -6,12 +6,12 @@ public class PlayerController : MonoBehaviour {
     Rigidbody rb;
     CameraMode cameraMode;
     public int HP = 2;
-    public float JumpCooldownTime;
     public float movespeed = 0.2f;
     public float jumpPower = 20;
+    private float jumpCooldownTime;
     float moveX,moveZ;
     [System.NonSerialized]public bool isJump,isBack,isRun,moveController = true,isGround,isJumping;
-    Vector3 JumpCheck;
+    Vector3 jumpCheck;
     private Animator animator;
     // Use this for initialization
     void Awake() {
@@ -30,9 +30,9 @@ public class PlayerController : MonoBehaviour {
         animator.SetBool("Run", false);
         animator.SetBool("Jump", false);
         animator.SetBool("Back", false);
-        JumpCheck = transform.position + transform.up * -0.4f;
+        jumpCheck = transform.position + transform.up * -0.4f;
 
-        if (Physics.CheckSphere(JumpCheck, 0.3f)) {
+        if (Physics.CheckSphere(jumpCheck, 0.3f)) {
             isGround = true;
         }
         else {
@@ -68,9 +68,9 @@ public class PlayerController : MonoBehaviour {
             }
         }
         if (isJumping) {
-            JumpCooldownTime += Time.deltaTime;
-            if(JumpCooldownTime > 1.2f) {
-                JumpCooldownTime = 0;
+            jumpCooldownTime += Time.deltaTime;
+            if(jumpCooldownTime > 1.2f) {
+                jumpCooldownTime = 0;
                 isJumping = false;
             }
         }

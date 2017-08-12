@@ -5,34 +5,38 @@ using UnityEngine.UI;
 
 public class CameraMode : MonoBehaviour {
     public GameObject unitychan;
-    bool cameraMode = false;
+    [System.NonSerialized]public bool boolCameraMode = false, takeFlash = false;
+    [System.NonSerialized]public float decreaseFlash = 0.8f;
     private Animator animator;
     public Camera firstPersonCamera;
     public Camera thirdPersonCamera;
-    public Canvas canvas;
+    private Image flash, cameraFrame;
     private Vector3 vector3Idlerotation;
-    public Image flash;
-    private float decreaseFlash = 0.8f;
-    private bool takeFlash = false;
     private PlayerController playerController;
+    private PlayerBodyCollider boolInvincible;
     //public LayerMask mask;
     // Use this for initialization
     void Awake() {
         animator = GetComponent<Animator>();
         playerController = GetComponent<PlayerController>();
+        boolInvincible = GetComponent<PlayerBodyCollider>();
+        flash = GameObject.Find("Flash").GetComponent<Image>();
+        cameraFrame = GameObject.Find("CameraFrame").GetComponent<Image>();
     }
 
     void Start () {
+
 	}
     // Update is called once per frame
     void Update () {
         vector3Idlerotation = firstPersonCamera.transform.rotation.eulerAngles;
         //Debug.Log(vector3Idlerotation.x);
-        if (Input.GetKeyDown("z") && (!takeFlash)) {
+        if (Input.GetKeyDown("z") && (!takeFlash) && !boolInvincible.Invincible) {
+            Debug.Log("hoge");
             ModeCameraChange();
             flash.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
         }
-        if (cameraMode) {
+        if (boolCameraMode) {
             animator.SetBool("Run", false);
             animator.SetBool("Back", false);
             if(vector3Idlerotation.x > 320 || vector3Idlerotation.x < 55) {
@@ -67,21 +71,23 @@ public class CameraMode : MonoBehaviour {
             }
         }
 	}
-    void ModeCameraChange() {
+    public void ModeCameraChange() {
         if (playerController.moveController) {
             playerController.moveController = false;
-            cameraMode = true;
+            boolCameraMode = true;
             firstPersonCamera.enabled = true;
             thirdPersonCamera.enabled = false;
-            canvas.enabled = true;
+            flash.enabled = true;
+            cameraFrame.enabled = true;
 
         } 
         else if (!playerController.moveController) {
             playerController.moveController = true;
-            cameraMode = false;
+            boolCameraMode = false;
             firstPersonCamera.enabled = false;
             thirdPersonCamera.enabled = true;
-            canvas.enabled = false;
+            flash.enabled = false;
+            cameraFrame.enabled = false;
             transform.rotation = Quaternion.Euler(0f, vector3Idlerotation.y, 0f);
             firstPersonCamera.transform.rotation = Quaternion.Euler(0f, vector3Idlerotation.y, 0f);
         }
