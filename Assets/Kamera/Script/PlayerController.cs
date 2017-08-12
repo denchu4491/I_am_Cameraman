@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
     Rigidbody rb;
+    CameraMode cameraMode;
+    public int HP = 2;
+    public float JumpCooldownTime;
     public float movespeed = 0.2f;
     public float jumpPower = 20;
     float moveX,moveZ;
-    private bool isJump,isBack,isRun;
+    [System.NonSerialized]public bool isJump,isBack,isRun,moveController = true,isGround,isJumping;
     Vector3 JumpCheck;
     private Animator animator;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Awake() {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
     }
-	
+
+    void Start () {
+    }
 	// Update is called once per frame
 	void Update () {
         moveX = 0;
@@ -26,43 +31,64 @@ public class PlayerController : MonoBehaviour {
         animator.SetBool("Jump", false);
         animator.SetBool("Back", false);
         JumpCheck = transform.position + transform.up * -0.4f;
-        if (Input.GetKey("up")) {
-            animator.SetBool("Run", true);
-            moveZ += 1;
+
+        if (Physics.CheckSphere(JumpCheck, 0.3f)) {
+            isGround = true;
         }
-        if (Input.GetKey("down")) {
-            animator.SetBool("Back", true);
-            moveZ -= 1 * 0.5f;
-            isBack = true;
+        else {
+            isGround = false;
         }
-        if (Input.GetKey("right")) {
-            transform.Rotate(new Vector3(0f, 90 * Time.deltaTime, 0f));
+
+        if (moveController) {
+            if (Input.GetKey("up")) {
+                animator.SetBool("Run", true);
+                moveZ += 1;
+            }
+            if (Input.GetKey("down")) {
+                animator.SetBool("Back", true);
+                moveZ -= 1 * 0.5f;
+                isBack = true;
+            }
+            if (Input.GetKey("right")) {
+                transform.Rotate(new Vector3(0f, 90 * Time.deltaTime, 0f));
+            }
+            if (Input.GetKey("left")) {
+                transform.Rotate(new Vector3(0f, -90 * Time.deltaTime, 0f));
+            }
         }
-        if (Input.GetKey("left")) {
-            transform.Rotate(new Vector3(0f, -90 * Time.deltaTime, 0f));
-        }
+
         if (Input.GetKeyDown("space") && isBack == false) {
-            if (Physics.CheckSphere(JumpCheck, 0.3f)) {
+            if (isGround) {
                 isJump = true;
+                isJumping = true;
                 animator.SetBool("Jump", true);
                 if (isRun == false) {
                     animator.SetBool("IdleJump", true);
                 }
             }
-        }        
+        }
+        if (isJumping) {
+            JumpCooldownTime += Time.deltaTime;
+            if(JumpCooldownTime > 1.2f) {
+                JumpCooldownTime = 0;
+                isJumping = false;
+            }
+        }
+
     }
     void FixedUpdate() {
-        
         Move();
         if (isJump) {
             Jump();
             isJump = false;
         }
     }
-    void Move() {
+    
+void Move() {
         Vector3 _pos = (transform.forward * moveZ + transform.right * moveX) * movespeed;
         rb.velocity = new Vector3(_pos.x, rb.velocity.y, _pos.z);
     }
+
     void Jump() {
         rb.velocity = new Vector3(rb.velocity.x, jumpPower, rb.velocity.z);
     }

@@ -14,10 +14,15 @@ public class CameraMode : MonoBehaviour {
     public Image flash;
     private float decreaseFlash = 0.8f;
     private bool takeFlash = false;
+    private PlayerController playerController;
     //public LayerMask mask;
     // Use this for initialization
-    void Start () {
+    void Awake() {
         animator = GetComponent<Animator>();
+        playerController = GetComponent<PlayerController>();
+    }
+
+    void Start () {
 	}
     // Update is called once per frame
     void Update () {
@@ -63,18 +68,16 @@ public class CameraMode : MonoBehaviour {
         }
 	}
     void ModeCameraChange() {
-        if (GetComponent<PlayerController>().enabled) {
-            GetComponent<PlayerController>().enabled = false;
-            GetComponent<CameraChange>().enabled = false;
+        if (playerController.moveController) {
+            playerController.moveController = false;
             cameraMode = true;
             firstPersonCamera.enabled = true;
             thirdPersonCamera.enabled = false;
             canvas.enabled = true;
 
         } 
-        else if (GetComponent<PlayerController>().enabled == false) {
-            GetComponent<PlayerController>().enabled = true;
-            GetComponent<CameraChange>().enabled = true;
+        else if (!playerController.moveController) {
+            playerController.moveController = true;
             cameraMode = false;
             firstPersonCamera.enabled = false;
             thirdPersonCamera.enabled = true;
@@ -86,21 +89,7 @@ public class CameraMode : MonoBehaviour {
     void TakePicture() {
         Ray ray = new Ray(firstPersonCamera.transform.position, firstPersonCamera.transform.forward);
         Debug.Log("rrrrrr");
-        //RayCastALLでやってみたやつ
-        /*RaycastHit[] hits = Physics.RaycastAll(ray, 100.0f);
-        foreach (RaycastHit hitObj in hits) {
-            Debug.Log("aaaaa");
-            if(hitObj.collider.tag == "EnemyBody") {
-                float distance,distanceX,distanceZ;
-                float playerPosX = transform.position.x, playerPosZ = transform.position.z;
-                float targetPosX = hitObj.collider.transform.position.x , targetPosZ = hitObj.collider.transform.position.z;
-                distanceX = playerPosX - targetPosX;
-                distanceZ = playerPosZ - targetPosZ;
-                distance = Mathf.Sqrt(distanceX * distanceX + distanceZ * distanceZ);
-                Debug.Log(distance);
-            }
-
-        }*/
+        
         RaycastHit hitObj;
         if (Physics.Raycast(ray,out hitObj, 100.0f)) {
             if (hitObj.collider.tag == "EnemyBody") {

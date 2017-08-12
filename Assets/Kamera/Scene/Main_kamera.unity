@@ -4816,8 +4816,8 @@ GameObject:
   - component: {fileID: 1363878669}
   - component: {fileID: 1363878664}
   - component: {fileID: 1363878670}
-  - component: {fileID: 1363878671}
   - component: {fileID: 1363878672}
+  - component: {fileID: 1363878673}
   m_Layer: 0
   m_Name: unitychan
   m_TagString: Player
@@ -4836,8 +4836,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e902f2f7c1578bd4f91ef3f52e63873e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HP: 2
+  JumpCooldownTime: 0
   movespeed: 10
-  jumpPower: 7
+  jumpPower: 6
 --- !u!4 &1363878665
 Transform:
   m_ObjectHideFlags: 0
@@ -4845,7 +4847,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1363878663}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.44, y: 4.5, z: 68.3}
+  m_LocalPosition: {x: 5.44, y: 1.33, z: 51.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1671075023}
@@ -4930,18 +4932,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstPersonCamera: {fileID: 1798638070}
   thirdPersonCamera: {fileID: 1253440557}
---- !u!114 &1363878671
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1363878663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0acd776b9f7f9234f9053a818ef4ae29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HP: 2
 --- !u!114 &1363878672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4953,7 +4943,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21bca7b9d135f1a4d80132f2f50a197e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: 0.3
+  gravity: 3
+--- !u!114 &1363878673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1363878663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70489e48ba2cb8a4abd52c80df4aa455, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1387340331
 GameObject:
   m_ObjectHideFlags: 0
@@ -6103,7 +6104,7 @@ Prefab:
     - target: {fileID: 136159329422695038, guid: 415e68a4615f723459e6c045a92f3b40,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 136159329422695038, guid: 415e68a4615f723459e6c045a92f3b40,
         type: 2}
