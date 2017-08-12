@@ -34,9 +34,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4207031504302308}
-  - component: {fileID: 114548207394467364}
   - component: {fileID: 95431204035402778}
   - component: {fileID: 54345893071622160}
+  - component: {fileID: 114039046615429772}
+  - component: {fileID: 114303296152732444}
+  - component: {fileID: 114463861296792230}
   m_Layer: 0
   m_Name: Whale_kun
   m_TagString: Enemy
@@ -946,7 +948,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1059355955155124}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.000637207, z: -0.2917999}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4406259066860910}
@@ -1602,6 +1604,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114039046615429772
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1012119224926794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788449a2875213a4c8361bb9a9337d24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114218482210297272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1615,7 +1628,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lookTarget: {fileID: 0}
   isDetectPlayer: 0
---- !u!114 &114548207394467364
+--- !u!114 &114303296152732444
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1623,14 +1636,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1012119224926794}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d9d20f418e92204c9c74d71ca55ea01, type: 3}
+  m_Script: {fileID: 11500000, guid: b9bd6be9e6918e941818fd07493e213c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  rotateSpeed: 0.05
-  waitTimeLength: 5
-  attackRange: 5
-  attackCollider: {fileID: 136159329422695038}
+--- !u!114 &114463861296792230
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1012119224926794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d25c8db3f66eb6c44ad6064f910d9b38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 4
+  rotateSpeed: 0.1
 --- !u!136 &136159329422695038
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -15,13 +15,18 @@ public class EnemyMain_d : MonoBehaviour {
     [System.NonSerialized] public ENEMYAISTS aiState = ENEMYAISTS.ACTIONSELECT;
     protected EnemyController_d enemyCtrl;
     protected GameObject player;
-
     protected float aiActionTimeLength = 0.0f;
     protected float aiActionTimeStart = 0.0f;
 
+    public virtual void Awake()
+    {
+        enemyCtrl = GetComponent<EnemyController_d>();
+        player = GameObject.Find("Player");
+    }
+
 	// Use this for initialization
 	public virtual void Start () {
-        player = GameObject.Find("Player");
+        
 	}
 	
 	// Update is called once per frame
@@ -31,13 +36,23 @@ public class EnemyMain_d : MonoBehaviour {
 
     public virtual void FixedUpdate()
     {
+        if (BeginEnemyCommonWork())
+        {
+            FixedUpdateAI();
+            if (aiActionTimeLength > 0) {
+                EndEnemyCommonWork();
+            }
+        }
+    }
+
+    public virtual void FixedUpdateAI()
+    {
 
     }
 
     public bool BeginEnemyCommonWork()
     {
         enemyCtrl.animator.enabled = true;
-
         if (!CheckAction())
         {
             return false;

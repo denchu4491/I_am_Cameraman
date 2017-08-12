@@ -5,8 +5,8 @@ using UnityEngine;
 public class Enemy_d : MonoBehaviour {
 
     public float moveSpeed, rotateSpeed, waitTimeLength, attackRange = 5.0f;
-    [SerializeField] private CapsuleCollider attackCollider;
-    private bool canAction, isMovement, isRotation, isMove, isAttack;
+    public CapsuleCollider attackCollider;
+    private bool canAction, isRotation, isMove, isAttack;
     private EnemyActionRange_d enemyActionRange;
     private Rigidbody rigidbodyE;
     private Animator animator;
@@ -16,7 +16,6 @@ public class Enemy_d : MonoBehaviour {
     protected virtual void Awake()
     {
         canAction = true;
-        isMovement = false;
         isRotation = false;
 
         enemyActionRange = GetComponentInChildren<EnemyActionRange_d>();
@@ -116,7 +115,6 @@ public class Enemy_d : MonoBehaviour {
             }
 
         }
-
     }
 
     protected virtual void Move()
