@@ -4839,6 +4839,7 @@ MonoBehaviour:
   HP: 2
   movespeed: 10
   jumpPower: 6
+  jumpTime: 1.5
 --- !u!4 &1363878665
 Transform:
   m_ObjectHideFlags: 0

@@ -94,7 +94,7 @@ public class CameraMode : MonoBehaviour {
     }
     void TakePicture() {
         Ray ray = new Ray(firstPersonCamera.transform.position, firstPersonCamera.transform.forward);
-        Debug.Log("rrrrrr");
+        //Debug.Log("rrrrrr");
         
         RaycastHit hitObj;
         if (Physics.Raycast(ray,out hitObj, 100.0f)) {
@@ -102,7 +102,6 @@ public class CameraMode : MonoBehaviour {
                 float distance = Vector3.Distance(hitObj.transform.position, transform.position);
                 Debug.Log(distance);
                 Debug.Log(hitObj.collider.tag);
-                Debug.DrawRay(ray.origin, ray.direction, Color.red, 10.0f);
             }
         }
     }

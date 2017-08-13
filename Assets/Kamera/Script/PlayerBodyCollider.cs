@@ -25,7 +25,7 @@ public class PlayerBodyCollider : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (Invincible) {
-            damegeFlash.color = new Color(1.0f, 0.0f, 0.0f, 1.0f - InvincibleCount);
+            damegeFlash.color = new Color(1.0f, 0.0f, 0.0f, 0.8f - InvincibleCount);
             InvincibleCount += Time.deltaTime;
             if (InvincibleTime < InvincibleCount) {
                 damegeFlash.color = new Color(1.0f, 1.0f, 1.0f);
@@ -48,7 +48,7 @@ public class PlayerBodyCollider : MonoBehaviour {
                 }
             }
             damegeFlash.enabled = true;
-            damegeFlash.color = new Color(1.0f, 0.0f, 0.0f);
+            damegeFlash.color = new Color(1.0f, 0.0f, 0.0f,0.8f);
             Debug.Log(playerController.HP);
         } 
     }

@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
     public int HP = 2;
     public float movespeed = 0.2f;
     public float jumpPower = 20;
+    public float jumpTime = 1.2f;
     private float jumpCooldownTime;
     float moveX,moveZ;
     [System.NonSerialized]public bool isJump,isBack,isRun,moveController = true,isGround,isJumping;
@@ -57,7 +58,7 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
-        if (Input.GetKeyDown("space") && isBack == false) {
+        if (Input.GetKeyDown("space") && isBack == false && !isJumping) {
             if (isGround) {
                 isJump = true;
                 isJumping = true;
@@ -69,7 +70,7 @@ public class PlayerController : MonoBehaviour {
         }
         if (isJumping) {
             jumpCooldownTime += Time.deltaTime;
-            if(jumpCooldownTime > 1.2f) {
+            if(jumpCooldownTime > jumpTime) {
                 jumpCooldownTime = 0;
                 isJumping = false;
             }
