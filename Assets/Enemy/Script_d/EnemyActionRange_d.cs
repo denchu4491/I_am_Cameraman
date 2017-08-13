@@ -24,9 +24,4 @@ public class EnemyActionRange_d : MonoBehaviour {
             lookTarget = null;
         }
     }
-
-    void Update()
-    {
-        
-    }
 }

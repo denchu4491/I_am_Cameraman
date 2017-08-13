@@ -12,29 +12,26 @@ public class EnemyMain_Whalekun_d : EnemyMain_d {
         switch (aiState)
         {
             case ENEMYAISTS.ACTIONSELECT:
-                if (enemyCtrl.enemyActionRange.isDetectPlayer)
+                if (enemyCtrl.enemyActionRange.isDetectPlayer && RayCheck(rayStart.position, 30.0f))
                 {
-                    SetAIState(ENEMYAISTS.ATTACKPLAYER, -1.0f);
+                    SetAIState(ENEMYAISTS.ATTACKPLAYER, 10.0f);
                 }
                 else
                 {
-                    SetAIState(ENEMYAISTS.LOITER, -1.0f);
+                    SetAIState(ENEMYAISTS.LOITER, 30.0f);
                 }
                 enemyCtrl.ActionMove(0.0f);
-
                 break;
 
             case ENEMYAISTS.WAIT:
                 enemyCtrl.ActionMove(0.0f);
-
                 break;
 
             case ENEMYAISTS.LOITER:
-                if (enemyCtrl.enemyActionRange.isDetectPlayer)
+                if (enemyCtrl.enemyActionRange.isDetectPlayer && RayCheck(rayStart.position, 30.0f))
                 {
-                    SetAIState(ENEMYAISTS.ATTACKPLAYER, -1.0f);
+                    SetAIState(ENEMYAISTS.ATTACKPLAYER, 10.0f);
                 }
-
                 break;
 
             case ENEMYAISTS.ATTACKPLAYER:
@@ -50,7 +47,6 @@ public class EnemyMain_Whalekun_d : EnemyMain_d {
                         Attack_A();
                     }
                 }
-
                 break;
         }
     }
