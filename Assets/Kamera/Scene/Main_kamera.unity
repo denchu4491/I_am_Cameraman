@@ -4854,6 +4854,7 @@ Transform:
   - {fileID: 857386851}
   - {fileID: 1798638071}
   - {fileID: 1253440553}
+  - {fileID: 1870109886}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4917,6 +4918,7 @@ MonoBehaviour:
   unitychan: {fileID: 1363878663}
   firstPersonCamera: {fileID: 1798638070}
   thirdPersonCamera: {fileID: 1253440557}
+  shutterSoundCollider: {fileID: 0}
 --- !u!114 &1363878670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6480,6 +6482,47 @@ Transform:
   m_Father: {fileID: 2032817481}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1870109885
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1870109886}
+  - component: {fileID: 1870109887}
+  m_Layer: 0
+  m_Name: ShutterSound
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1870109886
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1870109885}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1363878665}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1870109887
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1870109885}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0.75, z: 0}
 --- !u!1 &1905653502
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public class CameraMode : MonoBehaviour {
     public Camera firstPersonCamera;
     public Camera thirdPersonCamera;
     private Image flash, cameraFrame;
+    public SphereCollider shutterSoundCollider;
     private Vector3 vector3Idlerotation;
     private PlayerController playerController;
     private PlayerBodyCollider boolInvincible;
@@ -25,7 +26,7 @@ public class CameraMode : MonoBehaviour {
     }
 
     void Start () {
-
+        
 	}
     // Update is called once per frame
     void Update () {
@@ -36,6 +37,7 @@ public class CameraMode : MonoBehaviour {
             ModeCameraChange();
             flash.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
         }
+
         if (boolCameraMode) {
             animator.SetBool("Run", false);
             animator.SetBool("Back", false);
@@ -71,6 +73,7 @@ public class CameraMode : MonoBehaviour {
             }
         }
 	}
+
     public void ModeCameraChange() {
         if (playerController.moveController) {
             playerController.moveController = false;
@@ -88,11 +91,17 @@ public class CameraMode : MonoBehaviour {
             thirdPersonCamera.enabled = true;
             flash.enabled = false;
             cameraFrame.enabled = false;
+            shutterSoundCollider.enabled = false;
             transform.rotation = Quaternion.Euler(0f, vector3Idlerotation.y, 0f);
             firstPersonCamera.transform.rotation = Quaternion.Euler(0f, vector3Idlerotation.y, 0f);
         }
     }
+
     void TakePicture() {
+        shutterSoundCollider.enabled = true;
+        /*cameraFrame.enabled = false;
+        Application.CaptureScreenshot("Assets/Kamera/Sprite/picture.png");
+        cameraFrame.enabled = true;*/
         Ray ray = new Ray(firstPersonCamera.transform.position, firstPersonCamera.transform.forward);
         //Debug.Log("rrrrrr");
         
@@ -104,5 +113,7 @@ public class CameraMode : MonoBehaviour {
                 Debug.Log(hitObj.collider.tag);
             }
         }
+
     }
+
 }
