@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class CameraMode : MonoBehaviour {
     public GameObject unitychan;
-    [System.NonSerialized]public bool boolCameraMode = false, takeFlash = false;
+    [System.NonSerialized]public bool boolCameraMode = false, takeFlash = false,zoomUp;
     [System.NonSerialized]public float decreaseFlash = 0.8f;
+    public float targetDistance,score;
     private Animator animator;
     public Camera firstPersonCamera;
     public Camera thirdPersonCamera;
@@ -15,6 +16,8 @@ public class CameraMode : MonoBehaviour {
     private Vector3 vector3Idlerotation;
     private PlayerController playerController;
     private PlayerBodyCollider boolInvincible;
+    public AudioClip shutterSound;
+    public AudioSource audioSource;
     //public LayerMask mask;
     // Use this for initialization
     void Awake() {
@@ -23,6 +26,8 @@ public class CameraMode : MonoBehaviour {
         boolInvincible = GetComponent<PlayerBodyCollider>();
         flash = GameObject.Find("Flash").GetComponent<Image>();
         cameraFrame = GameObject.Find("CameraFrame").GetComponent<Image>();
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = shutterSound;
     }
 
     void Start () {
@@ -41,21 +46,49 @@ public class CameraMode : MonoBehaviour {
         if (boolCameraMode) {
             animator.SetBool("Run", false);
             animator.SetBool("Back", false);
+
             if(vector3Idlerotation.x > 320 || vector3Idlerotation.x < 55) {
                 if (Input.GetKey("up")) {
-                    firstPersonCamera.transform.Rotate(new Vector3(-90 * Time.deltaTime, 0f, 0f));
+                    if (!zoomUp) {
+                        firstPersonCamera.transform.Rotate(new Vector3(-45 * Time.deltaTime, 0f, 0f));
+                    } else {
+                        firstPersonCamera.transform.Rotate(new Vector3(-22.5f * Time.deltaTime, 0f, 0f));
+                    }
                 }
             }
+
             if(vector3Idlerotation.x > 315 || vector3Idlerotation.x < 40) {
                 if (Input.GetKey("down")) {
-                    firstPersonCamera.transform.Rotate(new Vector3(90 * Time.deltaTime, 0f, 0f));
+                    if (!zoomUp) {
+                        firstPersonCamera.transform.Rotate(new Vector3(45 * Time.deltaTime, 0f, 0f));
+                    } else {
+                        firstPersonCamera.transform.Rotate(new Vector3(22.5f * Time.deltaTime, 0f, 0f));
+                    }
                 }
             }
+
             if (Input.GetKey("right")) {
-                transform.Rotate(new Vector3(0f, 90 * Time.deltaTime, 0f),Space.World);
+                if (!zoomUp) {
+                    transform.Rotate(new Vector3(0f, 45 * Time.deltaTime, 0f), Space.World);
+                } else {
+                    transform.Rotate(new Vector3(0f, 22.5f * Time.deltaTime, 0f), Space.World);
+                }
             }
+
             if (Input.GetKey("left")) {
-                transform.Rotate(new Vector3(0f, -90 * Time.deltaTime, 0f),Space.World);
+                if (!zoomUp) {
+                    transform.Rotate(new Vector3(0f, -45f * Time.deltaTime, 0f), Space.World);
+                } else {
+                    transform.Rotate(new Vector3(0f, -22.5f * Time.deltaTime, 0f), Space.World);
+                }
+            }
+
+            if (Input.GetKeyDown("c")) {
+                if(firstPersonCamera.fieldOfView == 60) {
+                    CameraZoomUp();
+                } else {
+                    CameraZoomOut();
+                }
             }
             if (Input.GetKeyDown("x") && (!takeFlash)) {
                 TakePicture();
@@ -92,25 +125,48 @@ public class CameraMode : MonoBehaviour {
             flash.enabled = false;
             cameraFrame.enabled = false;
             shutterSoundCollider.enabled = false;
+            if (zoomUp) {
+                CameraZoomOut();
+            }
             transform.rotation = Quaternion.Euler(0f, vector3Idlerotation.y, 0f);
             firstPersonCamera.transform.rotation = Quaternion.Euler(0f, vector3Idlerotation.y, 0f);
         }
     }
 
+    void CameraZoomUp() {
+        if(firstPersonCamera.fieldOfView == 60) {
+            firstPersonCamera.fieldOfView = 10;
+            zoomUp = true;
+        } 
+    }
+    void CameraZoomOut() {
+        firstPersonCamera.fieldOfView = 60;
+        zoomUp = false;
+    }
+
     void TakePicture() {
+        audioSource.Play();
         shutterSoundCollider.enabled = true;
         /*cameraFrame.enabled = false;
         Application.CaptureScreenshot("Assets/Kamera/Sprite/picture.png");
         cameraFrame.enabled = true;*/
         Ray ray = new Ray(firstPersonCamera.transform.position, firstPersonCamera.transform.forward);
-        //Debug.Log("rrrrrr");
         
         RaycastHit hitObj;
         if (Physics.Raycast(ray,out hitObj, 100.0f)) {
             if (hitObj.collider.tag == "EnemyBody") {
                 float distance = Vector3.Distance(hitObj.transform.position, transform.position);
+                if(targetDistance - distance < 0) {
+                    score = 100 + (targetDistance - distance);
+                } else {
+                    score = 100 - (targetDistance - distance);
+                }
+
                 Debug.Log(distance);
+                Debug.Log(score);
                 Debug.Log(hitObj.collider.tag);
+            } else {
+                score = 0;
             }
         }
 
