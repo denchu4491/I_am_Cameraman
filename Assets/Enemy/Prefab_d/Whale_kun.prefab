@@ -481,7 +481,6 @@ GameObject:
   - component: {fileID: 136614830333292100}
   - component: {fileID: 136696449037609536}
   - component: {fileID: 136191187503574510}
-  - component: {fileID: 136774539730530632}
   m_Layer: 0
   m_Name: Collider_Body
   m_TagString: EnemyBody
@@ -1674,7 +1673,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 788449a2875213a4c8361bb9a9337d24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wayPointList: []
+  wayPointList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &114218482210297272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1749,10 +1757,10 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: d512d32ff9b81084db0a2c73762873a2, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 1
-  m_Height: 5.7
+  m_Radius: 1.5
+  m_Height: 6
   m_Direction: 2
-  m_Center: {x: 0.1, y: 2, z: -0.55}
+  m_Center: {x: 0.1, y: 1.8, z: -0.2}
 --- !u!136 &136696449037609536
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1766,19 +1774,6 @@ CapsuleCollider:
   m_Height: 1.8
   m_Direction: 1
   m_Center: {x: 0.6, y: 0.9, z: -0.5}
---- !u!136 &136774539730530632
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1444891851597256}
-  m_Material: {fileID: 13400000, guid: b9c377dd75858fc41b6146904f2afb6d, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 1
-  m_Height: 3
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!137 &137627462921633362
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
