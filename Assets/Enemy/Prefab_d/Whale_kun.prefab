@@ -1673,6 +1673,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 788449a2875213a4c8361bb9a9337d24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canAction: 1
+  canLoiter: 0
+  canAttack: 1
   wayPointList:
   - {fileID: 0}
   - {fileID: 0}
