@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyMain_Whalekun_d : EnemyMain_d {
 
-    bool isRotate;
+    bool isRotate = false, isTarget = false;
     public Transform[] wayPointList;
     int index = 0;
 
@@ -23,7 +23,12 @@ public class EnemyMain_Whalekun_d : EnemyMain_d {
                 }
                 else
                 {
-                    SetAIState(ENEMYAISTS.LOITER, -1.0f);
+                    if (isTarget)
+                    {
+                        isTarget = false;
+                        SearchIndex();
+                    }
+                    SetAIState(ENEMYAISTS.LOITER, 10.0f);
                 }
                 enemyCtrl.ActionMove(0.0f);
                 break;
@@ -46,15 +51,14 @@ public class EnemyMain_Whalekun_d : EnemyMain_d {
                 {
                     if (!isRotate)
                     {
+                        //Debug.Log("LOITER " + index);
                         isRotate = true;
-                        Debug.Log(index);
                         enemyCtrl.ActionLookUp(wayPointList[index].position);
                     }
                     if (!enemyCtrl.tryLookUp)
                     {
                         if (!enemyCtrl.ActionMoveToNear(enemyCtrl.target, 3.0f))
                         {
-                            //Debug.Log("hoge");
                             isRotate = false;
                             NextIndex();
                             SetAIState(ENEMYAISTS.WAIT, Random.Range(1.0f, 3.0f));
@@ -66,6 +70,7 @@ public class EnemyMain_Whalekun_d : EnemyMain_d {
             case ENEMYAISTS.ATTACKPLAYER:
                 if (!isRotate)
                 {
+                    isTarget = true;
                     isRotate = true;
                     enemyCtrl.ActionLookUp(player.transform.position);
                 }
@@ -91,5 +96,36 @@ public class EnemyMain_Whalekun_d : EnemyMain_d {
     void NextIndex()
     {
         if (++index == wayPointList.Length) index = 0;
+    }
+
+    void SearchIndex()
+    {
+        int near = -1;
+        float sqrdistance = 0.0f;
+
+        for(int i = 0; i < wayPointList.Length; i++)
+        {
+            if(!Physics.Linecast(new Vector3(transform.position.x, transform.position.y + 10.0f, transform.position.z),
+                new Vector3(wayPointList[i].position.x, wayPointList[i].position.y + 10.0f, wayPointList[i].position.z) ))
+            {
+                Vector3 heading = wayPointList[i].position - transform.position;
+                if(near == -1 || heading.sqrMagnitude < sqrdistance)
+                {
+                    near = i;
+                    sqrdistance = heading.sqrMagnitude;
+                }
+                // sqrdistanceは距離の積で、約30以下の距離ならばそのIndexに決定する(高速化のつもり)
+                if(sqrdistance < 1000)
+                {
+                    index = i;
+                    break;
+                }
+            }
+            if(near != -1 && i == wayPointList.Length - 1)
+            {
+                index = near;
+            }
+        }
+        //if (near == -1) Debug.Log("WayPointLost");
     }
 }

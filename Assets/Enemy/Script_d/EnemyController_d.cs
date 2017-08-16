@@ -33,7 +33,7 @@ public class EnemyController_d : MonoBehaviour {
         // 接地チェック
         if (!Physics.CheckSphere(groundCheck.position, sphereRadius))
         {
-            Debug.Log("hoge");
+            //Debug.Log("hoge");
             // 重力
             SetLocalGravity();
         }
