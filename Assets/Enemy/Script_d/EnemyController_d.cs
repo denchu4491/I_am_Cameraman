@@ -6,15 +6,15 @@ public class EnemyController_d : MonoBehaviour {
 
     [System.NonSerialized] public Animator animator;
     [System.NonSerialized] public Rigidbody rigidbodyE;
-    [System.NonSerialized] public EnemyActionRange_d enemyActionRange;
     [System.NonSerialized] public Vector3 target;
     [System.NonSerialized] public bool tryLookUp;
 
-    public float moveSpeed, rotateSpeed;
+    public float moveSpeed, rotateSpeed, gravityScale, sphereRadius = 0.3f;
     private Collider attackCollider;
-    private Vector3 moveDirection, heading;
+    private Vector3 moveDirection;
     private Quaternion rotationPrev;
     private float attackTimeStart, attackTimeLength;
+    private Transform groundCheck;
 
     public readonly static int ANISTS_Idle = Animator.StringToHash("Base Layer.Idle");
     public readonly static int ANISTE_Run = Animator.StringToHash("Base Layer.Run");
@@ -24,23 +24,21 @@ public class EnemyController_d : MonoBehaviour {
     {
         animator = GetComponent<Animator>();
         rigidbodyE = GetComponent<Rigidbody>();
-        enemyActionRange = GetComponentInChildren<EnemyActionRange_d>();
         attackCollider = transform.Find("Collider_Attack").gameObject.GetComponent<Collider>();
+        groundCheck = transform.Find("GroundCheck").transform;
     }
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     void FixedUpdate()
     {
-        // 攻撃判定の終了の確認
+        // 接地チェック
+        if (!Physics.CheckSphere(groundCheck.position, sphereRadius))
+        {
+            Debug.Log("hoge");
+            // 重力
+            SetLocalGravity();
+        }
+
+        // 攻撃判定の終了チェック
         if (attackCollider.enabled)
         {
             float time = Time.fixedTime - attackTimeStart;
@@ -60,6 +58,11 @@ public class EnemyController_d : MonoBehaviour {
         Move();
     }
 
+    void SetLocalGravity()
+    {
+        rigidbodyE.velocity = Vector3.down * gravityScale;
+    }
+
     public void ActionMove(float accel)
     {
         if (accel != 0.0f) {
@@ -74,13 +77,12 @@ public class EnemyController_d : MonoBehaviour {
 
     private void Move()
     {
-        // 実際の移動は物理演算を行うためにFixedUpdateで行う
         rigidbodyE.velocity = new Vector3(moveDirection.x, rigidbodyE.velocity.y, moveDirection.z);
     }
 
     public bool ActionMoveToNear(Vector3 go, float near)
     {
-        heading = go - transform.position;
+        Vector3 heading = go - transform.position;
         if (heading.sqrMagnitude > near * near)
         {
             ActionMove(1.0f);
@@ -91,7 +93,6 @@ public class EnemyController_d : MonoBehaviour {
 
     private void LookUp(Vector3 go)
     {
-        // 回転制御
         Vector3 angle = go - transform.position;
         angle.y = 0;
         rotationPrev = transform.rotation;

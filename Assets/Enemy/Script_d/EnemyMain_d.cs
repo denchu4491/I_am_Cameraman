@@ -13,6 +13,7 @@ public enum ENEMYAISTS
 public class EnemyMain_d : MonoBehaviour {
 
     [System.NonSerialized] public ENEMYAISTS aiState = ENEMYAISTS.ACTIONSELECT;
+    [System.NonSerialized] public EnemyActionRange_d enemyActionRange;
     protected EnemyController_d enemyCtrl;
     protected GameObject player;
     protected Transform rayStart;
@@ -22,13 +23,14 @@ public class EnemyMain_d : MonoBehaviour {
     public virtual void Awake()
     {
         enemyCtrl = GetComponent<EnemyController_d>();
+        enemyActionRange = GetComponentInChildren<EnemyActionRange_d>();
         player = GameObject.Find("Player");
         rayStart = transform.Find("RayStart").transform;
     }
 
 	// Use this for initialization
 	public virtual void Start () {
-        
+
 	}
 	
 	// Update is called once per frame
@@ -94,6 +96,7 @@ public class EnemyMain_d : MonoBehaviour {
     {
         int cnt = 0;
         RaycastHit[] hit = new RaycastHit[3];
+
         for (int i = 0; i < hit.Length; i++)
         {
             Vector3 direction = new Vector3(player.transform.position.x,
