@@ -45,7 +45,7 @@ public class PlayerController_d : MonoBehaviour {
         */
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("fire");
+            //Debug.Log("fire");
         }
     }
 
