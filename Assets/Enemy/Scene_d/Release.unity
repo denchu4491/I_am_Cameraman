@@ -5655,6 +5655,21 @@ Prefab:
       propertyPath: wayPointList.Array.data[8]
       value: 
       objectReference: {fileID: 1788903432}
+    - target: {fileID: 114039046615429772, guid: 415e68a4615f723459e6c045a92f3b40,
+        type: 2}
+      propertyPath: canLoiter
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114039046615429772, guid: 415e68a4615f723459e6c045a92f3b40,
+        type: 2}
+      propertyPath: canAction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114039046615429772, guid: 415e68a4615f723459e6c045a92f3b40,
+        type: 2}
+      propertyPath: canAttack
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 415e68a4615f723459e6c045a92f3b40, type: 2}
   m_IsPrefabParent: 0
