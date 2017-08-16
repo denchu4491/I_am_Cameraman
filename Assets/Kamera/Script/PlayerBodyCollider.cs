@@ -37,7 +37,8 @@ public class PlayerBodyCollider : MonoBehaviour {
         }
 	}
     void OnTriggerEnter(Collider collider) {
-        if(collider.tag == "EnemyArm" && !Invincible) {
+        Debug.Log(collider.tag);
+        if (collider.tag == "EnemyArm" && !Invincible) {
             playerController.HP -= 1;
             Invincible = true;
             if (cameraMode.boolCameraMode) {
@@ -51,5 +52,21 @@ public class PlayerBodyCollider : MonoBehaviour {
             damegeFlash.color = new Color(1.0f, 0.0f, 0.0f,0.8f);
             Debug.Log(playerController.HP);
         } 
+    }
+    void OnCollisionEnter(Collision collision) {
+        if (collision.collider.tag == "EnemyBody" && !Invincible) {
+            playerController.HP -= 1;
+            Invincible = true;
+            if (cameraMode.boolCameraMode) {
+                cameraMode.ModeCameraChange();
+                if (cameraMode.takeFlash) {
+                    cameraMode.decreaseFlash = 0.8f;
+                    cameraMode.takeFlash = false;
+                }
+            }
+            damegeFlash.enabled = true;
+            damegeFlash.color = new Color(1.0f, 0.0f, 0.0f, 0.8f);
+            Debug.Log(playerController.HP);
+        }
     }
 }

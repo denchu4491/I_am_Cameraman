@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +19,7 @@ public class CameraMode : MonoBehaviour {
     private PlayerBodyCollider boolInvincible;
     public AudioClip shutterSound;
     public AudioSource audioSource;
+
     //public LayerMask mask;
     // Use this for initialization
     void Awake() {
@@ -144,9 +146,29 @@ public class CameraMode : MonoBehaviour {
         zoomUp = false;
     }
 
+    void CaptchaScreen() {
+        Texture2D screenShot = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
+        RenderTexture renderTexture = new RenderTexture(screenShot.width, screenShot.height, 24);
+        RenderTexture prev = firstPersonCamera.targetTexture;
+        firstPersonCamera.targetTexture = renderTexture;
+        firstPersonCamera.Render();
+        firstPersonCamera.targetTexture = prev;
+        RenderTexture.active = renderTexture;
+        screenShot.ReadPixels(new Rect(0, 0, screenShot.width, screenShot.height), 0, 0);
+        screenShot.Apply();
+
+        byte[] bytes = screenShot.EncodeToPNG();
+        Object.Destroy(screenShot);
+
+        string filename = "takepicture.png";
+        File.WriteAllBytes("Assets" + "/" + "Kamera" + "/"+ "Sprite" + "/" + filename, bytes);
+    }
+
     void TakePicture() {
         audioSource.Play();
         shutterSoundCollider.enabled = true;
+
+        CaptchaScreen();
         /*cameraFrame.enabled = false;
         Application.CaptureScreenshot("Assets/Kamera/Sprite/picture.png");
         cameraFrame.enabled = true;*/
