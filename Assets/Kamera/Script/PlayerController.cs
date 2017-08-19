@@ -10,10 +10,11 @@ public class PlayerController : MonoBehaviour {
     public float jumpPower = 20;
     public float jumpTime = 1.2f;
     private float jumpCooldownTime;
-    float moveX,moveZ;
+    float moveZ;
     [System.NonSerialized]public bool isJump,isBack,isRun,moveController = true,isGround,isJumping;
     Vector3 jumpCheck;
     private Animator animator;
+    RaycastHit cliffHit;
     // Use this for initialization
     void Awake() {
         rb = GetComponent<Rigidbody>();
@@ -24,7 +25,6 @@ public class PlayerController : MonoBehaviour {
     }
 	// Update is called once per frame
 	void Update () {
-        moveX = 0;
         moveZ = 0;
         isRun = false;
         isBack = false;
@@ -44,6 +44,11 @@ public class PlayerController : MonoBehaviour {
             if (Input.GetKey("up")) {
                 animator.SetBool("Run", true);
                 moveZ += 1;
+                Debug.DrawRay(transform.position + new Vector3(0.0f, 1.0f, 0.0f), transform.forward,Color.red,10.0f);
+                if(Physics.Raycast(transform.position + new Vector3(0.0f,1.0f,0.1f),transform.forward,1.0f)) {
+                    Debug.Log("stoooooopppppp");
+                    moveZ = 0;
+                }
             }
             if (Input.GetKey("down")) {
                 animator.SetBool("Back", true);
@@ -86,7 +91,7 @@ public class PlayerController : MonoBehaviour {
     }
     
 void Move() {
-        Vector3 _pos = (transform.forward * moveZ + transform.right * moveX) * movespeed;
+        Vector3 _pos = (transform.forward * moveZ) * movespeed;
         rb.velocity = new Vector3(_pos.x, rb.velocity.y, _pos.z);
     }
 
