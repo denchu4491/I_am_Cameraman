@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Satrt/GameSelect.unity
+    guid: 7991ae744a1583249b9018acdeca2ce9
+  - enabled: 1
+    path: Assets/Satrt/Start.unity
+    guid: 00000000000000000000000000000000
