@@ -273,9 +273,9 @@ Prefab:
     - target: {fileID: 114031540654313906, guid: 95b17f8176fd66849951a80485c6d796,
         type: 2}
       propertyPath: m_Text
-      value: 'Stage 1  :   Z
+      value: 'Stage 1  :     Z
 
-        Stage 2  :   X'
+        Stage 2  :     X'
       objectReference: {fileID: 0}
     - target: {fileID: 114031540654313906, guid: 95b17f8176fd66849951a80485c6d796,
         type: 2}
@@ -803,7 +803,7 @@ Prefab:
     - target: {fileID: 114031540654313906, guid: 95b17f8176fd66849951a80485c6d796,
         type: 2}
       propertyPath: m_FontData.m_FontSize
-      value: 100
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 224065181101106134, guid: 95b17f8176fd66849951a80485c6d796,
         type: 2}
