@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour {
             if (Input.GetKey("up")) {
                 animator.SetBool("Run", true);
                 moveZ += 1;
-                Debug.DrawRay(transform.position + new Vector3(0.0f, 1.0f, 0.0f), transform.forward,Color.red,10.0f);
+                //Debug.DrawRay(transform.position + new Vector3(0.0f, 1.0f, 0.0f), transform.forward,Color.red,10.0f);
                 if(Physics.Raycast(transform.position + new Vector3(0.0f,1.0f,0.1f),transform.forward,1.0f)) {
                     Debug.Log("stoooooopppppp");
                     moveZ = 0;
