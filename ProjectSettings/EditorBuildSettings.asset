@@ -6,8 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Satrt/GameSelect.unity
+    path: Assets/Satrt/Scene/GameSelect.unity
     guid: 7991ae744a1583249b9018acdeca2ce9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Satrt/Start.unity
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Satrt/Scene/Start.unity
+    guid: c7fb8509c146b0f46a14508d3617dc24
