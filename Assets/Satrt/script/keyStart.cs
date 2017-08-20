@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class keyStart : MonoBehaviour {
@@ -12,10 +10,18 @@ public class keyStart : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKey(KeyCode.S)) {
+        if (Input.GetKeyDown(KeyCode.Z)) {
+            //Z入力でゲームスタート
+            SceneManager.LoadScene("GameSelect");
 
-            SceneManager.LoadScene("GameSelect"); 
+        }else if (Input.GetKeyDown(KeyCode.X)) {
+            //X入力でチュートリアルスタート
+            SceneManager.LoadScene("Tutorial");
         
+        }else if (Input.GetKeyDown(KeyCode.C)) {
+            //C入力でゲーム終了
+            Application.Quit();
+
         }
 	}
 }
