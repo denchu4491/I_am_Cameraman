@@ -40,12 +40,11 @@ GameObject:
   - component: {fileID: 136131019683805088}
   - component: {fileID: 114180454120857724}
   - component: {fileID: 114075110481951048}
-  - component: {fileID: 114887784779659154}
   - component: {fileID: 114700043089464508}
   - component: {fileID: 114104393884848842}
   - component: {fileID: 82314609040704862}
   m_Layer: 0
-  m_Name: unitychan
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2947,7 +2946,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1089522872509144}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0.4}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4942050443283202}
@@ -4962,7 +4961,7 @@ Camera:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1057316264075238}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -4998,7 +4997,7 @@ Camera:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1089522872509144}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -5381,20 +5380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21bca7b9d135f1a4d80132f2f50a197e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: 3
---- !u!114 &114887784779659154
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1008730802464138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1550120d5c8a22345a618cc6da948770, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firstPersonCamera: {fileID: 20622672911737246}
-  thirdPersonCamera: {fileID: 20173058015888756}
+  gravity: 5
 --- !u!124 &124259777923297940
 Behaviour:
   m_ObjectHideFlags: 1
