@@ -25,7 +25,7 @@ public class EnemyMain_d : MonoBehaviour {
         enemyCtrl = GetComponent<EnemyController_d>();
         enemyActionRange = GetComponentInChildren<EnemyActionRange_d>();
         player = GameObject.Find("Player");
-        rayStart = transform.Find("RayStart").transform;
+        rayStart = transform.Find("RayStart");
     }
 
 	// Use this for initialization
