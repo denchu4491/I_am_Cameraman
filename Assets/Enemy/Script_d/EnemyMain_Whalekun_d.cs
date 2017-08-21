@@ -2,36 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/*
-[System.Serializable]
-public class WayPointList
-{
-    public List<Transform> wayList = new List<Transform>();
-    
-    public WayPointList(List<Transform> list)
-    {
-        wayList = list;  
-    }
-}
-*/
-
 public class EnemyMain_Whalekun_d : EnemyMain_d {
 
-    //[SerializeField] private List<WayPointList> wayPointList = new List<WayPointList>();
-    public bool canAction, canLoiter, canAttack;        // アクションさせるか、徘徊させるか、攻撃させるか
+    public bool canAction, canLoiter, canAttack;                // 行動、徘徊、攻撃の許可
     private bool isRotate = false, isTarget = false;
     public int loop, index;                                     // 徘徊用変数
-    public Transform[] wayLoop1, wayLoop2;
+    public Transform[] wayLoop0, wayLoop1;
     private Transform[][] wayPointList = new Transform[2][];    
-    public bool goloop2;            // ループの強制変更
-    private int direction = 0;      // 0,1で徘徊の方向を決める
+    public bool goloop1;             // ループの強制変更
+    private int direction = 0;       // 0,1で徘徊の方向を決める
 
     public override void Awake()
     {
         base.Awake();
 
-        wayPointList[0] = wayLoop1;
-        wayPointList[1] = wayLoop2;
+        wayPointList[0] = wayLoop0;
+        wayPointList[1] = wayLoop1;
     }
 
     public override void FixedUpdateAI()
@@ -82,7 +68,7 @@ public class EnemyMain_Whalekun_d : EnemyMain_d {
                     {
                         if (!isRotate)
                         {
-                            Debug.Log("LOITER " + loop + " " + index);
+                            //Debug.Log("LOITER " + loop + " " + index);
                             isRotate = true;
                             enemyCtrl.ActionLookUp(wayPointList[loop][index].position);
                         }
@@ -127,21 +113,25 @@ public class EnemyMain_Whalekun_d : EnemyMain_d {
 
     void NextIndex()
     {
-        if(index == 0)
+        if(index == 0 && direction == 1)
         {
-            if (goloop2)
-            {
-                loop = 1;
-            }
+            direction = 0;
+            if (goloop1) loop = 1;
             else
             {
-                loop = Random.Range(0, 2);
+                int next = Random.Range(0, 2);
+                if(loop != next)
+                {
+                    loop = next;
+                    index = -1;
+                }
             }
         }
 
         switch (loop) {
             case 0:
                 if (++index == wayPointList[loop].Length) index = 0;
+                if (index != 0 && direction == 0) direction = 1;
                 break;
 
             case 1:
@@ -149,13 +139,9 @@ public class EnemyMain_Whalekun_d : EnemyMain_d {
                 {
                     if (++index == wayPointList[loop].Length - 1) direction = 1;
                 }
-                else if (direction == 1)
-                {
-                    if (--index == 0) direction = 0;
-                }
+                else if (direction == 1) index--;
                 break;
         }
-
     }
 
     void SearchIndex()
@@ -193,7 +179,8 @@ public class EnemyMain_Whalekun_d : EnemyMain_d {
             }
         }
 
-        if (loop == 1) loop = Random.Range(0, 2);
+        if (loop == 1) direction = Random.Range(0, 2);
+        else direction = 1;
         if (near == -1) Debug.Log("WayPointLost");
     }
 }

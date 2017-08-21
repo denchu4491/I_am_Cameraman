@@ -219,7 +219,7 @@ GameObject:
   m_Component:
   - component: {fileID: 52200173}
   m_Layer: 0
-  m_Name: WayLoop1
+  m_Name: WayLoop0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -374,7 +374,7 @@ GameObject:
   m_Component:
   - component: {fileID: 917816578}
   m_Layer: 0
-  m_Name: WayLoop2
+  m_Name: WayLoop1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -702,12 +702,17 @@ Prefab:
     - target: {fileID: 114039046615429772, guid: 415e68a4615f723459e6c045a92f3b40,
         type: 2}
       propertyPath: wayLoop1.Array.size
-      value: 9
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114039046615429772, guid: 415e68a4615f723459e6c045a92f3b40,
         type: 2}
       propertyPath: wayLoop2.Array.size
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114039046615429772, guid: 415e68a4615f723459e6c045a92f3b40,
+        type: 2}
+      propertyPath: wayLoop0.Array.size
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 114039046615429772, guid: 415e68a4615f723459e6c045a92f3b40,
         type: 2}
@@ -849,27 +854,27 @@ Prefab:
         type: 2}
       propertyPath: wayLoop1.Array.data[0]
       value: 
-      objectReference: {fileID: 41883078}
+      objectReference: {fileID: 1669779448}
     - target: {fileID: 114039046615429772, guid: 415e68a4615f723459e6c045a92f3b40,
         type: 2}
       propertyPath: wayLoop1.Array.data[1]
       value: 
-      objectReference: {fileID: 1695805546}
+      objectReference: {fileID: 1597706367}
     - target: {fileID: 114039046615429772, guid: 415e68a4615f723459e6c045a92f3b40,
         type: 2}
       propertyPath: wayLoop1.Array.data[2]
       value: 
-      objectReference: {fileID: 2145146335}
+      objectReference: {fileID: 1329023061}
     - target: {fileID: 114039046615429772, guid: 415e68a4615f723459e6c045a92f3b40,
         type: 2}
       propertyPath: wayLoop1.Array.data[3]
       value: 
-      objectReference: {fileID: 1788903432}
+      objectReference: {fileID: 1988669998}
     - target: {fileID: 114039046615429772, guid: 415e68a4615f723459e6c045a92f3b40,
         type: 2}
       propertyPath: wayLoop1.Array.data[4]
       value: 
-      objectReference: {fileID: 354680608}
+      objectReference: {fileID: 1491901868}
     - target: {fileID: 114039046615429772, guid: 415e68a4615f723459e6c045a92f3b40,
         type: 2}
       propertyPath: wayLoop1.Array.data[5]
@@ -925,6 +930,51 @@ Prefab:
       propertyPath: index
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114039046615429772, guid: 415e68a4615f723459e6c045a92f3b40,
+        type: 2}
+      propertyPath: wayLoop0.Array.data[0]
+      value: 
+      objectReference: {fileID: 41883078}
+    - target: {fileID: 114039046615429772, guid: 415e68a4615f723459e6c045a92f3b40,
+        type: 2}
+      propertyPath: wayLoop0.Array.data[1]
+      value: 
+      objectReference: {fileID: 1695805546}
+    - target: {fileID: 114039046615429772, guid: 415e68a4615f723459e6c045a92f3b40,
+        type: 2}
+      propertyPath: wayLoop0.Array.data[2]
+      value: 
+      objectReference: {fileID: 2145146335}
+    - target: {fileID: 114039046615429772, guid: 415e68a4615f723459e6c045a92f3b40,
+        type: 2}
+      propertyPath: wayLoop0.Array.data[3]
+      value: 
+      objectReference: {fileID: 1788903432}
+    - target: {fileID: 114039046615429772, guid: 415e68a4615f723459e6c045a92f3b40,
+        type: 2}
+      propertyPath: wayLoop0.Array.data[4]
+      value: 
+      objectReference: {fileID: 354680608}
+    - target: {fileID: 114039046615429772, guid: 415e68a4615f723459e6c045a92f3b40,
+        type: 2}
+      propertyPath: wayLoop0.Array.data[5]
+      value: 
+      objectReference: {fileID: 1897864365}
+    - target: {fileID: 114039046615429772, guid: 415e68a4615f723459e6c045a92f3b40,
+        type: 2}
+      propertyPath: wayLoop0.Array.data[6]
+      value: 
+      objectReference: {fileID: 188018995}
+    - target: {fileID: 114039046615429772, guid: 415e68a4615f723459e6c045a92f3b40,
+        type: 2}
+      propertyPath: wayLoop0.Array.data[7]
+      value: 
+      objectReference: {fileID: 1902036937}
+    - target: {fileID: 114039046615429772, guid: 415e68a4615f723459e6c045a92f3b40,
+        type: 2}
+      propertyPath: wayLoop0.Array.data[8]
+      value: 
+      objectReference: {fileID: 1815153974}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 415e68a4615f723459e6c045a92f3b40, type: 2}
   m_IsPrefabParent: 0
