@@ -2,12 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+[System.Serializable]
+public class WayPointList
+{
+    public List<Transform> wayList = new List<Transform>();
+    
+    public WayPointList(List<Transform> list)
+    {
+        wayList = list;  
+    }
+}
+*/
+
 public class EnemyMain_Whalekun_d : EnemyMain_d {
 
-    public bool canAction, canLoiter, canAttack;    // アクションさせるか、徘徊させるか、攻撃させるか
-    public Transform[] wayPointList;
-    bool isRotate = false, isTarget = false;
-    int index = 0;
+    //[SerializeField] private List<WayPointList> wayPointList = new List<WayPointList>();
+    public bool canAction, canLoiter, canAttack;        // アクションさせるか、徘徊させるか、攻撃させるか
+    private bool isRotate = false, isTarget = false;
+    public int loop, index;                                     // 徘徊用変数
+    public Transform[] wayLoop1, wayLoop2;
+    private Transform[][] wayPointList = new Transform[2][];    
+    public bool goloop2;            // ループの強制変更
+    private int direction = 0;      // 0,1で徘徊の方向を決める
+
+    public override void Awake()
+    {
+        base.Awake();
+
+        wayPointList[0] = wayLoop1;
+        wayPointList[1] = wayLoop2;
+    }
 
     public override void FixedUpdateAI()
     {
@@ -57,9 +82,9 @@ public class EnemyMain_Whalekun_d : EnemyMain_d {
                     {
                         if (!isRotate)
                         {
-                            //Debug.Log("LOITER " + index);
+                            Debug.Log("LOITER " + loop + " " + index);
                             isRotate = true;
-                            enemyCtrl.ActionLookUp(wayPointList[index].position);
+                            enemyCtrl.ActionLookUp(wayPointList[loop][index].position);
                         }
                         if (!enemyCtrl.tryLookUp)
                         {
@@ -102,37 +127,73 @@ public class EnemyMain_Whalekun_d : EnemyMain_d {
 
     void NextIndex()
     {
-        if (++index == wayPointList.Length) index = 0;
+        if(index == 0)
+        {
+            if (goloop2)
+            {
+                loop = 1;
+            }
+            else
+            {
+                loop = Random.Range(0, 2);
+            }
+        }
+
+        switch (loop) {
+            case 0:
+                if (++index == wayPointList[loop].Length) index = 0;
+                break;
+
+            case 1:
+                if (direction == 0)
+                {
+                    if (++index == wayPointList[loop].Length - 1) direction = 1;
+                }
+                else if (direction == 1)
+                {
+                    if (--index == 0) direction = 0;
+                }
+                break;
+        }
+
     }
 
     void SearchIndex()
     {
-        int near = -1;
+        int near = -1, nearLoop = -1;
         float sqrdistance = 0.0f;
 
-        for(int i = 0; i < wayPointList.Length; i++)
+        for (int i = 0; i < wayPointList.Length; i++)
         {
-            if(!Physics.Linecast(new Vector3(transform.position.x, transform.position.y + 10.0f, transform.position.z),
-                new Vector3(wayPointList[i].position.x, wayPointList[i].position.y + 10.0f, wayPointList[i].position.z) ))
+            for (int j = 0; j < wayPointList[i].Length; j++)
             {
-                Vector3 heading = wayPointList[i].position - transform.position;
-                if(near == -1 || heading.sqrMagnitude < sqrdistance)
+                if (!Physics.Linecast(new Vector3(transform.position.x, transform.position.y + 10.0f, transform.position.z),
+                    new Vector3(wayPointList[i][j].position.x, wayPointList[i][j].position.y + 10.0f, wayPointList[i][j].position.z)))
                 {
-                    near = i;
-                    sqrdistance = heading.sqrMagnitude;
+                    Vector3 heading = wayPointList[i][j].position - transform.position;
+                    if (near == -1 || heading.sqrMagnitude < sqrdistance)
+                    {
+                        near = j;
+                        nearLoop = i;
+                        sqrdistance = heading.sqrMagnitude;
+                    }
+                    // sqrdistanceは距離の積で、約30以下の距離ならばそのIndexに決定する(高速化のつもり)
+                    if (sqrdistance < 1000)
+                    {
+                        index = j;
+                        loop = i;
+                        break;
+                    }
                 }
-                // sqrdistanceは距離の積で、約30以下の距離ならばそのIndexに決定する(高速化のつもり)
-                if(sqrdistance < 1000)
+                if (near != -1 && i == wayPointList.Length - 1)
                 {
-                    index = i;
-                    break;
+                    index = near;
+                    loop = nearLoop;
                 }
-            }
-            if(near != -1 && i == wayPointList.Length - 1)
-            {
-                index = near;
             }
         }
-        //if (near == -1) Debug.Log("WayPointLost");
+
+        if (loop == 1) loop = Random.Range(0, 2);
+        if (near == -1) Debug.Log("WayPointLost");
     }
 }

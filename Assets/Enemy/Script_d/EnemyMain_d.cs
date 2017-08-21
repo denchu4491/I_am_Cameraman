@@ -95,13 +95,13 @@ public class EnemyMain_d : MonoBehaviour {
     public bool RayCheck(Vector3 pos, float distance)
     {
         int cnt = 0;
-        RaycastHit[] hit = new RaycastHit[3];
+        RaycastHit hit;
 
-        for (int i = 0; i < hit.Length; i++)
+        for (int i = 0; i < 3; i++)
         {
             Vector3 direction = new Vector3(player.transform.position.x,
                 player.transform.position.y + 0.3f + (0.2f * i), player.transform.position.z) - pos;
-            if(Physics.Raycast(pos, direction.normalized, out hit[i], distance) && hit[i].collider.tag == "Player")
+            if(Physics.Raycast(pos, direction.normalized, out hit, distance) && hit.collider.tag == "Player")
             {
                 cnt++;
             }

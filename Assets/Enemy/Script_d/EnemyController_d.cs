@@ -88,7 +88,10 @@ public class EnemyController_d : MonoBehaviour {
 
     public bool ActionMoveToNear(Vector3 go, float near)
     {
-        Vector3 heading = go - transform.position;
+        Vector3 from = transform.position;
+        go.y = 0.0f;
+        from.y = 0.0f;
+        Vector3 heading = go - from;
         if (heading.sqrMagnitude > near * near)
         {
             ActionMove(1.0f);
