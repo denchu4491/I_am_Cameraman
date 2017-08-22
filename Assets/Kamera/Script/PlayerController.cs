@@ -11,10 +11,10 @@ public class PlayerController : MonoBehaviour {
     public float jumpTime = 1.2f;
     private float jumpCooldownTime;
     float moveZ;
-    [System.NonSerialized]public bool isJump,isBack,isRun,moveController = true,isGround,isJumping = false;
-    Vector3 jumpCheck;
+    [System.NonSerialized]public bool isSliding,isJump,isBack,isRun,moveController = true,isGround,isJumping = false;
+    Vector3 jumpCheck,moveNormal;
     private Animator animator;
-    RaycastHit cliffHit;
+    RaycastHit slideHit;
     // Use this for initialization
     void Awake() {
         rb = GetComponent<Rigidbody>();
@@ -40,24 +40,24 @@ public class PlayerController : MonoBehaviour {
             isGround = false;
         }
 
+        if(Physics.Raycast(transform.position,Vector3.down,out slideHit)) {
+            Debug.Log("sitani deteru");
+            if(Vector3.Angle(slideHit.normal,Vector3.up) > 45.0f) {
+                isSliding = true;
+            } else {
+                isSliding = false;
+            }
+        }
+
         if (moveController) {
             if (Input.GetKey("up")) {
                 animator.SetBool("Run", true);
                 moveZ += 1;
-                //Debug.DrawRay(transform.position + new Vector3(0.0f, 1.0f, 0.0f), transform.forward,Color.red,10.0f);
-                if(Physics.Raycast(transform.position + new Vector3(0.0f,1.0f,0.1f),transform.forward,1.0f)) {
-                    //Debug.Log("stoooooopppppp");
-                    moveZ = 0;
-                }
             }
             if (Input.GetKey("down")) {
                 animator.SetBool("Back", true);
                 moveZ -= 1 * 0.5f;
                 isBack = true;
-                if (Physics.Raycast(transform.position + new Vector3(0.0f, 1.0f, 0.1f), transform.forward * -1.0f, 1.0f)) {
-                    //Debug.Log("stoooooopppppp");
-                    moveZ = 0;
-                }
             }
             if (Input.GetKey("right")) {
                 transform.Rotate(new Vector3(0f, 90 * Time.deltaTime, 0f));
@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour {
                 animator.SetBool("Jump", true);
                 if (isRun == false) {
                     animator.SetBool("IdleJump", true);
-                }
+                } 
             }
         }
         if (isJumping) {
@@ -92,9 +92,12 @@ public class PlayerController : MonoBehaviour {
             Jump();
             isJump = false;
         }
+        if(!isJump && isSliding) {
+            Slide();
+        }
     }
     
-void Move() {
+    void Move() {
         Vector3 _pos = (transform.forward * moveZ) * movespeed;
         rb.velocity = new Vector3(_pos.x, rb.velocity.y, _pos.z);
     }
@@ -102,4 +105,10 @@ void Move() {
     void Jump() {
         rb.velocity = new Vector3(rb.velocity.x, jumpPower, rb.velocity.z);
     }
+    void Slide() {
+        Debug.Log("ZURETERU");
+        moveNormal = slideHit.normal;
+        rb.velocity = new Vector3(moveNormal.x,rb.velocity.y,moveNormal.z);
+    }
+
 }

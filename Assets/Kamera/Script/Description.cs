@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Description : MonoBehaviour {
     public Text[] descriptionText = new Text[8];
-    public GameObject TextPanel;
+    public Image TextPanel;
     private float waitTime;
     private int descriptionNumber;
     private bool explanation,getPicture;
@@ -33,7 +33,7 @@ public class Description : MonoBehaviour {
                         waitTime = 0;
                     }
                     if (descriptionNumber == 6) {
-                        TextPanel.SetActive(false);
+                        TextPanel.enabled = false;
                         DeleteDescriprionText(descriptionNumber - 1);
                     } else {
                         SetDescriptionText(descriptionNumber);
@@ -48,7 +48,7 @@ public class Description : MonoBehaviour {
             }
             if (cameraMode.takeFlash && descriptionNumber == 6) {
                 getPicture = true;
-                TextPanel.SetActive(true);
+                TextPanel.enabled = true;
                 SetDescriptionText(6);
             }
         }
