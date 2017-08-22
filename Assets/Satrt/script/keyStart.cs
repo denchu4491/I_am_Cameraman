@@ -10,9 +10,10 @@ public class keyStart : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Z)) {
 
             SceneManager.LoadScene("GameSelect");
-            animation=GetComponent<Animation>();
-            GetComponent<Animator>().SetTrigger("right");
-            Endconfirm("right");
+            
+           // animation=GetComponent<Animation>();
+           // GetComponent<Animator>().SetTrigger("right");
+           // Endconfirm("right");
 
         } else if (Input.GetKeyDown(KeyCode.X)) {
             //X入力でチュートリアルスタート
@@ -24,10 +25,10 @@ public class keyStart : MonoBehaviour {
 
         }
 	}
-    private void Endconfirm(string aniname) {
-        bool fin = false;
-        while (fin!=true) {
-            if (!animation.IsPlaying(aniname)) fin=true;
-        }
-    }
+  //  private void Endconfirm(string aniname) {
+  //      bool fin = false;
+  //      while (fin!=true) {
+  //          if (!animation.IsPlaying(aniname)) fin=true;
+  //      }
+  //  }
 }

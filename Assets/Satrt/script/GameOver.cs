@@ -12,18 +12,18 @@ public class GameOver : MonoBehaviour {
            
             SceneManager.LoadScene("");
         }else if (Input.GetKeyDown(KeyCode.X)) {
-            GameoverText.action();
-            animator = GameoverText.ani;
-            Endconfirm("disappear");
+          //  GameoverText.action();
+          //  animator = GameoverText.ani;
+          //  Endconfirm("disappear");
             SceneManager.LoadScene("Gameselect");
         }
 	}
 
 
-    private void  Endconfirm(string aniname) {
-        bool fin = false;
-        while (!fin) {
-            if (!animation.IsPlaying(aniname)) fin = true;
-        }
-    }
+  //  private void  Endconfirm(string aniname) {
+  //      bool fin = false;
+  //      while (!fin) {
+  //          if (!animation.IsPlaying(aniname)) fin = true;
+  //      }
+  //  }
 }
