@@ -1,20 +1,20 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class keyStart : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (Input.GetKeyDown(KeyCode.Z)) {
-            //Z入力でゲームスタート
-            SceneManager.LoadScene("GameSelect");
+    public new Animation animation;
 
-        }else if (Input.GetKeyDown(KeyCode.X)) {
+    void Update () {
+        if (Input.GetKeyDown(KeyCode.Z)) {
+
+            SceneManager.LoadScene("GameSelect");
+            animation=GetComponent<Animation>();
+            GetComponent<Animator>().SetTrigger("right");
+            Endconfirm("right");
+
+        } else if (Input.GetKeyDown(KeyCode.X)) {
             //X入力でチュートリアルスタート
             SceneManager.LoadScene("Tutorial");
         
@@ -24,4 +24,10 @@ public class keyStart : MonoBehaviour {
 
         }
 	}
+    private void Endconfirm(string aniname) {
+        bool fin = false;
+        while (fin!=true) {
+            if (!animation.IsPlaying(aniname)) fin=true;
+        }
+    }
 }

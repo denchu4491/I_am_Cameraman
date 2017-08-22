@@ -12,11 +12,11 @@ public class KeyGameselect : MonoBehaviour {
     void Update() {
         if (Input.GetKeyDown(KeyCode.Z)) {
             //Z入力でイージーゲームスタート
-            SceneManager.LoadScene("");
+            SceneManager.LoadScene("stage");
 
         } else if (Input.GetKeyDown(KeyCode.X)) {
             //X入力でノーマルゲームスタート
-            SceneManager.LoadScene("");
+            SceneManager.LoadScene("stage");
 
         } else if (Input.GetKeyDown(KeyCode.C)) {
             SceneManager.LoadScene("Start");
