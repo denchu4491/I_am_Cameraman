@@ -18,6 +18,8 @@ public class KeyGameselect : MonoBehaviour {
             //X入力でノーマルゲームスタート
             SceneManager.LoadScene("");
 
-        } 
+        } else if (Input.GetKeyDown(KeyCode.C)) {
+            SceneManager.LoadScene("Start");
+        }
     }
 }
