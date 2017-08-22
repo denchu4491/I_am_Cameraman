@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour {
     public float jumpTime = 1.2f;
     private float jumpCooldownTime;
     float moveZ;
-    [System.NonSerialized]public bool isJump,isBack,isRun,moveController = true,isGround,isJumping;
+    [System.NonSerialized]public bool isJump,isBack,isRun,moveController = true,isGround,isJumping = false;
     Vector3 jumpCheck;
     private Animator animator;
     RaycastHit cliffHit;
@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour {
                 moveZ += 1;
                 //Debug.DrawRay(transform.position + new Vector3(0.0f, 1.0f, 0.0f), transform.forward,Color.red,10.0f);
                 if(Physics.Raycast(transform.position + new Vector3(0.0f,1.0f,0.1f),transform.forward,1.0f)) {
-                    Debug.Log("stoooooopppppp");
+                    //Debug.Log("stoooooopppppp");
                     moveZ = 0;
                 }
             }
@@ -54,6 +54,10 @@ public class PlayerController : MonoBehaviour {
                 animator.SetBool("Back", true);
                 moveZ -= 1 * 0.5f;
                 isBack = true;
+                if (Physics.Raycast(transform.position + new Vector3(0.0f, 1.0f, 0.1f), transform.forward * -1.0f, 1.0f)) {
+                    //Debug.Log("stoooooopppppp");
+                    moveZ = 0;
+                }
             }
             if (Input.GetKey("right")) {
                 transform.Rotate(new Vector3(0f, 90 * Time.deltaTime, 0f));
