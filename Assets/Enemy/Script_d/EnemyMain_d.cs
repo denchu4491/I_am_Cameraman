@@ -13,7 +13,6 @@ public enum ENEMYAISTS
 public class EnemyMain_d : MonoBehaviour {
 
     [System.NonSerialized] public ENEMYAISTS aiState = ENEMYAISTS.ACTIONSELECT;
-    [System.NonSerialized] public EnemyActionRange_d enemyActionRange;
     protected EnemyController_d enemyCtrl;
     protected GameObject player;
     protected Transform rayStart;
@@ -23,7 +22,6 @@ public class EnemyMain_d : MonoBehaviour {
     public virtual void Awake()
     {
         enemyCtrl = GetComponent<EnemyController_d>();
-        enemyActionRange = GetComponentInChildren<EnemyActionRange_d>();
         player = GameObject.Find("Player");
         rayStart = transform.Find("RayStart");
     }

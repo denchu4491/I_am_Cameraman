@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyMain_Whalekun_d : EnemyMain_d {
 
+    [System.NonSerialized] public EnemyActionRange_d enemyActionRange;
     public bool canAction, canLoiter, canAttack;                // 行動、徘徊、攻撃の許可
     private bool isRotate = false, isTarget = false;
     public int loop, index;                                     // 徘徊用変数
@@ -11,11 +12,13 @@ public class EnemyMain_Whalekun_d : EnemyMain_d {
     private Transform[][] wayPointList = new Transform[2][];    
     public bool goloop1;             // ループの強制変更
     private int direction = 0;       // 0,1で徘徊の方向を決める
+    public float attackMoveSpeed;
 
     public override void Awake()
     {
         base.Awake();
 
+        enemyActionRange = GetComponentInChildren<EnemyActionRange_d>();
         wayPointList[0] = wayLoop0;
         wayPointList[1] = wayLoop1;
     }
@@ -74,7 +77,7 @@ public class EnemyMain_Whalekun_d : EnemyMain_d {
                         }
                         if (!enemyCtrl.tryLookUp)
                         {
-                            if (!enemyCtrl.ActionMoveToNear(enemyCtrl.target, 3.0f))
+                            if (!enemyCtrl.ActionMoveToNear(enemyCtrl.target, 3.0f, 1.0f))
                             {
                                 isRotate = false;
                                 NextIndex();
@@ -87,13 +90,14 @@ public class EnemyMain_Whalekun_d : EnemyMain_d {
                 case ENEMYAISTS.ATTACKPLAYER:
                     if (!isRotate)
                     {
+                        enemyCtrl.isAttack = true;
                         isTarget = true;
                         isRotate = true;
                         enemyCtrl.ActionLookUp(player.transform.position);
                     }
                     if (!enemyCtrl.tryLookUp)
                     {
-                        if (!enemyCtrl.ActionMoveToNear(enemyCtrl.target, 4.0f))
+                        if (!enemyCtrl.ActionMoveToNear(enemyCtrl.target, 4.0f, attackMoveSpeed))
                         {
                             Attack_A();
                         }
@@ -107,6 +111,7 @@ public class EnemyMain_Whalekun_d : EnemyMain_d {
     {
         isRotate = false;
         enemyCtrl.ActionMove(0.0f);
+        enemyCtrl.isAttack = false;
         enemyCtrl.ActionAttack("Attack_Bite",1.0f);
         SetAIState(ENEMYAISTS.WAIT, 3.0f);
     }

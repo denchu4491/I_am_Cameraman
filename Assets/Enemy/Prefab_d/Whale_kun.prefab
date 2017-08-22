@@ -1676,16 +1676,12 @@ MonoBehaviour:
   canAction: 1
   canLoiter: 0
   canAttack: 1
-  wayPointList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  loop: 0
+  index: 0
+  wayLoop0: []
+  wayLoop1: []
+  goloop1: 0
+  attackMoveSpeed: 10
 --- !u!114 &114218482210297272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1698,7 +1694,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookTarget: {fileID: 0}
-  isDetectPlayer: 0
 --- !u!114 &114303296152732444
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1725,6 +1720,8 @@ MonoBehaviour:
   rotateSpeed: 0.1
   gravityScale: 3
   sphereRadius: 0.3
+  attackCollider: {fileID: 136159329422695038}
+  isAttack: 0
 --- !u!136 &136159329422695038
 CapsuleCollider:
   m_ObjectHideFlags: 1

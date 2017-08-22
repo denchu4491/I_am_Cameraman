@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyActionRange_d : MonoBehaviour {
 
     public Transform lookTarget;
-    public bool isDetectPlayer = false;
+    [System.NonSerialized] public bool isDetectPlayer = false;
 
     void OnTriggerEnter(Collider col)
     {
