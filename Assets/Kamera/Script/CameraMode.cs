@@ -168,13 +168,11 @@ public class CameraMode : MonoBehaviour {
         shutterSoundCollider.enabled = true;
 
         CaptchaScreen();
-        /*cameraFrame.enabled = false;
-        Application.CaptureScreenshot("Assets/Kamera/Sprite/picture.png");
-        cameraFrame.enabled = true;*/
+
         Ray ray = new Ray(firstPersonCamera.transform.position, firstPersonCamera.transform.forward);
         
         RaycastHit hitObj;
-        if (Physics.Raycast(ray,out hitObj, 100.0f)) {
+        if (Physics.SphereCast(ray,0.5f,out hitObj, 100.0f)) {
             if (hitObj.collider.tag == "EnemyBody") {
                 float distance = Vector3.Distance(hitObj.transform.position, transform.position);
                 if(targetDistance - distance < 0) {
@@ -189,6 +187,8 @@ public class CameraMode : MonoBehaviour {
             } else {
                 score = 0;
             }
+        } else {
+            score = 0;
         }
 
     }
