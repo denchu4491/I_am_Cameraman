@@ -6,8 +6,8 @@ public class EnemyMain_Golem : EnemyMain_d{
 
     private EnemyBodyCollider enemyBodyCol;
     public EnemyActionRange_d enemyActionRange;
-    private Vector3 firstPosition;
-    private Vector3 rangeSize, rangeCenter, targetPoint;
+    public float attackMoveSpeed;
+    private Vector3 firstPosition, rangeSize, rangeCenter, targetPoint;
     private float minX, maxX, minZ, maxZ;
     private bool isRotate;
 

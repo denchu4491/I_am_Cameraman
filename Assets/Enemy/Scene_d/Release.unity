@@ -152,19 +152,6 @@ Prefab:
       propertyPath: enemyActionRange
       value: 
       objectReference: {fileID: 1712871128}
-    - target: {fileID: 114652789405023552, guid: d644b865331c2fe4f840b4f1e88522ad,
-        type: 2}
-      propertyPath: moveSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1587449687693658, guid: d644b865331c2fe4f840b4f1e88522ad, type: 2}
-      propertyPath: m_TagString
-      value: EnemyBody
-      objectReference: {fileID: 0}
-    - target: {fileID: 1587449687693658, guid: d644b865331c2fe4f840b4f1e88522ad, type: 2}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d644b865331c2fe4f840b4f1e88522ad, type: 2}
   m_IsPrefabParent: 0
@@ -288,34 +275,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 52200173}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &375050797
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 375050798}
-  m_Layer: 0
-  m_Name: RayStart
-  m_TagString: Untagged
-  m_Icon: {fileID: 1654036009018553494, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &375050798
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 375050797}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.7, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1267894364}
-  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &758011519
 Prefab:
@@ -496,11 +455,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d22f44951a230b24a9ad38f1bed87be0, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &1267894364 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4161319388637438, guid: d644b865331c2fe4f840b4f1e88522ad,
-    type: 2}
-  m_PrefabInternal: {fileID: 20752813}
 --- !u!1 &1329023060
 GameObject:
   m_ObjectHideFlags: 0
@@ -1199,34 +1153,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 52200173}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1881795405
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1881795406}
-  m_Layer: 0
-  m_Name: GroundCheck
-  m_TagString: Untagged
-  m_Icon: {fileID: -982381405332843317, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1881795406
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1881795405}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1267894364}
-  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1897864364
 GameObject:

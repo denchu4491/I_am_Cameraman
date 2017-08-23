@@ -83,7 +83,7 @@ public class Enemy_d : MonoBehaviour {
                 if (isRotation)
                 {
                     isRotation = false;
-                    targetPoint = enemyActionRange.lookTarget.position;
+                    //targetPoint = enemyActionRange.lookTarget.position;
                     angle = targetPoint - transform.position;
                     angle.y = 0;
                 }
@@ -92,12 +92,13 @@ public class Enemy_d : MonoBehaviour {
             // ターゲット地点が指定されているか
             if (targetPoint != Vector3.zero)
             {
+                /*
                 // 回転制御
                 if (enemyActionRange.lookTarget != null)
                 {
                     transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(angle), rotateSpeed);
                 }
-
+                */
                 heading = targetPoint - transform.position;
 
                 // 移動

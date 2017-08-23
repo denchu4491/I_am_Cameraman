@@ -7,7 +7,7 @@ public class EnemyController_d : MonoBehaviour {
     [System.NonSerialized] public Animator animator;
     [System.NonSerialized] public Rigidbody rigidbodyE;
     [System.NonSerialized] public Vector3 target;
-    [System.NonSerialized] public bool tryLookUp;
+    [System.NonSerialized] public bool tryLookUp, isAttack;
 
     public float moveSpeed, rotateSpeed, gravityScale, sphereRadius = 0.3f;
     public Collider attackCollider;
@@ -16,7 +16,6 @@ public class EnemyController_d : MonoBehaviour {
     private float attackTimeStart, attackTimeLength;
     private Transform groundCheck;
     private Transform rayStart;
-    public bool isAttack;
 
     public readonly static int ANISTS_Idle = Animator.StringToHash("Base Layer.Idle");
     public readonly static int ANISTE_Run = Animator.StringToHash("Base Layer.Run");
