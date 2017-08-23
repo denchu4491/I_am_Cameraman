@@ -13,7 +13,6 @@ public enum ENEMYAISTS
 public class EnemyMain_d : MonoBehaviour {
 
     [System.NonSerialized] public ENEMYAISTS aiState = ENEMYAISTS.ACTIONSELECT;
-    [System.NonSerialized] public EnemyActionRange_d enemyActionRange;
     protected EnemyController_d enemyCtrl;
     protected GameObject player;
     protected Transform rayStart;
@@ -23,9 +22,8 @@ public class EnemyMain_d : MonoBehaviour {
     public virtual void Awake()
     {
         enemyCtrl = GetComponent<EnemyController_d>();
-        enemyActionRange = GetComponentInChildren<EnemyActionRange_d>();
         player = GameObject.Find("Player");
-        rayStart = transform.Find("RayStart").transform;
+        rayStart = transform.Find("RayStart");
     }
 
 	// Use this for initialization
@@ -95,13 +93,13 @@ public class EnemyMain_d : MonoBehaviour {
     public bool RayCheck(Vector3 pos, float distance)
     {
         int cnt = 0;
-        RaycastHit[] hit = new RaycastHit[3];
+        RaycastHit hit;
 
-        for (int i = 0; i < hit.Length; i++)
+        for (int i = 0; i < 3; i++)
         {
             Vector3 direction = new Vector3(player.transform.position.x,
                 player.transform.position.y + 0.3f + (0.2f * i), player.transform.position.z) - pos;
-            if(Physics.Raycast(pos, direction.normalized, out hit[i], distance) && hit[i].collider.tag == "Player")
+            if(Physics.Raycast(pos, direction.normalized, out hit, distance) && hit.collider.tag == "Player")
             {
                 cnt++;
             }

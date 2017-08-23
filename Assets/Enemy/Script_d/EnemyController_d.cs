@@ -7,14 +7,15 @@ public class EnemyController_d : MonoBehaviour {
     [System.NonSerialized] public Animator animator;
     [System.NonSerialized] public Rigidbody rigidbodyE;
     [System.NonSerialized] public Vector3 target;
-    [System.NonSerialized] public bool tryLookUp;
+    [System.NonSerialized] public bool tryLookUp, isAttack;
 
     public float moveSpeed, rotateSpeed, gravityScale, sphereRadius = 0.3f;
-    private Collider attackCollider;
+    public Collider attackCollider;
     private Vector3 moveDirection;
     private Quaternion rotationPrev;
     private float attackTimeStart, attackTimeLength;
     private Transform groundCheck;
+    private Transform rayStart;
 
     public readonly static int ANISTS_Idle = Animator.StringToHash("Base Layer.Idle");
     public readonly static int ANISTE_Run = Animator.StringToHash("Base Layer.Run");
@@ -24,8 +25,8 @@ public class EnemyController_d : MonoBehaviour {
     {
         animator = GetComponent<Animator>();
         rigidbodyE = GetComponent<Rigidbody>();
-        attackCollider = transform.Find("Collider_Attack").gameObject.GetComponent<Collider>();
-        groundCheck = transform.Find("GroundCheck").transform;
+        groundCheck = transform.Find("GroundCheck");
+        rayStart = transform.Find("RayStart");
     }
 
     void FixedUpdate()
@@ -39,12 +40,15 @@ public class EnemyController_d : MonoBehaviour {
         }
 
         // 攻撃判定の終了チェック
-        if (attackCollider.enabled)
+        if (attackCollider != null)
         {
-            float time = Time.fixedTime - attackTimeStart;
-            if (time > attackTimeLength)
+            if (attackCollider.enabled)
             {
-                attackCollider.enabled = false;
+                float time = Time.fixedTime - attackTimeStart;
+                if (time > attackTimeLength)
+                {
+                    attackCollider.enabled = false;
+                }
             }
         }
 
@@ -54,8 +58,12 @@ public class EnemyController_d : MonoBehaviour {
             LookUp(target);
         }
 
-        // 移動
-        Move();
+        // 障害物チェック
+        if (isAttack || !Physics.Raycast(rayStart.position, transform.forward, 2.0f))
+        {
+            // 移動
+            Move();
+        }
     }
 
     void SetLocalGravity()
@@ -65,8 +73,11 @@ public class EnemyController_d : MonoBehaviour {
 
     public void ActionMove(float accel)
     {
+        float speed = moveSpeed;
+
         if (accel != 0.0f) {
-            moveDirection = new Vector3(transform.forward.x, 0.0f, transform.forward.z) * moveSpeed * accel;
+            if (accel != 1.0f) speed = accel;
+            moveDirection = new Vector3(transform.forward.x, 0.0f, transform.forward.z) * speed;
             animator.SetBool("Run", true);
         }
         else {
@@ -80,12 +91,15 @@ public class EnemyController_d : MonoBehaviour {
         rigidbodyE.velocity = new Vector3(moveDirection.x, rigidbodyE.velocity.y, moveDirection.z);
     }
 
-    public bool ActionMoveToNear(Vector3 go, float near)
+    public bool ActionMoveToNear(Vector3 go, float near, float speed)
     {
-        Vector3 heading = go - transform.position;
+        Vector3 from = transform.position;
+        go.y = 0.0f;
+        from.y = 0.0f;
+        Vector3 heading = go - from;
         if (heading.sqrMagnitude > near * near)
         {
-            ActionMove(1.0f);
+            ActionMove(speed);
             return true;
         }
         return false;

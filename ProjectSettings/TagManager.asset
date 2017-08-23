@@ -9,6 +9,7 @@ TagManager:
   - EnemyBody
   - EnemyArm
   - TargetEnemy
+  - EnemyActionRange
   layers:
   - Default
   - TransparentFX
