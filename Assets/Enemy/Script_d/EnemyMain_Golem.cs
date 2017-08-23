@@ -99,7 +99,7 @@ public class EnemyMain_Golem : EnemyMain_d{
     {
         enemyCtrl.isAttack = true;
         enemyCtrl.ActionLookUp(player.transform.position);
-        if(!enemyCtrl.ActionMoveToNear(player.transform.position, 0.4f, 2.0f))
+        if(!enemyCtrl.ActionMoveToNear(player.transform.position, 0.4f, attackMoveSpeed))
         {
             enemyCtrl.ActionMove(0.0f);
         }

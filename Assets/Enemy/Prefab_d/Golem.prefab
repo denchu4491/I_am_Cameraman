@@ -1057,7 +1057,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyActionRange: {fileID: 0}
-  attackMoveSpeed: 5
+  attackMoveSpeed: 3
 --- !u!114 &114652789405023552
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1069,7 +1069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25c8db3f66eb6c44ad6064f910d9b38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 2
   rotateSpeed: 0.1
   gravityScale: 10
   sphereRadius: 0.3
