@@ -26,13 +26,13 @@ public class Description : MonoBehaviour {
         waitTime += Time.deltaTime;
         if (explanation) {
             if (Input.GetKeyDown(KeyCode.Return)) {
-                if (descriptionNumber < 6) {
+                if (descriptionNumber < 7) {
                     descriptionNumber++;
                     Debug.Log(descriptionNumber);
                     if (!getPicture) {
                         waitTime = 0;
                     }
-                    if (descriptionNumber == 6) {
+                    if (descriptionNumber == 7) {
                         TextPanel.enabled = false;
                         DeleteDescriprionText(descriptionNumber - 1);
                     } else {
@@ -40,21 +40,24 @@ public class Description : MonoBehaviour {
                     }
                 }
 
-                if (getPicture && descriptionNumber == 6) {
+                if (getPicture && descriptionNumber >= 7) {
                     descriptionNumber++;
-                    SetDescriptionText(descriptionNumber);
-                    waitTime = 0;
+                    if (descriptionNumber == 9) {
+                        DeleteDescriprionText(descriptionNumber - 1);
+                        explanation = false;
+                        TextPanel.enabled = false;
+                    } else {
+                        SetDescriptionText(descriptionNumber);
+                        waitTime = 0;
+                    }
                 }
             }
-            if (cameraMode.takeFlash && descriptionNumber == 6) {
+
+            if (cameraMode.takeFlash && descriptionNumber == 7) {
                 getPicture = true;
                 TextPanel.enabled = true;
-                SetDescriptionText(6);
+                SetDescriptionText(descriptionNumber);
             }
-        }
-        
-        if(descriptionNumber == 7) {
-            explanation = false;
         }
     }
 
