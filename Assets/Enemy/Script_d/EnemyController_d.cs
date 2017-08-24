@@ -57,13 +57,14 @@ public class EnemyController_d : MonoBehaviour {
         {
             LookUp(target);
         }
-
+        /*
         // 障害物チェック
         if (isAttack || !Physics.Raycast(rayStart.position, transform.forward, 2.0f))
         {
+        */
             // 移動
             Move();
-        }
+        //}
     }
 
     void SetLocalGravity()

@@ -72,7 +72,8 @@ public class EnemyMain_Golem : EnemyMain_d{
                     }
                     if (!enemyCtrl.tryLookUp)
                     {
-                        if (!enemyCtrl.ActionMoveToNear(enemyCtrl.target, 1.0f, 1.0f))
+                        if (Physics.Raycast(rayStart.position, transform.forward, 2.0f) ||
+                                !enemyCtrl.ActionMoveToNear(enemyCtrl.target, 1.0f, 1.0f))
                         {
                             SetAIState(ENEMYAISTS.WAIT, Random.Range(1.0f, 3.0f));
                         }
