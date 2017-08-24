@@ -1308,6 +1308,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114233486690270040, guid: f6c795cd1c20fce46a3b5578ad039326,
+        type: 2}
+      propertyPath: serestScene
+      value: GameSerect
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f6c795cd1c20fce46a3b5578ad039326, type: 2}
   m_IsPrefabParent: 0
