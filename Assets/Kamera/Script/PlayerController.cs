@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour {
     private bool death;
     private float jumpCooldownTime;
     float moveZ;
-    [System.NonSerialized]public bool isSliding,isJump,isBack,isRun,moveController = true,isGround,isJumping = false;
+    [System.NonSerialized]public bool deathStop,isSliding,isJump,isBack,isRun,moveController = true,isGround,isJumping = false;
     Vector3 jumpCheck,moveNormal;
     [System.NonSerialized]public Animator animator;
     RaycastHit slideHit;
@@ -43,8 +43,8 @@ public class PlayerController : MonoBehaviour {
             isGround = false;
         }
 
-        if(Physics.Raycast(transform.position,Vector3.down,out slideHit)) {
-            //Debug.Log("sitani deteru");
+        if(Physics.Raycast(transform.position + new Vector3(0.0f,0.3f,0.0f),Vector3.down,out slideHit)) {
+            Debug.Log("sitani deteru");
             if(Vector3.Angle(slideHit.normal,Vector3.up) > 45.0f) {
                 isSliding = true;
             } else {
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
-        if (moveController) {
+        if (moveController && !deathStop) {
             if (Input.GetKey("up")) {
                 animator.SetBool("Run", true);
                 moveZ += 1;
@@ -146,6 +146,7 @@ public class PlayerController : MonoBehaviour {
     void Death() {
         death = true;
         animator.SetBool("Death",true);
+        deathStop = true;
         Debug.Log("owarei");
     }
 

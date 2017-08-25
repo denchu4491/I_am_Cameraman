@@ -39,7 +39,7 @@ public class CameraMode : MonoBehaviour {
     void Update () {
         vector3Idlerotation = firstPersonCamera.transform.rotation.eulerAngles;
         //Debug.Log(vector3Idlerotation.x);
-        if (Input.GetKeyDown("z") && (!takeFlash) && !boolInvincible.Invincible) {
+        if (Input.GetKeyDown("z") && (!takeFlash) && !boolInvincible.Invincible && !playerController.deathStop) {
             ModeCameraChange();
             flash.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
         }

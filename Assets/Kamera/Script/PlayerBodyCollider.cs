@@ -33,7 +33,6 @@ public class PlayerBodyCollider : MonoBehaviour {
                 damegeFlash.enabled = false;
                 InvincibleCount = 0;
                 playerController.moveController = true;
-                playerController.animator.SetBool("Damege", false);
                 Invincible = false;
             }
 

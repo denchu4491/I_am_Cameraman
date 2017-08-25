@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class DeathSceneChanger : MonoBehaviour {
-
+    public string retrySceneName;
 	// Use this for initialization
 	void Start () {
 		
@@ -13,7 +13,7 @@ public class DeathSceneChanger : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (Input.GetKeyDown("z")) {
-            SceneManager.LoadScene("tutorial");
+            SceneManager.LoadScene(retrySceneName);
         }
         else if (Input.GetKeyDown("x")) {
             SceneManager.LoadScene("Start");
