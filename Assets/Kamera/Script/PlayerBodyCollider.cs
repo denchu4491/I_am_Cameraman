@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerBodyCollider : MonoBehaviour {
     PlayerController playerController;
     [System.NonSerialized]public bool Damege,Invincible;
-    public float InvincibleTime;
+    public float InvincibleTime = 3;
     private float InvincibleCount;
     private Image damegeFlash;
     private CameraMode cameraMode;
@@ -25,12 +25,15 @@ public class PlayerBodyCollider : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (Invincible) {
+            playerController.moveController = false;
             damegeFlash.color = new Color(1.0f, 0.0f, 0.0f, 0.8f - InvincibleCount);
             InvincibleCount += Time.deltaTime;
             if (InvincibleTime < InvincibleCount) {
                 damegeFlash.color = new Color(1.0f, 1.0f, 1.0f);
                 damegeFlash.enabled = false;
                 InvincibleCount = 0;
+                playerController.moveController = true;
+                playerController.animator.SetBool("Damege", false);
                 Invincible = false;
             }
 
@@ -39,7 +42,8 @@ public class PlayerBodyCollider : MonoBehaviour {
     void OnTriggerEnter(Collider collider) {
         Debug.Log(collider.tag);
         if (collider.tag == "EnemyArm" && !Invincible) {
-            playerController.HP -= 1;
+            playerController.Damege();
+            playerController.DamegeMove(collider.transform.position,this.transform.position);
             Invincible = true;
             if (cameraMode.boolCameraMode) {
                 cameraMode.ModeCameraChange();
@@ -55,7 +59,8 @@ public class PlayerBodyCollider : MonoBehaviour {
     }
     void OnCollisionEnter(Collision collision) {
         if (collision.collider.tag == "EnemyBody" && !Invincible) {
-            playerController.HP -= 1;
+            playerController.Damege();
+            playerController.DamegeMove(collision.transform.position, this.transform.position);
             Invincible = true;
             if (cameraMode.boolCameraMode) {
                 cameraMode.ModeCameraChange();
