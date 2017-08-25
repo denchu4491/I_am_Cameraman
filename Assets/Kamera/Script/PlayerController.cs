@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour {
 
         if(Physics.Raycast(transform.position + new Vector3(0.0f,0.3f,0.0f),Vector3.down,out slideHit)) {
             Debug.Log("sitani deteru");
-            if(Vector3.Angle(slideHit.normal,Vector3.up) > 45.0f) {
+            if(Vector3.Angle(slideHit.normal,Vector3.up) > 65.0f) {
                 isSliding = true;
             } else {
                 isSliding = false;
