@@ -111,4 +111,24 @@ public class EnemyMain_d : MonoBehaviour {
         }
         return false;
     }
+
+    public bool GetDistancePlayerNear(float near)
+    {
+        Vector3 heading = player.transform.position - transform.position;
+        if (heading.sqrMagnitude < near * near)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public bool GetDistancePlayerYNear(float near)
+    {
+        float distanceY = player.transform.position.y - transform.position.y;
+        if (Mathf.Abs(distanceY) < near)
+        {
+            return true;
+        }
+        return false;
+    }
 }

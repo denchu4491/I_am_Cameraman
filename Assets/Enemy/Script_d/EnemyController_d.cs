@@ -15,7 +15,7 @@ public class EnemyController_d : MonoBehaviour {
     private Quaternion rotationPrev;
     private float attackTimeStart, attackTimeLength;
     private Transform groundCheck;
-    private Transform rayStart;
+    //private Transform rayStart;
 
     public readonly static int ANISTS_Idle = Animator.StringToHash("Base Layer.Idle");
     public readonly static int ANISTE_Run = Animator.StringToHash("Base Layer.Run");
@@ -26,7 +26,7 @@ public class EnemyController_d : MonoBehaviour {
         animator = GetComponent<Animator>();
         rigidbodyE = GetComponent<Rigidbody>();
         groundCheck = transform.Find("GroundCheck");
-        rayStart = transform.Find("RayStart");
+        //rayStart = transform.Find("RayStart");
     }
 
     void FixedUpdate()
