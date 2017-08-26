@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class CameraMode : MonoBehaviour {
     public GameObject unitychan;
     [System.NonSerialized]public bool boolCameraMode = false, takeFlash = false,zoomUp;
-    [System.NonSerialized]public float decreaseFlash = 0.8f;
+    [System.NonSerialized]public float decreaseFlash = 0.8f,scoreFlashColor;
     public float targetDistance,score;
     private Animator animator;
     public Camera firstPersonCamera;
@@ -39,7 +39,7 @@ public class CameraMode : MonoBehaviour {
     void Update () {
         vector3Idlerotation = firstPersonCamera.transform.rotation.eulerAngles;
         //Debug.Log(vector3Idlerotation.x);
-        if (Input.GetKeyDown("z") && (!takeFlash) && !boolInvincible.Invincible) {
+        if (Input.GetKeyDown("z") && (!takeFlash) && !boolInvincible.Invincible && !playerController.deathStop) {
             ModeCameraChange();
             flash.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
         }
@@ -97,12 +97,24 @@ public class CameraMode : MonoBehaviour {
             }
             if (takeFlash) {
                 decreaseFlash -= Time.deltaTime;
-                flash.color = new Color(1.0f, 1.0f, 1.0f, decreaseFlash);
-                if(decreaseFlash < 0) {
-                    flash.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-                    decreaseFlash = 0.8f;
-                    takeFlash = false;
-                    ModeCameraChange();
+                if(score < 60.0f) {
+                    flash.color = new Color(1.0f, 1.0f, 1.0f, decreaseFlash);
+                    if (decreaseFlash < 0) {
+                        flash.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+                        decreaseFlash = 0.8f;
+                        takeFlash = false;
+                        ModeCameraChange();
+                    }
+                }
+                
+                else if(score >= 60.0f) {
+                    flash.color = new Color(1.0f, 1.0f, 0.0f, decreaseFlash);
+                    if (decreaseFlash < 0) {
+                        flash.color = new Color(1.0f, 1.0f, 0.0f, 0.0f);
+                        decreaseFlash = 0.8f;
+                        takeFlash = false;
+                        ModeCameraChange();
+                    }
                 }
             }
         }
@@ -160,7 +172,7 @@ public class CameraMode : MonoBehaviour {
         Object.Destroy(screenShot);
 
         string filename = "takepicture.png";
-        File.WriteAllBytes("Assets" + "/" + "Kamera" + "/"+ "Sprite" + "/" + filename, bytes);
+        File.WriteAllBytes(Application.persistentDataPath + "/" + filename, bytes);
     }
 
     void TakePicture() {

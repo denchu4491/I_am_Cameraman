@@ -5,15 +5,18 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     Rigidbody rb;
     CameraMode cameraMode;
+    public GameObject gameOverDesign;
     public int HP = 2;
     public float movespeed = 0.2f;
     public float jumpPower = 20;
-    public float jumpTime = 1.2f;
+    public float jumpTime = 1.4f;
+    private float waitDeathAnimation;
+    private bool death;
     private float jumpCooldownTime;
     float moveZ;
-    [System.NonSerialized]public bool isSliding,isJump,isBack,isRun,moveController = true,isGround,isJumping = false;
+    [System.NonSerialized]public bool deathStop,isSliding,isJump,isBack,isRun,moveController = true,isGround,isJumping = false;
     Vector3 jumpCheck,moveNormal;
-    private Animator animator;
+    [System.NonSerialized]public Animator animator;
     RaycastHit slideHit;
     // Use this for initialization
     void Awake() {
@@ -40,16 +43,16 @@ public class PlayerController : MonoBehaviour {
             isGround = false;
         }
 
-        if(Physics.Raycast(transform.position,Vector3.down,out slideHit)) {
+        if(Physics.Raycast(transform.position + new Vector3(0.0f,0.3f,0.0f),Vector3.down,out slideHit)) {
             Debug.Log("sitani deteru");
-            if(Vector3.Angle(slideHit.normal,Vector3.up) > 45.0f) {
+            if(Vector3.Angle(slideHit.normal,Vector3.up) > 65.0f) {
                 isSliding = true;
             } else {
                 isSliding = false;
             }
         }
 
-        if (moveController) {
+        if (moveController && !deathStop) {
             if (Input.GetKey("up")) {
                 animator.SetBool("Run", true);
                 moveZ += 1;
@@ -85,14 +88,27 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
+        if (death) {
+            waitDeathAnimation += Time.deltaTime;
+            if(waitDeathAnimation >= 1.3f) {
+                animator.speed = 0.0f;
+                waitDeathAnimation = 0.0f;
+                gameOverDesign.SetActive(true);
+                GetComponent<DeathSceneChanger>().enabled = true;
+                GetComponent<CameraMode>().enabled = false;
+                GetComponent<PlayerController>().enabled = false;
+            }
+        }
+
     }
+
     void FixedUpdate() {
         Move();
         if (isJump) {
             Jump();
             isJump = false;
         }
-        if(!isJump && isSliding) {
+        if(!isJump && isSliding ) {
             Slide();
         }
     }
@@ -109,6 +125,29 @@ public class PlayerController : MonoBehaviour {
         Debug.Log("ZURETERU");
         moveNormal = slideHit.normal;
         rb.velocity = new Vector3(moveNormal.x,rb.velocity.y,moveNormal.z);
+    }
+
+    public void DamegeMove(Vector3 playerPosition,Vector3 targetPosition) {
+        Debug.Log("tobeeeeeeeeeeeeeeeeee");
+        float damegeMoveX = targetPosition.x - playerPosition.x;
+        float damegeMoveZ = targetPosition.z - playerPosition.z;
+        rb.AddForce(damegeMoveX * 200.0f, 0.0f, damegeMoveZ * 200.0f,ForceMode.VelocityChange);
+    }
+
+    public void Damege() {
+        HP--;
+        Debug.Log("itai");
+        
+        if(HP == 0) {
+            Death();
+        }
+    }
+
+    void Death() {
+        death = true;
+        animator.SetBool("Death",true);
+        deathStop = true;
+        Debug.Log("owarei");
     }
 
 }
