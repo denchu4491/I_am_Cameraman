@@ -5,14 +5,14 @@ using UnityEngine;
 public class EnemyMain_Whalekun_d : EnemyMain_d {
 
     [System.NonSerialized] public EnemyActionRange_d enemyActionRange;
-    public bool canAction, canLoiter, canAttack;                // 行動、徘徊、攻撃の許可
-    private bool isRotate = false, isTarget = false;
-    public int loop, index;                                     // 徘徊用変数
+    public bool canAction, canLoiter, canAttack;                        // 行動、徘徊、攻撃の許可
+    private bool isRotate = false, isTarget = false, isStray = false;   // 目標へ視点を向けたか、Playerを発見しているか、徘徊ループからはぐれているか
+    public int loop, index;                                             // 初回の徘徊ポイント
     public Transform[] wayLoop0, wayLoop1;
     private Transform[][] wayPointList = new Transform[2][];    
     public bool goloop1;             // ループの強制変更
     private int direction = 0;       // 0,1で徘徊の方向を決める
-    public float attackMoveSpeed;
+    public float attackMoveSpeed, attackWaitTime = 3.0f;
 
     public override void Awake()
     {
@@ -26,94 +26,96 @@ public class EnemyMain_Whalekun_d : EnemyMain_d {
     public override void FixedUpdateAI()
     {
         //Debug.Log(string.Format(">>> aiState {0}",aiState));
-        if (canAction)
+        if (!canAction) return;
+        switch (aiState)
         {
-            switch (aiState)
-            {
-                case ENEMYAISTS.ACTIONSELECT:
-                    if (enemyActionRange.isDetectPlayer && canAttack)
+            case ENEMYAISTS.ACTIONSELECT:
+                isRotate = false;
+                if (enemyActionRange.isDetectPlayer && canAttack)
+                {
+                    if (RayCheck(rayStart.position, 30.0f))
                     {
-                        if (RayCheck(rayStart.position, 30.0f))
-                        {
-                            SetAIState(ENEMYAISTS.ATTACKPLAYER, 10.0f);
-                        }
+                        SetAIState(ENEMYAISTS.ATTACKPLAYER, 10.0f);
                     }
-                    else
+                }
+                else
+                {
+                    enemyCtrl.isAttack = false;
+                    if (isTarget)
                     {
-                        if (isTarget)
-                        {
-                            isTarget = false;
-                            SearchIndex();
-                        }
-                        if (canLoiter)
-                        {
-                            SetAIState(ENEMYAISTS.LOITER, 10.0f);
-                        }
+                        isTarget = false;
                     }
-                    enemyCtrl.ActionMove(0.0f);
-                    break;
+                    if (canLoiter)
+                    {
+                        SetAIState(ENEMYAISTS.LOITER, 10.0f);
+                    }
+                }
+                enemyCtrl.ActionMove(0.0f);
+                break;
 
-                case ENEMYAISTS.WAIT:
-                    enemyCtrl.ActionMove(0.0f);
-                    break;
+            case ENEMYAISTS.WAIT:
+                enemyCtrl.ActionMove(0.0f);
+                break;
 
-                case ENEMYAISTS.LOITER:
-                    if (enemyActionRange.isDetectPlayer && canAttack)
+            case ENEMYAISTS.LOITER:
+                if (enemyActionRange.isDetectPlayer && canAttack)
+                {
+                    if (RayCheck(rayStart.position, 30.0f))
                     {
-                        if (RayCheck(rayStart.position, 30.0f))
-                        {
-                            isRotate = false;
-                            enemyCtrl.ActionMove(0.0f);
-                            SetAIState(ENEMYAISTS.ATTACKPLAYER, 10.0f);
-                        }
+                        isRotate = false;
+                        enemyCtrl.ActionMove(0.0f);
+                        SetAIState(ENEMYAISTS.ATTACKPLAYER, 10.0f);
                     }
-                    else
-                    {
-                        if (!isRotate)
-                        {
-                            //Debug.Log("LOITER " + loop + " " + index);
-                            isRotate = true;
-                            enemyCtrl.ActionLookUp(wayPointList[loop][index].position);
-                        }
-                        if (!enemyCtrl.tryLookUp)
-                        {
-                            if (!enemyCtrl.ActionMoveToNear(enemyCtrl.target, 3.0f, 1.0f))
-                            {
-                                isRotate = false;
-                                NextIndex();
-                                SetAIState(ENEMYAISTS.WAIT, Random.Range(1.0f, 3.0f));
-                            }
-                        }
-                    }
-                    break;
-
-                case ENEMYAISTS.ATTACKPLAYER:
+                }
+                else
+                {
                     if (!isRotate)
                     {
-                        enemyCtrl.isAttack = true;
-                        isTarget = true;
                         isRotate = true;
-                        enemyCtrl.ActionLookUp(player.transform.position);
+                        if (isStray)
+                        {
+                            SearchIndex();
+                        }
+                        //Debug.Log("LOITER " + loop + " " + index);
+                        enemyCtrl.ActionLookUp(wayPointList[loop][index].position);
                     }
                     if (!enemyCtrl.tryLookUp)
                     {
-                        if (!enemyCtrl.ActionMoveToNear(enemyCtrl.target, 4.0f, attackMoveSpeed))
+                        if (!enemyCtrl.ActionMoveToNear(enemyCtrl.target, 3.0f, 1.0f))
                         {
-                            Attack_A();
+                            isStray = false;
+                            NextIndex();
+                            SetAIState(ENEMYAISTS.WAIT, Random.Range(1.0f, 3.0f));
                         }
                     }
-                    break;
-            }
+                }
+                break;
+
+            case ENEMYAISTS.ATTACKPLAYER:
+                if (!isRotate)
+                {
+                    isRotate = true;
+                    enemyCtrl.isAttack = true;
+                    isStray = true;
+                    isTarget = true;
+                    enemyCtrl.ActionLookUp(player.transform.position);
+                }
+                if (!enemyCtrl.tryLookUp)
+                {
+                    if (!enemyCtrl.ActionMoveToNear(enemyCtrl.target, 4.0f, attackMoveSpeed))
+                    {
+                        Attack_A();
+                    }
+                }
+                break;
         }
     }
 
     void Attack_A()
     {
-        isRotate = false;
         enemyCtrl.ActionMove(0.0f);
-        enemyCtrl.isAttack = false;
         enemyCtrl.ActionAttack("Attack_Bite",1.0f);
-        SetAIState(ENEMYAISTS.WAIT, 3.0f);
+        SetAIState(ENEMYAISTS.WAIT, attackWaitTime);
     }
 
     void NextIndex()

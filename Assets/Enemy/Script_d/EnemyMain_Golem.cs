@@ -5,8 +5,8 @@ using UnityEngine;
 public class EnemyMain_Golem : EnemyMain_d{
 
     private EnemyBodyCollider enemyBodyCol;
-    public EnemyActionRange_d enemyActionRange;
-    public float attackMoveSpeed;
+    private EnemyActionRange_d enemyActionRange;
+    public float attackMoveSpeed, attackWaitTime = 1.0f;
     private Vector3 firstPosition, rangeSize, rangeCenter, targetPoint;
     private float minX, maxX, minZ, maxZ;
     private bool isRotate;
@@ -15,6 +15,7 @@ public class EnemyMain_Golem : EnemyMain_d{
     {
         base.Awake();
 
+        enemyActionRange = GetComponentInParent<EnemyActionRange_d>();
         enemyBodyCol = GetComponentInChildren<EnemyBodyCollider>();
         rangeSize = enemyActionRange.GetComponent<BoxCollider>().size;
         rangeCenter = enemyActionRange.transform.position;
@@ -35,16 +36,13 @@ public class EnemyMain_Golem : EnemyMain_d{
         switch (aiState)
         {
             case ENEMYAISTS.ACTIONSELECT:
+                isRotate = false;
                 if (enemyBodyCol.isActionRangeEnter && enemyActionRange.isDetectPlayer)
                 {
                     SetAIState(ENEMYAISTS.ATTACKPLAYER, -1.0f);
                 }
                 else
                 {
-                    if (!enemyBodyCol.isActionRangeEnter)
-                    {
-                        targetPoint = firstPosition;
-                    }
                     SetAIState(ENEMYAISTS.LOITER, 5.0f);
                 }
                 enemyCtrl.ActionMove(0.0f);
@@ -61,15 +59,22 @@ public class EnemyMain_Golem : EnemyMain_d{
                     if (!isRotate)
                     {
                         isRotate = true;
-                        SetTarget();
-                        //Debug.Log("LOITER " + targetPoint);
+                        if (!enemyBodyCol.isActionRangeEnter)
+                        {
+                            targetPoint = firstPosition;
+                        }
+                        else
+                        {
+                            SetTarget();
+                        }
+                        //Debug.Log(this.name + " " + targetPoint);
                         enemyCtrl.ActionLookUp(targetPoint);
                     }
                     if (!enemyCtrl.tryLookUp)
                     {
-                        if (!enemyCtrl.ActionMoveToNear(enemyCtrl.target, 1.0f, 1.0f))
+                        if (Physics.Raycast(rayStart.position, transform.forward, 2.0f) ||
+                                !enemyCtrl.ActionMoveToNear(enemyCtrl.target, 1.0f, 1.0f))
                         {
-                            isRotate = false;
                             SetAIState(ENEMYAISTS.WAIT, Random.Range(1.0f, 3.0f));
                         }
                     }
@@ -85,7 +90,7 @@ public class EnemyMain_Golem : EnemyMain_d{
                 {
                     enemyCtrl.isAttack = false;
                     enemyCtrl.ActionMove(0.0f);
-                    SetAIState(ENEMYAISTS.WAIT, 1.0f);
+                    SetAIState(ENEMYAISTS.WAIT, attackWaitTime);
                 }
                 break;
 
