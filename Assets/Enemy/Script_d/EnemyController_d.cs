@@ -7,9 +7,9 @@ public class EnemyController_d : MonoBehaviour {
     [System.NonSerialized] public Animator animator;
     [System.NonSerialized] public Rigidbody rigidbodyE;
     [System.NonSerialized] public Vector3 target;
-    [System.NonSerialized] public bool tryLookUp, isAttack;
+    [System.NonSerialized] public bool tryLookUp;
 
-    public float moveSpeed, rotateSpeed, gravityScale, sphereRadius = 0.3f;
+    public float moveSpeed, rotateSpeed = 0.1f, localGravityScale = 10.0f, sphereRadius = 0.3f;
     public Collider attackCollider;
     private Vector3 moveDirection;
     private Quaternion rotationPrev;
@@ -25,6 +25,7 @@ public class EnemyController_d : MonoBehaviour {
     {
         animator = GetComponent<Animator>();
         rigidbodyE = GetComponent<Rigidbody>();
+        rigidbodyE.useGravity = false;
         groundCheck = transform.Find("GroundCheck");
         //rayStart = transform.Find("RayStart");
     }
@@ -35,8 +36,14 @@ public class EnemyController_d : MonoBehaviour {
         if (!Physics.CheckSphere(groundCheck.position, sphereRadius))
         {
             //Debug.Log("hoge");
-            // 重力
+            // 浮いてる時の重力
             SetLocalGravity();
+        }
+        else
+        {
+            //通常の重力
+            rigidbodyE.velocity = new Vector3(rigidbodyE.velocity.x, 0, rigidbodyE.velocity.z);
+            rigidbodyE.AddForce(Physics.gravity, ForceMode.Acceleration);
         }
 
         // 攻撃判定の終了チェック
@@ -69,7 +76,7 @@ public class EnemyController_d : MonoBehaviour {
 
     void SetLocalGravity()
     {
-        rigidbodyE.velocity = Vector3.down * gravityScale;
+        rigidbodyE.velocity = Vector3.down * localGravityScale;
     }
 
     public void ActionMove(float accel)
@@ -126,6 +133,11 @@ public class EnemyController_d : MonoBehaviour {
         attackCollider.enabled = true;
         attackTimeStart = Time.fixedTime;
         attackTimeLength = atktime;
+    }
+
+    public void ActionAttack(string atkname)
+    {
+        animator.SetTrigger(atkname);
     }
 
     public void ActionLookUp(Vector3 t)

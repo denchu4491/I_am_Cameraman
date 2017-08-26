@@ -26,12 +26,10 @@ public class EnemyMain_d : MonoBehaviour {
         rayStart = transform.Find("RayStart");
     }
 
-	// Use this for initialization
 	public virtual void Start () {
 
 	}
 	
-	// Update is called once per frame
 	public virtual void Update () {
 		
 	}
@@ -122,7 +120,7 @@ public class EnemyMain_d : MonoBehaviour {
         return false;
     }
 
-    public bool GetDistancePlayerYNear(float near)
+    public bool GetDistanceYPlayerNear(float near)
     {
         float distanceY = player.transform.position.y - transform.position.y;
         if (Mathf.Abs(distanceY) < near)

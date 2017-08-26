@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class EnemyMain_Golem_B : EnemyMain_d {
 
-    private EnemyActionRange_d enemyActionRange;
-    public float attackMoveSpeed, attackWaitTime;
+    public EnemyActionRange_d enemyActionRange;
+    public float attackMoveSpeed, attackWaitTime, nearAttackRange;
     private Vector3 firstPosition, rangeSize, rangeCenter, targetPoint;
     private float minX, maxX, minZ, maxZ;
-    private bool isRotate;
+    private bool isRotate, isNearTarget;
 
     public override void Awake()
     {
         base.Awake();
 
-        enemyActionRange = GetComponentInParent<EnemyActionRange_d>();
         rangeSize = enemyActionRange.GetComponent<BoxCollider>().size;
         rangeCenter = enemyActionRange.transform.position;
         firstPosition = transform.position;
@@ -34,13 +33,14 @@ public class EnemyMain_Golem_B : EnemyMain_d {
         {
             case ENEMYAISTS.ACTIONSELECT:
                 isRotate = false;
+                isNearTarget = false;
                 if (enemyActionRange.isDetectPlayer)
                 {
                     SetAIState(ENEMYAISTS.ATTACKPLAYER, 10.0f);
                 }
                 else
                 {
-                    SetAIState(ENEMYAISTS.LOITER, 5.0f);
+                    SetAIState(ENEMYAISTS.LOITER, 20.0f);
                 }
                 enemyCtrl.ActionMove(0.0f);
                 break;
@@ -62,7 +62,7 @@ public class EnemyMain_Golem_B : EnemyMain_d {
                     if (!enemyCtrl.tryLookUp)
                     {
                         if (Physics.Raycast(rayStart.position, transform.forward, 2.0f) ||
-                                !enemyCtrl.ActionMoveToNear(enemyCtrl.target, 1.0f, enemyCtrl.moveSpeed))
+                                !enemyCtrl.ActionMoveToNear(enemyCtrl.target, 2.0f, enemyCtrl.moveSpeed))
                         {
                             SetAIState(ENEMYAISTS.WAIT, Random.Range(1.0f, 3.0f));
                         }
@@ -76,10 +76,24 @@ public class EnemyMain_Golem_B : EnemyMain_d {
                 {
                     isRotate = true;
                     enemyCtrl.ActionLookUp(player.transform.position);
+                    if (GetDistancePlayerNear(nearAttackRange) && GetDistanceYPlayerNear(5.0f))
+                    {
+                        isNearTarget = true;
+                    }
                 }
                 if (!enemyCtrl.tryLookUp)
                 {
-                    
+                    if (isNearTarget)
+                    {
+                        if (!enemyCtrl.ActionMoveToNear(enemyCtrl.target, 3.0f, attackMoveSpeed))
+                        {
+                            Attack_A();
+                        }
+                    }
+                    else
+                    {
+                        Attack_B();
+                    }
                 }
                 break;
 
@@ -91,19 +105,20 @@ public class EnemyMain_Golem_B : EnemyMain_d {
 
     public void Attack_A()
     {
-
+        enemyCtrl.ActionMove(0.0f);
+        enemyCtrl.ActionAttack("Attack");
+        SetAIState(ENEMYAISTS.WAIT, attackWaitTime);
     }
 
     public void Attack_B()
     {
-
+        Debug.Log("Fire");
+        SetAIState(ENEMYAISTS.WAIT, attackWaitTime);
     }
 
     public void SetTarget()
     {
-        Vector3 target = Vector3.zero;
-        target.x = Random.Range(minX, maxX);
-        target.z = Random.Range(minZ, maxZ);
-        targetPoint = target;
+        targetPoint.x = Random.Range(minX, maxX);
+        targetPoint.z = Random.Range(minZ, maxZ);
     }
 }
