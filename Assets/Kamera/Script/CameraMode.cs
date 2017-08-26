@@ -172,7 +172,7 @@ public class CameraMode : MonoBehaviour {
         Object.Destroy(screenShot);
 
         string filename = "takepicture.png";
-        File.WriteAllBytes("Assets" + "/" + "Kamera" + "/"+ "Sprite" + "/" + filename, bytes);
+        File.WriteAllBytes(Application.persistentDataPath + "/" + filename, bytes);
     }
 
     void TakePicture() {
