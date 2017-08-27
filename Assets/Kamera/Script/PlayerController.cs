@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
     Rigidbody rb;
@@ -14,6 +15,8 @@ public class PlayerController : MonoBehaviour {
     private bool death;
     private float jumpCooldownTime;
     float moveZ;
+    public Image helthImage;
+    public Text helthPointText;
     [System.NonSerialized]public bool deathStop,isSliding,isJump,isBack,isRun,moveController = true,isGround,isJumping = false;
     Vector3 jumpCheck,moveNormal;
     [System.NonSerialized]public Animator animator;
@@ -44,7 +47,6 @@ public class PlayerController : MonoBehaviour {
         }
 
         if(Physics.Raycast(transform.position + new Vector3(0.0f,0.3f,0.0f),Vector3.down,out slideHit)) {
-            Debug.Log("sitani deteru");
             if(Vector3.Angle(slideHit.normal,Vector3.up) > 65.0f) {
                 isSliding = true;
             } else {
@@ -137,7 +139,7 @@ public class PlayerController : MonoBehaviour {
     public void Damege() {
         HP--;
         Debug.Log("itai");
-        
+        helthPointText.text = string.Format("{0}",HP);
         if(HP == 0) {
             Death();
         }

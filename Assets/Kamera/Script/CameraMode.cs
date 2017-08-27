@@ -128,7 +128,8 @@ public class CameraMode : MonoBehaviour {
             thirdPersonCamera.enabled = false;
             flash.enabled = true;
             cameraFrame.enabled = true;
-
+            playerController.helthImage.enabled = false;
+            playerController.helthPointText.enabled = false;
         } 
         else if (!playerController.moveController) {
             playerController.moveController = true;
@@ -138,6 +139,8 @@ public class CameraMode : MonoBehaviour {
             flash.enabled = false;
             cameraFrame.enabled = false;
             shutterSoundCollider.enabled = false;
+            playerController.helthImage.enabled = true;
+            playerController.helthPointText.enabled = true;
             if (zoomUp) {
                 CameraZoomOut();
             }

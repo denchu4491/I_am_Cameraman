@@ -11,6 +11,7 @@ public class SelectDefficulty : MonoBehaviour {
     private float waitTime;
     private string desideText;
     public Image flash;
+    public Text operationText;
     public string[] sceneName = new string[3];
     public Image[] selectImage = new Image[3];
     public Text[] explanatoryText = new Text[3];
@@ -43,6 +44,7 @@ public class SelectDefficulty : MonoBehaviour {
                 select = false;
                 Deside(stageNumber);
                 explanatoryText[stageNumber - 1].enabled = true;
+                operationText.enabled = false;
             }
         }
 
@@ -55,6 +57,7 @@ public class SelectDefficulty : MonoBehaviour {
                 select = true;
                 deside = false;
                 explanatoryText[stageNumber - 1].enabled = false;
+                operationText.enabled = true;
                 for (int i = 0; i < 3; i++) {
                     if (stageNumber - 1 != i) {
                         selectImage[i].enabled = true;
