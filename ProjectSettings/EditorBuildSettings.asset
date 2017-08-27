@@ -20,3 +20,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Satrt/Scene/Score.unity
     guid: 69d264ceb404e68489583aa8289aaacc
+  - enabled: 1
+    path: Assets/Develop/Scenes/SerectDefficulty.unity
+    guid: 81fec6ae310fedb4c9f9afb83d878feb
+  - enabled: 1
+    path: Assets/Develop/Scenes/tutorial.unity
+    guid: da525d360445d704f9953b07ab402fda
+  - enabled: 1
+    path: Assets/Develop/Scenes/Start.unity
+    guid: 2a4bf383141a0674b940fb39797d704b

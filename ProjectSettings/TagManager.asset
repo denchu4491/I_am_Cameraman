@@ -10,6 +10,7 @@ TagManager:
   - EnemyArm
   - TargetEnemy
   - EnemyActionRange
+  - Breakable
   layers:
   - Default
   - TransparentFX
