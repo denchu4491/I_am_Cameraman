@@ -16,8 +16,8 @@ public class SceneChanger : MonoBehaviour {
 		
 	}
 
-    void OnTriggerEnter(Collider collider) {
-        if(collider.tag == "Player") {
+    void OnCollisionEnter(Collision collision) {
+        if(collision.collider.tag == "Player") {
             SceneManager.LoadScene(serestScene);
         }
     }
