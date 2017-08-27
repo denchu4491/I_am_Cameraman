@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour {
-    public string serestScene;
+    public string selestScene;
 
 	// Use this for initialization
 	void Start () {
@@ -18,7 +18,7 @@ public class SceneChanger : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision) {
         if(collision.collider.tag == "Player") {
-            SceneManager.LoadScene(serestScene);
+            SceneManager.LoadScene(selestScene);
         }
     }
 }
