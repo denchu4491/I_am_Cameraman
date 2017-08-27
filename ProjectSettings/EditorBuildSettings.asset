@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Develop/Scenes/tutorial.unity
     guid: da525d360445d704f9953b07ab402fda
   - enabled: 1
-    path: Assets/Develop/Scenes/GameSerect.unity
+    path: Assets/Develop/Scenes/GameSelect.unity
     guid: 81fec6ae310fedb4c9f9afb83d878feb
   - enabled: 1
     path: Assets/Develop/Scenes/Stage1.unity
@@ -20,3 +20,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Develop/Scenes/Stage2-0.unity
     guid: 5000a8b5b2579fe4d9be43722c6a7701
+  - enabled: 1
+    path: Assets/Develop/Scenes/Stage2-1.unity
+    guid: 049d5267e37cdee4d930949184aec9da
+  - enabled: 1
+    path: Assets/Develop/Scenes/Stage2-2.unity
+    guid: 20577cafe2813d84496094659c429022
+  - enabled: 1
+    path: Assets/Develop/Scenes/Stage3-0.unity
+    guid: a9d8dfd00fae27c41a648917ca635767
+  - enabled: 1
+    path: Assets/Develop/Scenes/Stage3-1.unity
+    guid: 2387352ff37ffcf459853cf7e80a70b0
+  - enabled: 1
+    path: Assets/Develop/Scenes/Stage3-2.unity
+    guid: 6581e81230351024ebb2cac33ecee4d4
+  - enabled: 1
+    path: Assets/Develop/Scenes/GameClear.unity
+    guid: 0069b479c32043f42bb6064110fa91e1

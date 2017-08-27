@@ -113,7 +113,7 @@ public class SelectDefficulty : MonoBehaviour {
     }
 
     void DesideMove() {
-        selectTransform.localPosition -= new Vector3(200.0f, 0.0f, 0.0f) * Time.fixedDeltaTime;
+        selectTransform.localPosition -= new Vector3(400.0f, 0.0f, 0.0f) * Time.fixedDeltaTime;
     }
 
     void Flash() {
