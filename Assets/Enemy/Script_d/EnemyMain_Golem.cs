@@ -43,7 +43,7 @@ public class EnemyMain_Golem : EnemyMain_d{
                 }
                 else
                 {
-                    SetAIState(ENEMYAISTS.LOITER, 5.0f);
+                    SetAIState(ENEMYAISTS.LOITER, 10.0f);
                 }
                 enemyCtrl.ActionMove(0.0f);
                 break;
@@ -88,8 +88,6 @@ public class EnemyMain_Golem : EnemyMain_d{
                 }
                 else
                 {
-                    enemyCtrl.isAttack = false;
-                    enemyCtrl.ActionMove(0.0f);
                     SetAIState(ENEMYAISTS.WAIT, attackWaitTime);
                 }
                 break;
@@ -102,7 +100,6 @@ public class EnemyMain_Golem : EnemyMain_d{
 
     public void Attack()
     {
-        enemyCtrl.isAttack = true;
         enemyCtrl.ActionLookUp(player.transform.position);
         if(!enemyCtrl.ActionMoveToNear(player.transform.position, 0.4f, attackMoveSpeed))
         {

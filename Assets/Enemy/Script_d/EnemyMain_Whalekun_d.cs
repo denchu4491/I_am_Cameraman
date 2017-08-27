@@ -40,7 +40,6 @@ public class EnemyMain_Whalekun_d : EnemyMain_d {
                 }
                 else
                 {
-                    enemyCtrl.isAttack = false;
                     if (isTarget)
                     {
                         isTarget = false;
@@ -95,7 +94,6 @@ public class EnemyMain_Whalekun_d : EnemyMain_d {
                 if (!isRotate)
                 {
                     isRotate = true;
-                    enemyCtrl.isAttack = true;
                     isStray = true;
                     isTarget = true;
                     enemyCtrl.ActionLookUp(player.transform.position);
