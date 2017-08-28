@@ -6,7 +6,7 @@ public class ThrowRock : MonoBehaviour {
 
 
     public GameObject Rock;
-    MeshCollider meshcollider;
+   // MeshCollider meshcollider;
 
 
 	void Update () {
@@ -15,7 +15,7 @@ public class ThrowRock : MonoBehaviour {
             Vector3 t3= GameObject.Find("Button_throw").transform.position;
             obj.transform.position = t3;
             obj.AddComponent<Rigidbody>();
-            obj.GetComponent<MeshCollider>().enabled = true;
+           // obj.GetComponent<MeshCollider>().enabled = true;
             Instantiate(obj);
         }	
 	}
