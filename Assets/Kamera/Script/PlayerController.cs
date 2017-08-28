@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour {
     Rigidbody rb;
     CameraMode cameraMode;
     public GameObject gameOverDesign;
-    public int HP = 2;
+    public int initHP = 2;
     public float movespeed = 0.2f;
     public float jumpPower = 20;
     public float jumpTime = 1.4f;
@@ -21,10 +21,40 @@ public class PlayerController : MonoBehaviour {
     Vector3 jumpCheck,moveNormal;
     [System.NonSerialized]public Animator animator;
     RaycastHit slideHit;
+
+    public static bool checkPointEnabled = false;
+    public static string checkPointSceneName = "";
+    public static string checkPointLabelName = "";
+    public static int HP = 0;
+    public static bool initParam = true;
+
+
     // Use this for initialization
     void Awake() {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+
+        if (initParam)
+        {
+            HP = initHP;
+            initParam = false;
+        }
+
+        if (checkPointEnabled)
+        {
+            StageTrigger_Link[] triggerList = GameObject.Find("StageTrigger").GetComponentsInChildren<StageTrigger_Link>();
+            foreach(StageTrigger_Link trigger in triggerList)
+            {
+                if(trigger.labelName == checkPointLabelName)
+                {
+                    Transform spot = trigger.transform.Find("Spot");
+                    transform.position = spot.position;
+                    transform.rotation = spot.rotation;
+                }
+            }
+        }
+
+        helthPointText.text = string.Format("{0}", HP);
     }
 
     void Start () {
@@ -139,7 +169,7 @@ public class PlayerController : MonoBehaviour {
     public void Damege() {
         HP--;
         Debug.Log("itai");
-        helthPointText.text = string.Format("{0}",HP);
+        helthPointText.text = string.Format("{0}", HP);
         if(HP == 0) {
             Death();
         }
