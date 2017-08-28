@@ -11,6 +11,7 @@ TagManager:
   - TargetEnemy
   - EnemyActionRange
   - Breakable
+  - PlayerSearch
   layers:
   - Default
   - TransparentFX
