@@ -80,7 +80,7 @@ public class EnemyMain_Whalekun_d : EnemyMain_d {
                     }
                     if (!enemyCtrl.tryLookUp)
                     {
-                        if (!enemyCtrl.ActionMoveToNear(enemyCtrl.target, 3.0f, 1.0f))
+                        if (!enemyCtrl.ActionMoveToNear(enemyCtrl.target, 3.0f, 0.0f))
                         {
                             isStray = false;
                             NextIndex();

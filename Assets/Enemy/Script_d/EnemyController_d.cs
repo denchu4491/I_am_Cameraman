@@ -81,11 +81,8 @@ public class EnemyController_d : MonoBehaviour {
 
     public void ActionMove(float accel)
     {
-        float speed = moveSpeed;
-
         if (accel != 0.0f) {
-            if (accel != 1.0f) speed = accel;
-            moveDirection = new Vector3(transform.forward.x, 0.0f, transform.forward.z) * speed;
+            moveDirection = new Vector3(transform.forward.x, 0.0f, transform.forward.z) * accel;
             animator.SetBool("Run", true);
         }
         else {
@@ -107,7 +104,7 @@ public class EnemyController_d : MonoBehaviour {
         Vector3 heading = go - from;
         if (heading.sqrMagnitude > near * near)
         {
-            ActionMove(speed);
+            ActionMove((speed > 0.0f) ? speed : moveSpeed);
             return true;
         }
         return false;

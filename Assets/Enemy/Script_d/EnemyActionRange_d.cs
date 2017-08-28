@@ -14,6 +14,11 @@ public class EnemyActionRange_d : MonoBehaviour {
             isDetectPlayer = true;
             //lookTarget = col.transform;
         }
+        if(col.tag == "PlayerSearch")
+        {
+            isDetectPlayer = true;
+            Invoke("DetectOff", 1.0f);
+        }
     }
 
     void OnTriggerExit(Collider col)
@@ -23,5 +28,10 @@ public class EnemyActionRange_d : MonoBehaviour {
             isDetectPlayer = false;
             //lookTarget = null;
         }
+    }
+
+    void DetectOff()
+    {
+        isDetectPlayer = false;
     }
 }

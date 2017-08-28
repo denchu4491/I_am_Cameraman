@@ -214,11 +214,6 @@ Prefab:
       propertyPath: enemyActionRange
       value: 
       objectReference: {fileID: 258790274}
-    - target: {fileID: 114155888455130416, guid: 7935dc6a3a346584b81528e2cb515bf4,
-        type: 2}
-      propertyPath: localGravityScale
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7935dc6a3a346584b81528e2cb515bf4, type: 2}
   m_IsPrefabParent: 0

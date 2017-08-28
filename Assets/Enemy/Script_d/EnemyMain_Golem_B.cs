@@ -9,6 +9,7 @@ public class EnemyMain_Golem_B : EnemyMain_d {
     private Vector3 firstPosition, rangeSize, rangeCenter, targetPoint;
     private float minX, maxX, minZ, maxZ;
     private bool isRotate, isNearTarget;
+    public GameObject fireObject;
 
     public override void Awake()
     {
@@ -34,6 +35,7 @@ public class EnemyMain_Golem_B : EnemyMain_d {
             case ENEMYAISTS.ACTIONSELECT:
                 isRotate = false;
                 isNearTarget = false;
+
                 if (enemyActionRange.isDetectPlayer)
                 {
                     SetAIState(ENEMYAISTS.ATTACKPLAYER, 10.0f);
@@ -48,6 +50,7 @@ public class EnemyMain_Golem_B : EnemyMain_d {
             case ENEMYAISTS.LOITER:
                 if (enemyActionRange.isDetectPlayer)
                 {
+                    isRotate = false;
                     enemyCtrl.ActionMove(0.0f);
                     SetAIState(ENEMYAISTS.ATTACKPLAYER, 10.0f);
                 }
@@ -62,7 +65,7 @@ public class EnemyMain_Golem_B : EnemyMain_d {
                     if (!enemyCtrl.tryLookUp)
                     {
                         if (Physics.Raycast(rayStart.position, transform.forward, 2.0f) ||
-                                !enemyCtrl.ActionMoveToNear(enemyCtrl.target, 2.0f, enemyCtrl.moveSpeed))
+                                !enemyCtrl.ActionMoveToNear(enemyCtrl.target, 2.0f, 0.0f))
                         {
                             SetAIState(ENEMYAISTS.WAIT, Random.Range(1.0f, 3.0f));
                         }
@@ -85,7 +88,7 @@ public class EnemyMain_Golem_B : EnemyMain_d {
                 {
                     if (isNearTarget)
                     {
-                        if (!enemyCtrl.ActionMoveToNear(enemyCtrl.target, 3.0f, attackMoveSpeed))
+                        if (!enemyCtrl.ActionMoveToNear(enemyCtrl.target, 5.0f, attackMoveSpeed))
                         {
                             Attack_A();
                         }
@@ -111,8 +114,11 @@ public class EnemyMain_Golem_B : EnemyMain_d {
     }
 
     public void Attack_B()
-    {
-        Debug.Log("Fire");
+    {   
+        Transform goFire = transform.Find("Muzzle");
+        GameObject go = Instantiate(fireObject, goFire.position, goFire.rotation
+                            /*(Quaternion.LookRotation(player.transform.position - goFire.position))*/ ) as GameObject;
+        go.GetComponent<FireBullet>().ownwer = transform;
         SetAIState(ENEMYAISTS.WAIT, attackWaitTime);
     }
 
