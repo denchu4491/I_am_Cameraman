@@ -53,7 +53,7 @@ public class PlayerBodyCollider : MonoBehaviour {
             }
             damegeFlash.enabled = true;
             damegeFlash.color = new Color(1.0f, 0.0f, 0.0f,0.8f);
-            Debug.Log(playerController.HP);
+            //Debug.Log(playerController.HP);
         } 
     }
     void OnCollisionEnter(Collision collision) {
@@ -70,7 +70,7 @@ public class PlayerBodyCollider : MonoBehaviour {
             }
             damegeFlash.enabled = true;
             damegeFlash.color = new Color(1.0f, 0.0f, 0.0f, 0.8f);
-            Debug.Log(playerController.HP);
+            //Debug.Log(playerController.HP);
         }
     }
 }
