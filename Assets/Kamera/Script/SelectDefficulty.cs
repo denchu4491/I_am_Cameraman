@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 public class SelectDefficulty : MonoBehaviour {
     private int stageNumber;
@@ -23,8 +24,10 @@ public class SelectDefficulty : MonoBehaviour {
     }
 
     void Start () {
-		
-	}
+        CameraMode.score = 0;
+        Timer.timeScore = 0;
+        if (File.Exists(Application.persistentDataPath + "\\takepicture.png")) File.Delete(Application.persistentDataPath + "\\takepicture.png");
+    }
 	
 	// Update is called once per frame
 	void Update () {

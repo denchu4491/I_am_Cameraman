@@ -22,7 +22,7 @@ public class Texture_hey : MonoBehaviour {
         
         image = this.GetComponent<Image>();
         path1 = Application.persistentDataPath;
-        if (File.Exists(path1 + "\\takepicture.png")) File.Delete(path1 + "\\takepicture.png");
+        //if (File.Exists(path1 + "\\takepicture.png")) File.Delete(path1 + "\\takepicture.png");
         if (File.Exists(path1 + "\\takepicture.png")) {
             
             texture = PngToTex2D(path1 + "\\takepicture.png");
@@ -32,7 +32,7 @@ public class Texture_hey : MonoBehaviour {
         } else {
             image.sprite = faildpic;
         }
-
+        
 
     }
     
