@@ -20,7 +20,7 @@ public class Texture_hey : MonoBehaviour {
         
         image = this.GetComponent<Image>();
         path1 = Application.persistentDataPath;
-        texture = PngToTex2D(Application.persistentDataPath + "\\takepicture.png");
+        texture = PngToTex2D(path1 + "\\takepicture.png");
         // Texture -> Spriteに変換する
         Sprite texture_sprite = Sprite.Create(texture, new Rect(0, 0, 1920, 1200), Vector2.zero);
         image.sprite = texture_sprite;
