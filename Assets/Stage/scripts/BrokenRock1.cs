@@ -14,7 +14,7 @@ public class BrokenRock1 : MonoBehaviour {
     
     Rigidbody rb2;
     Transform children2;
-    Collider collider1;
+    //Collider collider1;
     bool flag = false;
 
 
@@ -23,7 +23,7 @@ public class BrokenRock1 : MonoBehaviour {
 
         bigrock.SetActive(true);
         smallrocks.SetActive(false);
-        collider1 = GetComponent<Collider>();
+        //collider1 = GetComponent<Collider>();
       //  auodio.clip = souns;
         
     }
@@ -47,7 +47,12 @@ public class BrokenRock1 : MonoBehaviour {
         }
     }
 
-    void OnCollisionEnter(Collision collision) {
+    void OnTriggerEnter(Collider col) {
+        if(col.tag == "EnemyBody" || col.tag == "EnemyArm" || col.tag == "EnemyActionRange")
+        {
+            return;
+        }
+
         //煙生成、破壊
         GameObject SM;
         SM = Instantiate(smoke,gameObject.transform);
@@ -63,7 +68,7 @@ public class BrokenRock1 : MonoBehaviour {
         rb2.AddForce(UnityEngine.Random.onUnitSphere * power);
         rb2.AddForce(0, 100, 0);
         Destroy(smallrocks, 5f);
-        collider1.isTrigger = true;
+        //collider1.isTrigger = true;
 
     }
 

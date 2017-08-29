@@ -31,6 +31,7 @@ public class FireBullet : MonoBehaviour {
         Destroy(this.gameObject, lifeTime);
     }
 
+    /*
     void OnTriggerEnter(Collider other)
     {
         if(other.isTrigger ||
@@ -41,6 +42,7 @@ public class FireBullet : MonoBehaviour {
 
         Destroy(this.gameObject);
     }
+    */
 
     void Update()
     {

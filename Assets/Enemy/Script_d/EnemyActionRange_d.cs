@@ -6,6 +6,7 @@ public class EnemyActionRange_d : MonoBehaviour {
 
     //public Transform lookTarget;
     [System.NonSerialized] public bool isDetectPlayer = false;
+    [System.NonSerialized] public bool isShutterPlayer = false;
 
     void OnTriggerEnter(Collider col)
     {
@@ -16,8 +17,8 @@ public class EnemyActionRange_d : MonoBehaviour {
         }
         if(col.tag == "PlayerSearch")
         {
-            isDetectPlayer = true;
-            Invoke("DetectOff", 1.0f);
+            isShutterPlayer = true;
+            Invoke("DetectOff", 3.0f);
         }
     }
 
