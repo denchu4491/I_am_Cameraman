@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.UI;
+using UnityEditor;
 
 public class Texture_hey : MonoBehaviour {
 
 
     string path1;
     Image image;
-    Texture2D texture;
+    static Texture2D texture;
+    
 
 
     void Start () {
+
+       
         
         image = this.GetComponent<Image>();
         path1 = Application.persistentDataPath;
@@ -20,9 +24,17 @@ public class Texture_hey : MonoBehaviour {
         // Texture -> Spriteに変換する
         Sprite texture_sprite = Sprite.Create(texture, new Rect(0, 0, 1920, 1200), Vector2.zero);
         image.sprite = texture_sprite;
-        Savepng();
+        
 
 
+    }
+
+    static public void Save() {
+        
+            if(EditorUtility.DisplayDialog("撮影した写真を保存しますか？", "写真を保存したい場合は「はい」を、保存したくない場合は「いいえ」を選択して下さい", "はい", "いいえ")){
+                Savepng();
+            }
+        
     }
 
 
@@ -39,9 +51,21 @@ public class Texture_hey : MonoBehaviour {
         return texture;
     }
 
-    void Savepng() {
-        byte[] bytes = texture.EncodeToPNG();
-        File.WriteAllBytes("c",bytes);
+    static void Savepng() {
+
+        var filepath = EditorUtility.SaveFilePanel("Save as", "", "takepicture", "png");
+
+        if (!string.IsNullOrEmpty(filepath)) {
+            
+            //  ファイルの書き込み
+            byte[] bytes = texture.EncodeToPNG();
+            if (bytes != null) {
+                Debug.Log("Try to Write png ");
+                Debug.Log(@filepath);
+                File.WriteAllBytes(@filepath , bytes);
+                Debug.Log("Success Write png ");
+            } else Debug.Log("Save file failed");
+        }
     }
 
     
