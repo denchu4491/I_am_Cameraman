@@ -39,7 +39,6 @@ public class PlayerBodyCollider : MonoBehaviour {
         }
 	}
     void OnTriggerEnter(Collider collider) {
-        Debug.Log(collider.tag);
         if (collider.tag == "EnemyArm" && !Invincible) {
             playerController.Damege();
             playerController.DamegeMove(collider.transform.position,this.transform.position);

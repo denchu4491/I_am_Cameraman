@@ -97,7 +97,7 @@ public class CameraMode : MonoBehaviour {
             }
             if (takeFlash) {
                 decreaseFlash -= Time.deltaTime;
-                if(score < 60.0f) {
+                if(score < 30.0f) {
                     flash.color = new Color(1.0f, 1.0f, 1.0f, decreaseFlash);
                     if (decreaseFlash < 0) {
                         flash.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
@@ -107,7 +107,7 @@ public class CameraMode : MonoBehaviour {
                     }
                 }
                 
-                else if(score >= 60.0f) {
+                else if(score >= 30.0f) {
                     flash.color = new Color(1.0f, 1.0f, 0.0f, decreaseFlash);
                     if (decreaseFlash < 0) {
                         flash.color = new Color(1.0f, 1.0f, 0.0f, 0.0f);
@@ -151,7 +151,7 @@ public class CameraMode : MonoBehaviour {
 
     void CameraZoomUp() {
         if(firstPersonCamera.fieldOfView == 60) {
-            firstPersonCamera.fieldOfView = 10;
+            firstPersonCamera.fieldOfView = 30;
             zoomUp = true;
         } 
     }
@@ -187,25 +187,67 @@ public class CameraMode : MonoBehaviour {
         Ray ray = new Ray(firstPersonCamera.transform.position, firstPersonCamera.transform.forward);
         
         RaycastHit hitObj;
+        score = 0;
+        if (Physics.SphereCast(firstPersonCamera.transform.position + firstPersonCamera.transform.right * 1.0f, 1.0f, firstPersonCamera.transform.forward, out hitObj, 100.0f)) {
+            if (hitObj.collider.tag == "EnemyBody") {
+                float distance = Vector3.Distance(hitObj.transform.position, transform.position);
+                if (distance > 5 && zoomUp) {
+                    distance -= 5;
+                    if (distance <= 5) {
+                        distance = 7.0f;
+                    }
+                }
+                if (targetDistance - distance < 0) {
+                    score = 40 + (targetDistance - distance);
+                } else if (targetDistance - distance > 0) {
+                    score = 20;
+                }
+                Debug.Log(distance);
+                Debug.Log(score);
+            }
+        }
+
+        if (Physics.SphereCast(firstPersonCamera.transform.position + firstPersonCamera.transform.right * -1.0f, 1.0f, firstPersonCamera.transform.forward, out hitObj, 100.0f)) {
+            if (hitObj.collider.tag == "EnemyBody") {
+                float distance = Vector3.Distance(hitObj.transform.position, transform.position);
+                if (distance > 5 && zoomUp) {
+                    distance -= 5;
+                    if(distance <= 5) {
+                        distance = 7.0f;
+                    }
+                }
+                if (targetDistance - distance < 0) {
+                    score = 40 + (targetDistance - distance);
+                } else if (targetDistance - distance > 0) {
+                    score = 20;
+                }
+                Debug.Log(distance);
+                Debug.Log(score);
+            }
+        }
+
         if (Physics.SphereCast(ray,0.5f,out hitObj, 100.0f)) {
             if (hitObj.collider.tag == "EnemyBody") {
                 float distance = Vector3.Distance(hitObj.transform.position, transform.position);
-                if(targetDistance - distance < 0) {
-                    score = 100 + (targetDistance - distance);
-                } else {
-                    score = 100 - (targetDistance - distance);
+                if (distance > 5 && zoomUp) {
+                    distance -= 5;
+                    if (distance <= 5) {
+                        distance = 7.0f;
+                    }
                 }
-
+                if (targetDistance - distance < 0) {
+                    score = 50 + (targetDistance - distance);
+                }
+                else if(targetDistance - distance > 0){
+                    score = 20;
+                }
                 Debug.Log(distance);
                 Debug.Log(score);
-                Debug.Log(hitObj.collider.tag);
-            } else {
-                score = 0;
             }
-        } else {
+        }
+        if(score <= 0) {
             score = 0;
         }
-
     }
 
 }

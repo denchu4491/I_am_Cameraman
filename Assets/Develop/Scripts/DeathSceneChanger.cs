@@ -5,8 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class DeathSceneChanger : MonoBehaviour {
     public string retrySceneName;
-	// Use this for initialization
-	void Start () {
+    private PlayerController playercontroller;
+    // Use this for initialization
+    void Awake() {
+        playercontroller = GetComponent<PlayerController>();
+    }
+
+    void Start () {
 		
 	}
 	
@@ -16,6 +21,7 @@ public class DeathSceneChanger : MonoBehaviour {
             SceneManager.LoadScene(retrySceneName);
         }
         else if (Input.GetKeyDown("x")) {
+            playercontroller.deathStop = false;
             SceneManager.LoadScene("Start");
         }
     }
