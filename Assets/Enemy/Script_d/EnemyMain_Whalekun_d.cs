@@ -31,7 +31,7 @@ public class EnemyMain_Whalekun_d : EnemyMain_d {
         {
             case ENEMYAISTS.ACTIONSELECT:
                 isRotate = false;
-                if (enemyActionRange.isDetectPlayer && canAttack)
+                if ((enemyActionRange.isDetectPlayer || enemyActionRange.isShutterPlayer) && canAttack)
                 {
                     if (RayCheck(rayStart.position, 30.0f))
                     {
@@ -57,7 +57,7 @@ public class EnemyMain_Whalekun_d : EnemyMain_d {
                 break;
 
             case ENEMYAISTS.LOITER:
-                if (enemyActionRange.isDetectPlayer && canAttack)
+                if ((enemyActionRange.isDetectPlayer || enemyActionRange.isShutterPlayer) && canAttack)
                 {
                     if (RayCheck(rayStart.position, 30.0f))
                     {

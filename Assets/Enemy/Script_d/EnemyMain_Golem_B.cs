@@ -6,7 +6,7 @@ public class EnemyMain_Golem_B : EnemyMain_d {
 
     public EnemyActionRange_d enemyActionRange;
     public float attackMoveSpeed, attackWaitTime, nearAttackRange;
-    private Vector3 firstPosition, rangeSize, rangeCenter, targetPoint;
+    private Vector3 /*firstPosition,*/ rangeSize, rangeCenter, targetPoint;
     private float minX, maxX, minZ, maxZ;
     private bool isRotate, isNearTarget;
     public GameObject fireObject;
@@ -17,7 +17,7 @@ public class EnemyMain_Golem_B : EnemyMain_d {
 
         rangeSize = enemyActionRange.GetComponent<BoxCollider>().size;
         rangeCenter = enemyActionRange.transform.position;
-        firstPosition = transform.position;
+        //firstPosition = transform.position;
     }
 
     public override void Start()
