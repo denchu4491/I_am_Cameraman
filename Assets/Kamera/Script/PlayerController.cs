@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour {
     float moveZ;
     public Image helthImage;
     public Text helthPointText;
-    [System.NonSerialized]public bool deathStop,isSliding,isJump,isBack,isRun,moveController = true,isGround,isJumping = false;
+    [System.NonSerialized]public bool deathStop,isSliding,isJump,isBack,moveController = true,isGround,isJumping = false;
     Vector3 jumpCheck,moveNormal;
     [System.NonSerialized]public Animator animator;
     RaycastHit slideHit;
@@ -32,7 +32,6 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         moveZ = 0;
-        isRun = false;
         isBack = false;
         animator.SetBool("Run", false);
         animator.SetBool("Jump", false);
@@ -46,7 +45,7 @@ public class PlayerController : MonoBehaviour {
             isGround = false;
         }
 
-        if(Physics.Raycast(transform.position + new Vector3(0.0f,0.3f,0.0f),Vector3.down,out slideHit)) {
+        if(Physics.Raycast(transform.position + new Vector3(0.0f,0.3f,0.0f),Vector3.down,out slideHit) && isGround) {
             if(Vector3.Angle(slideHit.normal,Vector3.up) > 65.0f) {
                 isSliding = true;
             } else {
@@ -77,9 +76,8 @@ public class PlayerController : MonoBehaviour {
                 isJump = true;
                 isJumping = true;
                 animator.SetBool("Jump", true);
-                if (isRun == false) {
-                    animator.SetBool("IdleJump", true);
-                } 
+                animator.SetBool("IdleJump", true);
+                
             }
         }
         if (isJumping) {

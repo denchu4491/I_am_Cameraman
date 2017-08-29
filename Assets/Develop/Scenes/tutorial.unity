@@ -636,6 +636,16 @@ Prefab:
       propertyPath: helthPointText
       value: 
       objectReference: {fileID: 661989784}
+    - target: {fileID: 114756693285104152, guid: deea502c739ff8d4cac8d6307676164f,
+        type: 2}
+      propertyPath: targetDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114972411675641578, guid: deea502c739ff8d4cac8d6307676164f,
+        type: 2}
+      propertyPath: retrySceneName
+      value: tutorial
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: deea502c739ff8d4cac8d6307676164f, type: 2}
   m_IsPrefabParent: 0
@@ -2158,6 +2168,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameTime: 1000
+  timeScore: 0
+  GameOver: {fileID: 0}
 --- !u!114 &1775856756
 MonoBehaviour:
   m_ObjectHideFlags: 0

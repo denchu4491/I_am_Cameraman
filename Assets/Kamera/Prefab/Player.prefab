@@ -5367,7 +5367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitychan: {fileID: 1006563784854698}
-  targetDistance: 15
+  targetDistance: 5
   score: 0
   firstPersonCamera: {fileID: 20846444659925846}
   thirdPersonCamera: {fileID: 20650449368252832}

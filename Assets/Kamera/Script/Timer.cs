@@ -5,7 +5,10 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour {
     public float gameTime;
+    public float timeScore;
+    public GameObject GameOver;
     private bool playingGame;
+    private PlayerController playercontroller;
     void Awake() {
         
     }
@@ -32,5 +35,9 @@ public class Timer : MonoBehaviour {
     void GameFinish() {
         Debug.Log("END");
         //シーン飛ばしそう
+        GameOver.SetActive(true);
+        GameObject.Find("Player").GetComponent<DeathSceneChanger>().enabled = true;
+        playercontroller = GameObject.Find("Player").GetComponent<PlayerController>();
+        playercontroller.deathStop = true;
     }
 }
