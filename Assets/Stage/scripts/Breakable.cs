@@ -5,8 +5,14 @@ using UnityEngine;
 // --- 壊せるオブジェクトに付ける Breakable スクリプト -------------------------
 public class Breakable : MonoBehaviour {
 
-    float force = 500f;             // 壊れるときに（爆発的に）かかる力
+    float force = 5000f;             // 壊れるときに（爆発的に）かかる力
 
+    public GameObject obj;
+
+
+    void Update() {
+       
+    }
 
     // --- 壊れる処理。子オブジェクトを取得してそれぞれ ExplodePart させる ------
     public void Break() {
@@ -23,8 +29,8 @@ public class Breakable : MonoBehaviour {
         Rigidbody rb = part.gameObject.AddComponent<Rigidbody>();
         rb.isKinematic = false;
         rb.useGravity = true;
-        rb.AddExplosionForce(force, Vector3.zero, 0f);
-        Destroy(part.gameObject, 10f);
+        rb.AddExplosionForce(force, new Vector3(0,100,0), 0f);
+        Destroy(part.gameObject, 5f);
     }
 
 
