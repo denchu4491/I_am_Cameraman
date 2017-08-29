@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class DeathSceneChanger : MonoBehaviour {
     public string retrySceneName;
     private PlayerController playercontroller;
+
     // Use this for initialization
     void Awake() {
         playercontroller = GetComponent<PlayerController>();

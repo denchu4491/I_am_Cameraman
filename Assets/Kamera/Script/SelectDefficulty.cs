@@ -15,6 +15,7 @@ public class SelectDefficulty : MonoBehaviour {
     public string[] sceneName = new string[3];
     public Image[] selectImage = new Image[3];
     public Text[] explanatoryText = new Text[3];
+    public AudioSource audio;
     // Use this for initialization
     void Awake() {
         stageNumber = 2;
@@ -32,16 +33,19 @@ public class SelectDefficulty : MonoBehaviour {
                 stageNumber++;
                 selectMove = true;
                 right = true;
+                audio.Play();
             }
             if (Input.GetKeyDown("left") && stageNumber > 1 && !selectMove) {
                 stageNumber--;
                 selectMove = true;
                 left = true;
+                audio.Play();
             }
             if (Input.GetKeyDown("x") && !selectMove) {
                 deside = true;
                 desideMove = true;
                 select = false;
+                audio.Play();
                 Deside(stageNumber);
                 explanatoryText[stageNumber - 1].enabled = true;
                 operationText.enabled = false;

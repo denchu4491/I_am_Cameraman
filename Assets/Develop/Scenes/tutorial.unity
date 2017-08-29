@@ -646,9 +646,41 @@ Prefab:
       propertyPath: retrySceneName
       value: tutorial
       objectReference: {fileID: 0}
+    - target: {fileID: 82958172147607340, guid: deea502c739ff8d4cac8d6307676164f,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 389ca03533f66654ca0eab219d41f4db, type: 3}
+    - target: {fileID: 82958172147607340, guid: deea502c739ff8d4cac8d6307676164f,
+        type: 2}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 82958172147607340, guid: deea502c739ff8d4cac8d6307676164f,
+        type: 2}
+      propertyPath: MaxDistance
+      value: 113.53296
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: deea502c739ff8d4cac8d6307676164f, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &460896889 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1006563784854698, guid: deea502c739ff8d4cac8d6307676164f,
+    type: 2}
+  m_PrefabInternal: {fileID: 460896888}
+--- !u!114 &460896890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 460896889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 465d356d10f808b4793e8e050798ccf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgm: {fileID: 8300000, guid: 389ca03533f66654ca0eab219d41f4db, type: 3}
 --- !u!1 &493821863
 GameObject:
   m_ObjectHideFlags: 0
@@ -2168,7 +2200,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameTime: 1000
-  timeScore: 0
   GameOver: {fileID: 0}
 --- !u!114 &1775856756
 MonoBehaviour:

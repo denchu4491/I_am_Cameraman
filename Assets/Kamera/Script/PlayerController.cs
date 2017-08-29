@@ -21,6 +21,10 @@ public class PlayerController : MonoBehaviour {
     Vector3 jumpCheck,moveNormal;
     [System.NonSerialized]public Animator animator;
     RaycastHit slideHit;
+    public AudioSource audioSource;
+    public AudioClip[] audioClip;
+    public AudioSource deathSource;
+    public AudioClip deathClip;
 
     public static bool checkPointEnabled = false;
     public static string checkPointSceneName = "";
@@ -62,8 +66,6 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         moveZ = 0;
-        isRun = false;
-        isBack = false;
         animator.SetBool("Run", false);
         animator.SetBool("Jump", false);
         animator.SetBool("Back", false);
@@ -87,12 +89,29 @@ public class PlayerController : MonoBehaviour {
         if (moveController && !deathStop) {
             if (Input.GetKey("up")) {
                 animator.SetBool("Run", true);
+                if (!isRun) {
+                    audioSource.clip = audioClip[0];
+                    audioSource.Play();
+                }
+                isRun = true;
                 moveZ += 1;
+            } else {
+                isRun = false;
             }
             if (Input.GetKey("down")) {
                 animator.SetBool("Back", true);
                 moveZ -= 1 * 0.5f;
+                if (!isBack) {
+                    audioSource.clip = audioClip[1];
+                    audioSource.Play();
+                }
                 isBack = true;
+            }
+            else {
+                isBack = false;
+            }
+            if(!isBack && !isRun) {
+                audioSource.Stop();
             }
             if (Input.GetKey("right")) {
                 transform.Rotate(new Vector3(0f, 90 * Time.deltaTime, 0f));
@@ -127,6 +146,9 @@ public class PlayerController : MonoBehaviour {
                 waitDeathAnimation = 0.0f;
                 gameOverDesign.SetActive(true);
                 GetComponent<DeathSceneChanger>().enabled = true;
+                audioSource.Stop();
+                deathSource.clip = deathClip;
+                deathSource.Play();
                 GetComponent<CameraMode>().enabled = false;
                 GetComponent<PlayerController>().enabled = false;
             }

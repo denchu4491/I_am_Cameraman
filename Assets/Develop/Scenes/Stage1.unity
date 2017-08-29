@@ -586,7 +586,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4276816084674758, guid: deea502c739ff8d4cac8d6307676164f, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 591.97
+      value: 592.97
       objectReference: {fileID: 0}
     - target: {fileID: 4276816084674758, guid: deea502c739ff8d4cac8d6307676164f, type: 2}
       propertyPath: m_LocalPosition.y
@@ -594,7 +594,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4276816084674758, guid: deea502c739ff8d4cac8d6307676164f, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 261.7
+      value: 268.27
       objectReference: {fileID: 0}
     - target: {fileID: 4276816084674758, guid: deea502c739ff8d4cac8d6307676164f, type: 2}
       propertyPath: m_LocalRotation.x
@@ -616,10 +616,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 16
       objectReference: {fileID: 0}
-    - target: {fileID: 4276816084674758, guid: deea502c739ff8d4cac8d6307676164f, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -87.87601
-      objectReference: {fileID: 0}
+    - target: {fileID: 114511262105672022, guid: deea502c739ff8d4cac8d6307676164f,
+        type: 2}
+      propertyPath: gameOverDesign
+      value: 
+      objectReference: {fileID: 328411570}
     - target: {fileID: 114511262105672022, guid: deea502c739ff8d4cac8d6307676164f,
         type: 2}
       propertyPath: helthImage
@@ -630,31 +631,6 @@ Prefab:
       propertyPath: helthPointText
       value: 
       objectReference: {fileID: 1888302276}
-    - target: {fileID: 114511262105672022, guid: deea502c739ff8d4cac8d6307676164f,
-        type: 2}
-      propertyPath: gameOverDesign
-      value: 
-      objectReference: {fileID: 328411570}
-    - target: {fileID: 114972411675641578, guid: deea502c739ff8d4cac8d6307676164f,
-        type: 2}
-      propertyPath: retrySceneName
-      value: Stage1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114756693285104152, guid: deea502c739ff8d4cac8d6307676164f,
-        type: 2}
-      propertyPath: targetDistance
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114511262105672022, guid: deea502c739ff8d4cac8d6307676164f,
-        type: 2}
-      propertyPath: movespeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114511262105672022, guid: deea502c739ff8d4cac8d6307676164f,
-        type: 2}
-      propertyPath: jumpPower
-      value: 6
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: deea502c739ff8d4cac8d6307676164f, type: 2}
   m_IsPrefabParent: 0

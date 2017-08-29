@@ -29,8 +29,8 @@ public class CameraMode : MonoBehaviour {
         boolInvincible = GetComponent<PlayerBodyCollider>();
         flash = GameObject.Find("Flash").GetComponent<Image>();
         cameraFrame = GameObject.Find("CameraFrame").GetComponent<Image>();
-        audioSource = GetComponent<AudioSource>();
-        audioSource.clip = shutterSound;
+        
+        
     }
 
     void Start () {
