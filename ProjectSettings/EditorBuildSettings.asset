@@ -38,3 +38,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Develop/Scenes/GameClear.unity
     guid: 0069b479c32043f42bb6064110fa91e1
+  - enabled: 1
+    path: Assets/Enemy/Scene_d/Release2-0.unity
+    guid: 82f6923f923f4b54ab6d2d4b83ee2386
+  - enabled: 1
+    path: Assets/Enemy/Scene_d/Release2-1.unity
+    guid: 9b582ae70db9047408264ef6ac1e6206
+  - enabled: 1
+    path: Assets/Enemy/Scene_d/Release2-2.unity
+    guid: 00000000000000000000000000000000

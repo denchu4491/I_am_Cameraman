@@ -15,6 +15,7 @@ public class EnemyMain_d : MonoBehaviour {
     [System.NonSerialized] public ENEMYAISTS aiState = ENEMYAISTS.ACTIONSELECT;
     protected EnemyController_d enemyCtrl;
     protected GameObject player;
+    protected PlayerController playerCtrl;
     protected Transform rayStart;
     protected float aiActionTimeLength = 0.0f;
     protected float aiActionTimeStart = 0.0f;
@@ -23,6 +24,7 @@ public class EnemyMain_d : MonoBehaviour {
     {
         enemyCtrl = GetComponent<EnemyController_d>();
         player = GameObject.Find("Player");
+        playerCtrl = player.GetComponent<PlayerController>();
         rayStart = transform.Find("RayStart");
     }
 
@@ -53,6 +55,13 @@ public class EnemyMain_d : MonoBehaviour {
     public bool BeginEnemyCommonWork()
     {
         enemyCtrl.animator.enabled = true;
+
+        if (playerCtrl.deathStop)
+        {
+            enemyCtrl.ActionMove(0.0f);
+            return false;
+        }
+
         if (!CheckAction())
         {
             return false;

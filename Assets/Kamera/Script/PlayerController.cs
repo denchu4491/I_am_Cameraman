@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour {
     float moveZ;
     public Image helthImage;
     public Text helthPointText;
-    [System.NonSerialized]public bool deathStop,isSliding,isJump,isBack,isRun,moveController = true,isGround,isJumping = false;
+    [System.NonSerialized]public bool deathStop = false,isSliding,isJump,isBack,isRun,moveController = true,isGround,isJumping = false;
     Vector3 jumpCheck,moveNormal;
     [System.NonSerialized]public Animator animator;
     RaycastHit slideHit;
@@ -170,7 +170,7 @@ public class PlayerController : MonoBehaviour {
         HP--;
         Debug.Log("itai");
         helthPointText.text = string.Format("{0}", HP);
-        if(HP == 0) {
+        if(HP <= 0) {
             Death();
         }
     }

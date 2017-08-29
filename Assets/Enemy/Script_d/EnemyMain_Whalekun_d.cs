@@ -120,16 +120,18 @@ public class EnemyMain_Whalekun_d : EnemyMain_d {
     {
         if(index == 0 && direction == 1)
         {
+            int next;
             direction = 0;
-            if (goloop1) loop = 1;
+            if (goloop1) next = 1;
             else
             {
-                int next = Random.Range(0, 2);
-                if(loop != next)
-                {
-                    loop = next;
-                    index = -1;
-                }
+                next = Random.Range(0, 2);
+            }
+
+            if (loop != next)
+            {
+                loop = next;
+                index = -1;
             }
         }
 
@@ -142,9 +144,10 @@ public class EnemyMain_Whalekun_d : EnemyMain_d {
             case 1:
                 if (direction == 0)
                 {
-                    if (++index == wayPointList[loop].Length - 1) direction = 1;
+                    if (index == wayPointList[loop].Length - 1) direction = 1;
+                    else index++;
                 }
-                else if (direction == 1) index--;
+                if (direction == 1) index--;
                 break;
         }
     }
