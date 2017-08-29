@@ -177,6 +177,7 @@ public class CameraMode : MonoBehaviour {
 
         string filename = "takepicture.png";
         File.WriteAllBytes(Application.persistentDataPath + "/" + filename, bytes);
+
     }
 
     void TakePicture() {
