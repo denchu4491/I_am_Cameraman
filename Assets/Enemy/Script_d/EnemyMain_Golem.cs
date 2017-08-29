@@ -6,7 +6,7 @@ public class EnemyMain_Golem : EnemyMain_d{
 
     private EnemyBodyCollider enemyBodyCol;
     private EnemyActionRange_d enemyActionRange;
-    public float attackMoveSpeed, attackWaitTime = 1.0f;
+    public float attackMoveSpeed, attackWaitTime = 1.0f, attackRange = 40.0f;
     private Vector3 firstPosition, rangeSize, rangeCenter, targetPoint;
     private float minX, maxX, minZ, maxZ;
     private bool isRotate;
@@ -39,9 +39,12 @@ public class EnemyMain_Golem : EnemyMain_d{
                 isRotate = false;
                 if (enemyBodyCol.isActionRangeEnter && enemyActionRange.isDetectPlayer)
                 {
-                    SetAIState(ENEMYAISTS.ATTACKPLAYER, -1.0f);
+                    if (RayCheck(rayStart.position, attackRange))
+                    {
+                        SetAIState(ENEMYAISTS.ATTACKPLAYER, 10.0f);
+                    }
                 }
-                else
+                if(aiState != ENEMYAISTS.ATTACKPLAYER)
                 {
                     SetAIState(ENEMYAISTS.LOITER, 10.0f);
                 }
@@ -51,10 +54,13 @@ public class EnemyMain_Golem : EnemyMain_d{
             case ENEMYAISTS.LOITER:
                 if (enemyBodyCol.isActionRangeEnter && enemyActionRange.isDetectPlayer)
                 {
-                    enemyCtrl.ActionMove(0.0f);
-                    SetAIState(ENEMYAISTS.ATTACKPLAYER, -1.0f);
+                    if (RayCheck(rayStart.position, attackRange))
+                    {
+                        enemyCtrl.ActionMove(0.0f);
+                        SetAIState(ENEMYAISTS.ATTACKPLAYER, 10.0f);
+                    }
                 }
-                else
+                if(aiState != ENEMYAISTS.ATTACKPLAYER)
                 {
                     if (!isRotate)
                     {
