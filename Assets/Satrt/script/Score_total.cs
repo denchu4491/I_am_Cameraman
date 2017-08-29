@@ -5,14 +5,22 @@ public class Score_total : MonoBehaviour {
 
     private float total;
     public Text text;
+    bool flag;
 	
     //トータルのスコアを反映
     //※StartではうまくいかなかったのでUpdateで行います
-	void Update () {
-        total = Score_picture.picture_p + Score_time.sum;
+    void Start() {
+        flag = false;
         text = GetComponent<Text>();
-        text.text = total.ToString("#");
+    }
 
+	void Update () {
+        if (flag == false) {
+            flag = true;
+            total = Score_picture.picture_p + Score_time.sum;
+            text.text = total.ToString("0");
+            RankingScore.Judge(total);
+        }
     }
 
   

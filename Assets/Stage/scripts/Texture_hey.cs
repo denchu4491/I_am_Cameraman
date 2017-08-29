@@ -11,6 +11,7 @@ public class Texture_hey : MonoBehaviour {
 
     string path1;
     Image image;
+    public Sprite faildpic;
     static Texture2D texture;
     
 
@@ -21,11 +22,16 @@ public class Texture_hey : MonoBehaviour {
         
         image = this.GetComponent<Image>();
         path1 = Application.persistentDataPath;
-        texture = PngToTex2D(path1 + "\\takepicture.png");
-        // Texture -> Spriteに変換する
-        Sprite texture_sprite = Sprite.Create(texture, new Rect(0, 0, Screen.width, Screen.height), Vector2.zero);
-        image.sprite = texture_sprite;
-        
+        if (File.Exists(path1 + "\\takepicture.png")) File.Delete(path1 + "\\takepicture.png");
+        if (File.Exists(path1 + "\\takepicture.png")) {
+            
+            texture = PngToTex2D(path1 + "\\takepicture.png");
+            // Texture -> Spriteに変換する
+            Sprite texture_sprite = Sprite.Create(texture, new Rect(0, 0, Screen.width, Screen.height), Vector2.zero);
+            image.sprite = texture_sprite;
+        } else {
+            image.sprite = faildpic;
+        }
 
 
     }

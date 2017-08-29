@@ -10,7 +10,7 @@ public class Score_time : MonoBehaviour {
 	void Start () {
         text = GetComponent<Text>();
         sum = Timer.timeScore;
-        text.text = sum.ToString("#");
+        text.text = sum.ToString("0");
     }
 
 }

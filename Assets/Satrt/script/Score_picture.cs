@@ -13,7 +13,7 @@ public class Score_picture : MonoBehaviour {
         
         text = GetComponent<Text>();
         picture_p = pictureScore * per;
-        text.text = picture_p.ToString("#");
+        text.text = picture_p.ToString("0");
     }
 
    
