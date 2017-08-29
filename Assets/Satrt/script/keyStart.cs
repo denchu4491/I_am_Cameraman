@@ -17,7 +17,7 @@ public class keyStart : MonoBehaviour {
 
         } else if (Input.GetKeyDown(KeyCode.X)) {
             //X入力でチュートリアルスタート
-            SceneManager.LoadScene("Tutorial");
+            SceneManager.LoadScene("tutorial");
         
         }else if (Input.GetKeyDown(KeyCode.C)) {
             //C入力でゲーム終了

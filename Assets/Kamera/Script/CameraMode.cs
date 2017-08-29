@@ -8,7 +8,8 @@ public class CameraMode : MonoBehaviour {
     public GameObject unitychan;
     [System.NonSerialized]public bool boolCameraMode = false, takeFlash = false,zoomUp;
     [System.NonSerialized]public float decreaseFlash = 0.8f,scoreFlashColor;
-    public float targetDistance,score;
+    public float targetDistance;
+    public static float score;
     private Animator animator;
     public Camera firstPersonCamera;
     public Camera thirdPersonCamera;

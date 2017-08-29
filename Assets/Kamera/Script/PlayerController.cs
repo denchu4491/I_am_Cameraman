@@ -154,13 +154,11 @@ public class PlayerController : MonoBehaviour {
         rb.velocity = new Vector3(rb.velocity.x, jumpPower, rb.velocity.z);
     }
     void Slide() {
-        Debug.Log("ZURETERU");
         moveNormal = slideHit.normal;
         rb.velocity = new Vector3(moveNormal.x,rb.velocity.y,moveNormal.z);
     }
 
     public void DamegeMove(Vector3 playerPosition,Vector3 targetPosition) {
-        Debug.Log("tobeeeeeeeeeeeeeeeeee");
         float damegeMoveX = targetPosition.x - playerPosition.x;
         float damegeMoveZ = targetPosition.z - playerPosition.z;
         rb.AddForce(damegeMoveX * 200.0f, 0.0f, damegeMoveZ * 200.0f,ForceMode.VelocityChange);
@@ -168,7 +166,6 @@ public class PlayerController : MonoBehaviour {
 
     public void Damege() {
         HP--;
-        Debug.Log("itai");
         helthPointText.text = string.Format("{0}", HP);
         if(HP <= 0) {
             Death();
@@ -179,7 +176,6 @@ public class PlayerController : MonoBehaviour {
         death = true;
         animator.SetBool("Death",true);
         deathStop = true;
-        Debug.Log("owarei");
     }
 
 }

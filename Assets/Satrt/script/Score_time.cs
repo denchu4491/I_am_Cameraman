@@ -9,7 +9,7 @@ public class Score_time : MonoBehaviour {
     //値を受け取って、タイムのスコアを取得し反映
 	void Start () {
         text = GetComponent<Text>();
-        sum = 333;
+        sum = Timer.timeScore;
         text.text = sum.ToString("#");
     }
 

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneChanger : MonoBehaviour {
     public string selestScene;
     public GameObject SceneChangerMessage;
-    public Timer timer;
+    private Timer timer;
 
     // Use this for initialization
     void Awake() {
@@ -26,7 +26,7 @@ public class SceneChanger : MonoBehaviour {
         if (collision.tag == "Player") {
             SceneChangerMessage.SetActive(true);
             if (Input.GetKeyDown("x")) {
-                timer.timeScore = timer.gameTime / 10;
+                Timer.timeScore = timer.gameTime;
                 SceneManager.LoadScene(selestScene);
             }
         }

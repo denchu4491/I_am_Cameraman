@@ -18,6 +18,7 @@ public class DeathSceneChanger : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (Input.GetKeyDown("z")) {
+            PlayerController.HP = 2;
             SceneManager.LoadScene(retrySceneName);
         }
         else if (Input.GetKeyDown("x")) {

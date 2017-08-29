@@ -648,12 +648,12 @@ Prefab:
     - target: {fileID: 114511262105672022, guid: deea502c739ff8d4cac8d6307676164f,
         type: 2}
       propertyPath: movespeed
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114511262105672022, guid: deea502c739ff8d4cac8d6307676164f,
         type: 2}
       propertyPath: jumpPower
-      value: 60
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: deea502c739ff8d4cac8d6307676164f, type: 2}
@@ -1388,6 +1388,11 @@ Prefab:
       propertyPath: SceneChangerMessage
       value: 
       objectReference: {fileID: 1966909922}
+    - target: {fileID: 114501935343293456, guid: f6c795cd1c20fce46a3b5578ad039326,
+        type: 2}
+      propertyPath: selestScene
+      value: Score
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f6c795cd1c20fce46a3b5578ad039326, type: 2}
   m_IsPrefabParent: 0

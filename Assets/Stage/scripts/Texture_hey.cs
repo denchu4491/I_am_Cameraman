@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.UI;
+#if UNITY_EDITOR
 using UnityEditor;
-
+#endif
 public class Texture_hey : MonoBehaviour {
 
 
@@ -28,13 +29,13 @@ public class Texture_hey : MonoBehaviour {
 
 
     }
-
+    
     static public void Save() {
-        
-            if(EditorUtility.DisplayDialog("撮影した写真を保存しますか？", "写真を保存したい場合は「はい」を、保存したくない場合は「いいえ」を選択して下さい", "はい", "いいえ")){
+#if UNITY_EDITOR
+        if(EditorUtility.DisplayDialog("撮影した写真を保存しますか？", "写真を保存したい場合は「はい」を、保存したくない場合は「いいえ」を選択して下さい", "はい", "いいえ")){
                 Savepng();
             }
-        
+#endif
     }
 
 
@@ -52,7 +53,7 @@ public class Texture_hey : MonoBehaviour {
     }
 
     static void Savepng() {
-
+#if UNITY_EDITOR
         var filepath = EditorUtility.SaveFilePanel("Save as", "", "takepicture", "png");
 
         if (!string.IsNullOrEmpty(filepath)) {
@@ -66,7 +67,8 @@ public class Texture_hey : MonoBehaviour {
                 Debug.Log("Success Write png ");
             } else Debug.Log("Save file failed");
         }
+#endif
     }
 
-    
+
 }
