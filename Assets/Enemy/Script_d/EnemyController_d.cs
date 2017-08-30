@@ -15,6 +15,7 @@ public class EnemyController_d : MonoBehaviour {
     private Quaternion rotationPrev;
     private float attackTimeStart, attackTimeLength;
     private Transform groundCheck;
+    private bool isSetLocalGravity;
     //private Transform rayStart;
 
     public readonly static int ANISTS_Idle = Animator.StringToHash("Base Layer.Idle");
@@ -37,12 +38,16 @@ public class EnemyController_d : MonoBehaviour {
         {
             //Debug.Log("hoge");
             // 浮いてる時の重力
+            isSetLocalGravity = true;
             SetLocalGravity();
         }
         else
         {
             //通常の重力
-            rigidbodyE.velocity = new Vector3(rigidbodyE.velocity.x, 0, rigidbodyE.velocity.z);
+            if (isSetLocalGravity) {
+                isSetLocalGravity = false;
+                rigidbodyE.velocity = new Vector3(rigidbodyE.velocity.x, 0, rigidbodyE.velocity.z);
+            }
             rigidbodyE.AddForce(Physics.gravity, ForceMode.Acceleration);
         }
 

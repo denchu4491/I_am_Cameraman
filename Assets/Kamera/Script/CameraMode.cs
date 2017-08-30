@@ -191,7 +191,7 @@ public class CameraMode : MonoBehaviour {
         RaycastHit hitObj;
         score = 0;
         if (Physics.SphereCast(firstPersonCamera.transform.position + firstPersonCamera.transform.right * 1.0f, 1.0f, firstPersonCamera.transform.forward, out hitObj, 100.0f)) {
-            if (hitObj.collider.tag == "EnemyBody") {
+            if (hitObj.collider.tag == "EnemyBody" && hitObj.collider.transform.parent.tag == "TargetEnemy") {
                 float distance = Vector3.Distance(hitObj.transform.position, transform.position);
                 if (distance > 5 && zoomUp) {
                     distance -= 5;
@@ -210,7 +210,7 @@ public class CameraMode : MonoBehaviour {
         }
 
         if (Physics.SphereCast(firstPersonCamera.transform.position + firstPersonCamera.transform.right * -1.0f, 1.0f, firstPersonCamera.transform.forward, out hitObj, 100.0f)) {
-            if (hitObj.collider.tag == "EnemyBody") {
+            if (hitObj.collider.tag == "EnemyBody" && hitObj.collider.transform.parent.tag == "TargetEnemy") {
                 float distance = Vector3.Distance(hitObj.transform.position, transform.position);
                 if (distance > 5 && zoomUp) {
                     distance -= 5;
@@ -229,7 +229,7 @@ public class CameraMode : MonoBehaviour {
         }
 
         if (Physics.SphereCast(ray,0.5f,out hitObj, 100.0f)) {
-            if (hitObj.collider.tag == "EnemyBody") {
+            if (hitObj.collider.tag == "EnemyBody" && hitObj.collider.transform.parent.tag == "TargetEnemy") {
                 float distance = Vector3.Distance(hitObj.transform.position, transform.position);
                 if (distance > 5 && zoomUp) {
                     distance -= 5;
