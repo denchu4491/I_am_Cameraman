@@ -14,8 +14,10 @@ public class DeathSceneChanger : MonoBehaviour {
     }
 
     void Start () {
+        PlayerController.initParam = true;
         CameraMode.score = 0;
         Timer.timeScore=0;
+        Timer.gameTime = 1000;
         if (File.Exists(Application.persistentDataPath + "\\takepicture.png")) File.Delete(Application.persistentDataPath + "\\takepicture.png");
 
     }

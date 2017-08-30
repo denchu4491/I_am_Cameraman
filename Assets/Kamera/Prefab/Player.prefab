@@ -5920,7 +5920,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverDesign: {fileID: 0}
-  initHP: 2
+  initHP: 3
   movespeed: 10
   jumpPower: 6
   jumpTime: 1.5

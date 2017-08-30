@@ -218,6 +218,16 @@ Prefab:
       propertyPath: m_Text
       value: "\u30B2\u30FC\u30E0\u3092\u7D42\u4E86\u3057\u307E\u3059\u304B\uFF1F\n\n\u306F\u3044\u3000\uFF1Ax\u30AD\u30FC"
       objectReference: {fileID: 0}
+    - target: {fileID: 114005064230804602, guid: 527a04f4929b132439cc3f807919f931,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114005064230804602, guid: 527a04f4929b132439cc3f807919f931,
+        type: 2}
+      propertyPath: GameOver
+      value: 
+      objectReference: {fileID: 790609707}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 527a04f4929b132439cc3f807919f931, type: 2}
   m_IsPrefabParent: 0
@@ -366,7 +376,7 @@ Prefab:
     - target: {fileID: 114501935343293456, guid: f6c795cd1c20fce46a3b5578ad039326,
         type: 2}
       propertyPath: selestScene
-      value: Scere
+      value: Score
       objectReference: {fileID: 0}
     - target: {fileID: 114501935343293456, guid: f6c795cd1c20fce46a3b5578ad039326,
         type: 2}
@@ -708,6 +718,11 @@ Prefab:
       propertyPath: helthPointText
       value: 
       objectReference: {fileID: 33345815}
+    - target: {fileID: 114972411675641578, guid: deea502c739ff8d4cac8d6307676164f,
+        type: 2}
+      propertyPath: retrySceneName
+      value: Stage2-0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: deea502c739ff8d4cac8d6307676164f, type: 2}
   m_IsPrefabParent: 0

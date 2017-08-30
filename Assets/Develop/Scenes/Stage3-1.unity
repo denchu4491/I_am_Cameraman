@@ -488,6 +488,16 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114005064230804602, guid: 527a04f4929b132439cc3f807919f931,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114005064230804602, guid: 527a04f4929b132439cc3f807919f931,
+        type: 2}
+      propertyPath: GameOver
+      value: 
+      objectReference: {fileID: 240390450}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 527a04f4929b132439cc3f807919f931, type: 2}
   m_IsPrefabParent: 0
@@ -503,6 +513,11 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 240390447}
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!1 &240390450 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1038745491573072, guid: 527a04f4929b132439cc3f807919f931,
+    type: 2}
+  m_PrefabInternal: {fileID: 240390447}
 --- !u!1 &246550302
 GameObject:
   m_ObjectHideFlags: 0
@@ -6977,8 +6992,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 297043482}
-  m_LocalRotation: {x: -0.06246695, y: 0.8963528, z: 0.13396081, w: 0.41797614}
-  m_LocalPosition: {x: 20.46791, y: -2.06, z: 371.28558}
+  m_LocalRotation: {x: -0.056564227, y: 0.9137315, z: 0.13655812, w: 0.37848}
+  m_LocalPosition: {x: 16.585787, y: -1.26, z: 377.4142}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 27060851}
@@ -91644,6 +91659,16 @@ Prefab:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 389ca03533f66654ca0eab219d41f4db, type: 3}
+    - target: {fileID: 114511262105672022, guid: deea502c739ff8d4cac8d6307676164f,
+        type: 2}
+      propertyPath: gameOverDesign
+      value: 
+      objectReference: {fileID: 240390450}
+    - target: {fileID: 114972411675641578, guid: deea502c739ff8d4cac8d6307676164f,
+        type: 2}
+      propertyPath: retrySceneName
+      value: Stage3-0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: deea502c739ff8d4cac8d6307676164f, type: 2}
   m_IsPrefabParent: 0

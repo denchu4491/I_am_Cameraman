@@ -252,14 +252,16 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1038745491573072, guid: 527a04f4929b132439cc3f807919f931, type: 2}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 114005064230804602, guid: 527a04f4929b132439cc3f807919f931,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1740120937712146, guid: 527a04f4929b132439cc3f807919f931, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 114005064230804602, guid: 527a04f4929b132439cc3f807919f931,
+        type: 2}
+      propertyPath: GameOver
+      value: 
+      objectReference: {fileID: 344891840}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 527a04f4929b132439cc3f807919f931, type: 2}
   m_IsPrefabParent: 0
@@ -275,6 +277,11 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 344891837}
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!1 &344891840 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1038745491573072, guid: 527a04f4929b132439cc3f807919f931,
+    type: 2}
+  m_PrefabInternal: {fileID: 344891837}
 --- !u!1 &455558489
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,15 +679,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4276816084674758, guid: deea502c739ff8d4cac8d6307676164f, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 114511262105672022, guid: deea502c739ff8d4cac8d6307676164f,
-        type: 2}
-      propertyPath: initHP
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 114511262105672022, guid: deea502c739ff8d4cac8d6307676164f,
         type: 2}
       propertyPath: helthImage
@@ -691,11 +689,16 @@ Prefab:
       propertyPath: helthPointText
       value: 
       objectReference: {fileID: 344891838}
-    - target: {fileID: 82859487217331974, guid: deea502c739ff8d4cac8d6307676164f,
+    - target: {fileID: 114511262105672022, guid: deea502c739ff8d4cac8d6307676164f,
         type: 2}
-      propertyPath: m_audioClip
+      propertyPath: gameOverDesign
       value: 
-      objectReference: {fileID: 8300000, guid: 2b5fbb7215335c245a1b8a5a008186c0, type: 3}
+      objectReference: {fileID: 344891840}
+    - target: {fileID: 114972411675641578, guid: deea502c739ff8d4cac8d6307676164f,
+        type: 2}
+      propertyPath: retrySceneName
+      value: Stage3-0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: deea502c739ff8d4cac8d6307676164f, type: 2}
   m_IsPrefabParent: 0
@@ -743,6 +746,11 @@ Prefab:
       propertyPath: SceneChangerMessage
       value: 
       objectReference: {fileID: 1778181606}
+    - target: {fileID: 114501935343293456, guid: f6c795cd1c20fce46a3b5578ad039326,
+        type: 2}
+      propertyPath: selestScene
+      value: Score
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f6c795cd1c20fce46a3b5578ad039326, type: 2}
   m_IsPrefabParent: 0

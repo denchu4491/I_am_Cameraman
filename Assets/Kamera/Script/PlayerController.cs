@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour {
     Rigidbody rb;
     CameraMode cameraMode;
     public GameObject gameOverDesign;
-    public int initHP = 2;
+    public int initHP = 3;
     public float movespeed = 0.2f;
     public float jumpPower = 20;
     public float jumpTime = 1.4f;
@@ -57,12 +57,12 @@ public class PlayerController : MonoBehaviour {
                 }
             }
         }
-
-        helthPointText.text = string.Format("{0}", HP);
     }
 
     void Start () {
+        helthPointText.text = string.Format("{0}", HP);
     }
+
 	// Update is called once per frame
 	void Update () {
         moveZ = 0;

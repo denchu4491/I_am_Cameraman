@@ -658,6 +658,16 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114005064230804602, guid: 527a04f4929b132439cc3f807919f931,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114005064230804602, guid: 527a04f4929b132439cc3f807919f931,
+        type: 2}
+      propertyPath: GameOver
+      value: 
+      objectReference: {fileID: 242190038}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 527a04f4929b132439cc3f807919f931, type: 2}
   m_IsPrefabParent: 0
@@ -673,6 +683,11 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 242190035}
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!1 &242190038 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1038745491573072, guid: 527a04f4929b132439cc3f807919f931,
+    type: 2}
+  m_PrefabInternal: {fileID: 242190035}
 --- !u!1001 &267921431
 Prefab:
   m_ObjectHideFlags: 0
@@ -1059,6 +1074,16 @@ Prefab:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 5839f69dd12193d4cb20b85b85be1587, type: 3}
+    - target: {fileID: 114511262105672022, guid: deea502c739ff8d4cac8d6307676164f,
+        type: 2}
+      propertyPath: gameOverDesign
+      value: 
+      objectReference: {fileID: 242190038}
+    - target: {fileID: 114972411675641578, guid: deea502c739ff8d4cac8d6307676164f,
+        type: 2}
+      propertyPath: retrySceneName
+      value: Stage3-0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: deea502c739ff8d4cac8d6307676164f, type: 2}
   m_IsPrefabParent: 0
@@ -5104,7 +5129,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4506178776357794, guid: 7935dc6a3a346584b81528e2cb515bf4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 300
+      value: 340
       objectReference: {fileID: 0}
     - target: {fileID: 4506178776357794, guid: 7935dc6a3a346584b81528e2cb515bf4, type: 2}
       propertyPath: m_LocalPosition.y
@@ -5143,6 +5168,11 @@ Prefab:
       propertyPath: enemyActionRange
       value: 
       objectReference: {fileID: 2080352067}
+    - target: {fileID: 114843994445783102, guid: 7935dc6a3a346584b81528e2cb515bf4,
+        type: 2}
+      propertyPath: nearAttackRange
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7935dc6a3a346584b81528e2cb515bf4, type: 2}
   m_IsPrefabParent: 0

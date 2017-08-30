@@ -204,8 +204,8 @@ public class CameraMode : MonoBehaviour {
                 } else if (targetDistance - distance > 0) {
                     score = 20;
                 }
-                Debug.Log(distance);
-                Debug.Log(score);
+                //Debug.Log(distance);
+                //Debug.Log(score);
             }
         }
 
@@ -223,8 +223,8 @@ public class CameraMode : MonoBehaviour {
                 } else if (targetDistance - distance > 0) {
                     score = 20;
                 }
-                Debug.Log(distance);
-                Debug.Log(score);
+                //Debug.Log(distance);
+                //Debug.Log(score);
             }
         }
 
@@ -243,8 +243,8 @@ public class CameraMode : MonoBehaviour {
                 else if(targetDistance - distance > 0){
                     score = 20;
                 }
-                Debug.Log(distance);
-                Debug.Log(score);
+                //Debug.Log(distance);
+                //Debug.Log(score);
             }
         }
         if(score <= 0) {
