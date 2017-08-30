@@ -18,7 +18,7 @@ public class EnemyActionRange_d : MonoBehaviour {
         if(col.tag == "PlayerSearch")
         {
             isShutterPlayer = true;
-            Invoke("DetectOff", 3.0f);
+            Invoke("ShutterOff", 3.0f);
         }
     }
 
@@ -31,8 +31,8 @@ public class EnemyActionRange_d : MonoBehaviour {
         }
     }
 
-    void DetectOff()
+    void ShutterOff()
     {
-        isDetectPlayer = false;
+        isShutterPlayer = false;
     }
 }

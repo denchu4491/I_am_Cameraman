@@ -38,7 +38,7 @@ public class EnemyMain_Whalekun_d : EnemyMain_d {
                         SetAIState(ENEMYAISTS.ATTACKPLAYER, 10.0f);
                     }
                 }
-                else
+                if(aiState != ENEMYAISTS.ATTACKPLAYER)
                 {
                     if (isTarget)
                     {
@@ -66,7 +66,7 @@ public class EnemyMain_Whalekun_d : EnemyMain_d {
                         SetAIState(ENEMYAISTS.ATTACKPLAYER, 10.0f);
                     }
                 }
-                else
+                if(aiState != ENEMYAISTS.ATTACKPLAYER)
                 {
                     if (!isRotate)
                     {

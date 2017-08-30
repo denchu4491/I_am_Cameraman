@@ -5,10 +5,10 @@ using UnityEngine;
 public class EnemyMain_Golem_B : EnemyMain_d {
 
     public EnemyActionRange_d enemyActionRange;
-    public float attackMoveSpeed, attackWaitTime, nearAttackRange;
+    public float attackMoveSpeed, attackWaitTime, nearAttackRange, coolTime = 5.0f;
     private Vector3 /*firstPosition,*/ rangeSize, rangeCenter, targetPoint;
-    private float minX, maxX, minZ, maxZ;
-    private bool isRotate, isNearTarget;
+    private float minX, maxX, minZ, maxZ, attackStartTime;
+    private bool isRotate, isNearTarget, isCoolTime;
     public GameObject fireObject;
 
     public override void Awake()
@@ -30,6 +30,15 @@ public class EnemyMain_Golem_B : EnemyMain_d {
 
     public override void FixedUpdateAI()
     {
+        if (isCoolTime)
+        {
+            float time = Time.fixedTime - attackStartTime;
+            if(time > coolTime)
+            {
+                isCoolTime = false;
+            }
+        }
+
         switch (aiState)
         {
             case ENEMYAISTS.ACTIONSELECT:
@@ -93,7 +102,7 @@ public class EnemyMain_Golem_B : EnemyMain_d {
                             Attack_A();
                         }
                     }
-                    else
+                    else if(!isCoolTime)
                     {
                         Attack_B();
                     }
@@ -119,6 +128,8 @@ public class EnemyMain_Golem_B : EnemyMain_d {
         GameObject go = Instantiate(fireObject, goFire.position, goFire.rotation
                             /*(Quaternion.LookRotation(player.transform.position - goFire.position))*/ ) as GameObject;
         go.GetComponent<FireBullet>().ownwer = transform;
+        attackStartTime = Time.fixedTime;
+        isCoolTime = true;
         SetAIState(ENEMYAISTS.WAIT, attackWaitTime);
     }
 

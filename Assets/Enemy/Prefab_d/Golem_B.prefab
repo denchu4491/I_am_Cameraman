@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 136610249205772012}
   m_Layer: 0
   m_Name: Collider_Arm_Left
-  m_TagString: EnemyArm
+  m_TagString: EnemyBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 136284561665566974}
   m_Layer: 0
   m_Name: Collider_Attack_Right
-  m_TagString: EnemyArm
+  m_TagString: EnemyBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -559,7 +559,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1409316831957682}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 100}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4522725758961242}
@@ -862,7 +862,7 @@ MonoBehaviour:
   attackMoveSpeed: 5
   attackWaitTime: 3
   nearAttackRange: 10
-  fireObject: {fileID: 1565467392977172, guid: 1f685868ba3548e448ed8f28fcc35bdb, type: 2}
+  fireObject: {fileID: 1799097713209724, guid: 94b5bc6a5b5caa243867efdfeb44d606, type: 2}
 --- !u!136 &136284561665566974
 CapsuleCollider:
   m_ObjectHideFlags: 1
