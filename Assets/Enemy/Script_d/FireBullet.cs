@@ -6,7 +6,7 @@ public class FireBullet : MonoBehaviour {
 
     public float lifeTime = 3.0f;
     public float speed = 10.0f;
-    //public float rotateVt = 360.0f;
+    public float rotateVt = 360.0f;
     //public float angle;
     //private float fireTime;
     private Vector3 posTarget;
@@ -24,29 +24,29 @@ public class FireBullet : MonoBehaviour {
 
     void Start()
     {
-        posTarget = targetObject.transform.position + new Vector3(0.0f, 1.0f, 0.0f);
+        posTarget = targetObject.transform.position + new Vector3(0.0f, 1.5f, 0.0f);
         homingRotate = Quaternion.LookRotation(posTarget - transform.position);
 
         //fireTime = Time.fixedTime;
         Destroy(this.gameObject, lifeTime);
     }
 
-    /*
     void OnTriggerEnter(Collider other)
     {
-        if(other.isTrigger ||
-                (ownwer.tag == "Enemy" && other.tag == "EnemyBody"))
+        if(other.isTrigger || other.tag == "Enemy" || other.tag == "EnemyBody" || other.tag == "EnemyArm" || other.tag == "Breakable")
         {
             return;
         }
+        
+        rigidbodyB.Sleep();
+        this.enabled = false;
 
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject);
     }
-    */
 
     void Update()
     {
-        //transform.Rotate(Time.deltaTime * rotateVt, 0.0f, 0.0f);
+        transform.Rotate(Time.deltaTime * rotateVt, 0.0f, 0.0f);
     }
 
     void FixedUpdate()

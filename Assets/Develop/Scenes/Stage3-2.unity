@@ -1014,11 +1014,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4276816084674758, guid: deea502c739ff8d4cac8d6307676164f, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 309
+      value: 74
       objectReference: {fileID: 0}
     - target: {fileID: 4276816084674758, guid: deea502c739ff8d4cac8d6307676164f, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 168
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 4276816084674758, guid: deea502c739ff8d4cac8d6307676164f, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1054,6 +1054,11 @@ Prefab:
       propertyPath: helthPointText
       value: 
       objectReference: {fileID: 242190036}
+    - target: {fileID: 82859487217331974, guid: deea502c739ff8d4cac8d6307676164f,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5839f69dd12193d4cb20b85b85be1587, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: deea502c739ff8d4cac8d6307676164f, type: 2}
   m_IsPrefabParent: 0
@@ -5099,7 +5104,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4506178776357794, guid: 7935dc6a3a346584b81528e2cb515bf4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 350
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 4506178776357794, guid: 7935dc6a3a346584b81528e2cb515bf4, type: 2}
       propertyPath: m_LocalPosition.y
