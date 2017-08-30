@@ -123,6 +123,10 @@ public class PlayerController : MonoBehaviour {
 
         if (Input.GetKeyDown("space") && isBack == false && !isJumping) {
             if (isGround) {
+                if (!isJump) {
+                    audioSource.clip = audioClip[0];
+                    audioSource.Play();
+                }
                 isJump = true;
                 isJumping = true;
                 animator.SetBool("Jump", true);
@@ -136,6 +140,12 @@ public class PlayerController : MonoBehaviour {
             if(jumpCooldownTime > jumpTime) {
                 jumpCooldownTime = 0;
                 isJumping = false;
+                if (isRun || isBack) {
+                    audioSource.Play();
+                }
+            }
+            if(jumpCooldownTime > 0.5) {
+                audioSource.Stop();
             }
         }
 
