@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour {
     public AudioClip[] audioClip;
     public AudioSource deathSource;
     public AudioClip deathClip;
+    public Image mapImage;
 
     public static bool checkPointEnabled = false;
     public static string checkPointSceneName = "";
@@ -87,6 +88,15 @@ public class PlayerController : MonoBehaviour {
         }
 
         if (moveController && !deathStop) {
+            if (Input.GetKeyDown("v")) {
+                if (mapImage.enabled) {
+                    mapImage.enabled = false;
+                } else {
+                    mapImage.enabled = true;
+                }
+
+            }
+
             if (Input.GetKey("up")) {
                 animator.SetBool("Run", true);
                 if (!isRun) {

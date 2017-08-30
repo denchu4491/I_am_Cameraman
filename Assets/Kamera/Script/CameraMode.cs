@@ -8,7 +8,7 @@ public class CameraMode : MonoBehaviour {
     public GameObject unitychan;
     [System.NonSerialized]public bool boolCameraMode = false, takeFlash = false,zoomUp;
     [System.NonSerialized]public float decreaseFlash = 0.8f,scoreFlashColor;
-    public float targetDistance;
+    public float badDistance,targetDistance;
     public static float score;
     private Animator animator;
     public Camera firstPersonCamera;
@@ -20,6 +20,8 @@ public class CameraMode : MonoBehaviour {
     private PlayerBodyCollider boolInvincible;
     public AudioClip shutterSound;
     public AudioSource audioSource;
+    public Image mapImage,displayCaver;
+    public Text time;
 
     //public LayerMask mask;
     // Use this for initialization
@@ -131,6 +133,9 @@ public class CameraMode : MonoBehaviour {
             cameraFrame.enabled = true;
             playerController.helthImage.enabled = false;
             playerController.helthPointText.enabled = false;
+            mapImage.enabled = false;
+            displayCaver.enabled = false;
+            time.enabled = false;
         } 
         else if (!playerController.moveController) {
             playerController.moveController = true;
@@ -142,6 +147,9 @@ public class CameraMode : MonoBehaviour {
             shutterSoundCollider.enabled = false;
             playerController.helthImage.enabled = true;
             playerController.helthPointText.enabled = true;
+            mapImage.enabled = true;
+            displayCaver.enabled = true;
+            time.enabled = true;
             if (zoomUp) {
                 CameraZoomOut();
             }
@@ -199,9 +207,14 @@ public class CameraMode : MonoBehaviour {
                         distance = 7.0f;
                     }
                 }
-                if (targetDistance - distance < 0) {
+
+                if(targetDistance <= distance) {
                     score = 40 + (targetDistance - distance);
-                } else if (targetDistance - distance > 0) {
+                } else {
+                    score = 40 - (targetDistance - distance);
+                }
+                
+                if (badDistance - distance > 0) {
                     score = 20;
                 }
                 //Debug.Log(distance);
@@ -218,9 +231,13 @@ public class CameraMode : MonoBehaviour {
                         distance = 7.0f;
                     }
                 }
-                if (targetDistance - distance < 0) {
+                if (targetDistance <= distance) {
                     score = 40 + (targetDistance - distance);
-                } else if (targetDistance - distance > 0) {
+                } else {
+                    score = 40 - (targetDistance - distance);
+                }
+
+                if (badDistance - distance > 0) {
                     score = 20;
                 }
                 //Debug.Log(distance);
@@ -237,10 +254,13 @@ public class CameraMode : MonoBehaviour {
                         distance = 7.0f;
                     }
                 }
-                if (targetDistance - distance < 0) {
+                if(targetDistance <= distance) {
                     score = 50 + (targetDistance - distance);
+                } else {
+                    score = 50 - (targetDistance - distance);
                 }
-                else if(targetDistance - distance > 0){
+                
+                if (badDistance - distance > 0) {
                     score = 20;
                 }
                 //Debug.Log(distance);
