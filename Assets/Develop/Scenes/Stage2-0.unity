@@ -635,7 +635,7 @@ Prefab:
     - target: {fileID: 198189755410626384, guid: d6f256b7cd63a9b4199af21bcc78dca4,
         type: 2}
       propertyPath: randomSeed
-      value: -741494993
+      value: -1366459366
       objectReference: {fileID: 0}
     - target: {fileID: 198189755410626384, guid: d6f256b7cd63a9b4199af21bcc78dca4,
         type: 2}
@@ -655,6 +655,21 @@ Prefab:
     - target: {fileID: 1863460702187996, guid: d6f256b7cd63a9b4199af21bcc78dca4, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198207350791820016, guid: d6f256b7cd63a9b4199af21bcc78dca4,
+        type: 2}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 198207350791820016, guid: d6f256b7cd63a9b4199af21bcc78dca4,
+        type: 2}
+      propertyPath: randomSeed
+      value: 1378049427
+      objectReference: {fileID: 0}
+    - target: {fileID: 198189755410626384, guid: d6f256b7cd63a9b4199af21bcc78dca4,
+        type: 2}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d6f256b7cd63a9b4199af21bcc78dca4, type: 2}
