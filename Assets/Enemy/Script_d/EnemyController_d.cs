@@ -133,7 +133,7 @@ public class EnemyController_d : MonoBehaviour {
     public void ActionAttack(string atkname, float atktime)
     {
         animator.SetTrigger(atkname);
-        attackCollider.enabled = true;
+        //attackCollider.enabled = true;
         attackTimeStart = Time.fixedTime;
         attackTimeLength = atktime;
     }

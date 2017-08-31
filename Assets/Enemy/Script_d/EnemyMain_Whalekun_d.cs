@@ -113,7 +113,12 @@ public class EnemyMain_Whalekun_d : EnemyMain_d {
     {
         enemyCtrl.ActionMove(0.0f);
         enemyCtrl.ActionAttack("Attack_Bite",1.0f);
+        Invoke("Attack_ColliderOn", 0.5f);
         SetAIState(ENEMYAISTS.WAIT, attackWaitTime);
+    }
+
+    void Attack_ColliderOn() {
+        enemyCtrl.attackCollider.enabled = true;
     }
 
     void NextIndex()

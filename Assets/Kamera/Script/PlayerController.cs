@@ -203,7 +203,7 @@ public class PlayerController : MonoBehaviour {
     public void DamegeMove(Vector3 playerPosition,Vector3 targetPosition) {
         float damegeMoveX = targetPosition.x - playerPosition.x;
         float damegeMoveZ = targetPosition.z - playerPosition.z;
-        rb.AddForce(damegeMoveX * 200.0f, 0.0f, damegeMoveZ * 200.0f,ForceMode.VelocityChange);
+        rb.AddForce(damegeMoveX * 50.0f, 5.0f, damegeMoveZ * 50.0f,ForceMode.VelocityChange);
     }
 
     public void Damege() {

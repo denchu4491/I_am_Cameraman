@@ -19,7 +19,6 @@ public class PlayerBodyCollider : MonoBehaviour {
         Invincible = false;
     }
     void Start () {
-		
 	}
 	
 	// Update is called once per frame
@@ -39,7 +38,9 @@ public class PlayerBodyCollider : MonoBehaviour {
         }
 	}
     void OnTriggerEnter(Collider collider) {
-        if (collider.tag == "EnemyArm" && !Invincible) {
+        //Debug.Log("hoge");
+        if ((collider.tag == "EnemyArm" || collider.tag == "EnemyBody" )&& !Invincible) {
+            //Debug.Log("hit");
             playerController.Damege();
             playerController.DamegeMove(collider.transform.position,this.transform.position);
             Invincible = true;
@@ -55,7 +56,9 @@ public class PlayerBodyCollider : MonoBehaviour {
         } 
     }
     void OnCollisionEnter(Collision collision) {
+        //Debug.Log("hoge");
         if (collision.collider.tag == "EnemyBody" && !Invincible) {
+            //Debug.Log("hit");
             playerController.Damege();
             playerController.DamegeMove(collision.transform.position, this.transform.position);
             Invincible = true;
