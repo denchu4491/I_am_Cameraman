@@ -24,9 +24,7 @@ GameObject:
   - component: {fileID: 114756693285104152}
   - component: {fileID: 114511262105672022}
   - component: {fileID: 114387340297817536}
-  - component: {fileID: 114972411675641578}
   - component: {fileID: 82041035285415664}
-  - component: {fileID: 114117615150686752}
   - component: {fileID: 136825605371425870}
   - component: {fileID: 114232139829382114}
   m_Layer: 0
@@ -5854,18 +5852,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114117615150686752
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1006563784854698}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 465d356d10f808b4793e8e050798ccf1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bgm: {fileID: 8300000, guid: c93b2660227ce3b47b8eeccf25870884, type: 3}
 --- !u!114 &114232139829382114
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5902,6 +5888,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverDesign: {fileID: 0}
+  deathSceneChanger: {fileID: 0}
   initHP: 3
   movespeed: 10
   jumpPower: 6
@@ -5937,18 +5924,6 @@ MonoBehaviour:
   mapImage: {fileID: 0}
   displayCaver: {fileID: 0}
   time: {fileID: 0}
---- !u!114 &114972411675641578
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1006563784854698}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00700ca67168dce4aa2a388f71b49205, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  retrySceneName: Stage3-0
 --- !u!124 &124346982263232528
 Behaviour:
   m_ObjectHideFlags: 1

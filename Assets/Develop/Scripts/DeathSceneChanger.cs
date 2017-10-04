@@ -10,7 +10,7 @@ public class DeathSceneChanger : MonoBehaviour {
 
     // Use this for initialization
     void Awake() {
-        playercontroller = GetComponent<PlayerController>();
+        playercontroller = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     void Start () {

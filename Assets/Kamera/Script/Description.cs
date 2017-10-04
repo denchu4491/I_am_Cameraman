@@ -29,7 +29,7 @@ public class Description : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.Return)) {
                 if (descriptionNumber < 7) {
                     descriptionNumber++;
-                    Debug.Log(descriptionNumber);
+                    //Debug.Log(descriptionNumber);
                     if (!getPicture) {
                         waitTime = 0;
                     }

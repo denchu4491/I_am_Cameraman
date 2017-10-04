@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
     Rigidbody rb;
     CameraMode cameraMode;
     public GameObject gameOverDesign;
+    public DeathSceneChanger deathSceneChanger;
     public int initHP = 3;
     public float movespeed = 0.2f;
     public float jumpPower = 20;
@@ -165,7 +166,7 @@ public class PlayerController : MonoBehaviour {
                 animator.speed = 0.0f;
                 waitDeathAnimation = 0.0f;
                 gameOverDesign.SetActive(true);
-                GetComponent<DeathSceneChanger>().enabled = true;
+                deathSceneChanger.enabled = true;
                 audioSource.Stop();
                 deathSource.clip = deathClip;
                 deathSource.Play();
