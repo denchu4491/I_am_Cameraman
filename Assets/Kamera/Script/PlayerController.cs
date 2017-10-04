@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour {
     RaycastHit slideHit;
     public AudioSource audioSource;
     public AudioClip[] audioClip;
-    public AudioSource deathSource;
+    public AudioSource bgmSource;
     public AudioClip deathClip;
     public Image mapImage;
 
@@ -168,8 +168,8 @@ public class PlayerController : MonoBehaviour {
                 gameOverDesign.SetActive(true);
                 deathSceneChanger.enabled = true;
                 audioSource.Stop();
-                deathSource.clip = deathClip;
-                deathSource.Play();
+                bgmSource.clip = deathClip;
+                bgmSource.Play();
                 GetComponent<CameraMode>().enabled = false;
                 GetComponent<PlayerController>().enabled = false;
             }
