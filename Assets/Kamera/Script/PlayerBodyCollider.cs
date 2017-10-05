@@ -42,7 +42,8 @@ public class PlayerBodyCollider : MonoBehaviour {
         if ((collider.tag == "EnemyArm" || collider.tag == "EnemyBody" )&& !Invincible) {
             //Debug.Log("hit");
             playerController.Damege();
-            playerController.DamegeMove(collider.transform.position,this.transform.position);
+            //playerController.DamegeMove(collider.transform.position,this.transform.position);
+            playerController.DamegeMove(transform.position, collider.transform.position);
             Invincible = true;
             if (cameraMode.boolCameraMode) {
                 cameraMode.ModeCameraChange();
@@ -60,7 +61,8 @@ public class PlayerBodyCollider : MonoBehaviour {
         if (collision.collider.tag == "EnemyBody" && !Invincible) {
             //Debug.Log("hit");
             playerController.Damege();
-            playerController.DamegeMove(collision.transform.position, this.transform.position);
+            //playerController.DamegeMove(collision.transform.position, this.transform.position);
+            playerController.DamegeMove(transform.position,collision.transform.position);
             Invincible = true;
             if (cameraMode.boolCameraMode) {
                 cameraMode.ModeCameraChange();
