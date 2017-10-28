@@ -15,6 +15,8 @@ public class Gravity : MonoBehaviour {
 	void FixedUpdate () {
         if (!playerController.isJumping && !playerController.isGround) {
             rb.velocity = new Vector3(rb.velocity.x, gravity * -1.0f, rb.velocity.z);
+            //Debug.Log("uiteru");
+            //rb.velocity += new Vector3(rb.velocity.x, gravity * -1.0f, rb.velocity.z);
         }
-	}
+    }
 }

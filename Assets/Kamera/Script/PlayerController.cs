@@ -80,7 +80,8 @@ public class PlayerController : MonoBehaviour {
             isGround = false;
         }
 
-        if(Physics.Raycast(transform.position + new Vector3(0.0f,0.3f,0.0f),Vector3.down,out slideHit)) {
+        if(Physics.Raycast(transform.position + new Vector3(0.0f,0.5f,0.0f),Vector3.down,out slideHit)) {
+            //Debug.Log("hit");
             if(Vector3.Angle(slideHit.normal,Vector3.up) > 65.0f) {
                 isSliding = true;
             } else {
@@ -198,7 +199,10 @@ public class PlayerController : MonoBehaviour {
     }
     void Slide() {
         moveNormal = slideHit.normal;
-        rb.velocity = new Vector3(moveNormal.x,rb.velocity.y,moveNormal.z);
+        rb.velocity = new Vector3(moveNormal.x, rb.velocity.y, moveNormal.z);
+        /*moveNormal.y *= -10.0f;
+        Debug.Log(moveNormal);
+        rb.AddForce(moveNormal, ForceMode.VelocityChange);*/
     }
 
     public void DamegeMove(Vector3 playerPosition,Vector3 targetPosition) {
@@ -209,7 +213,7 @@ public class PlayerController : MonoBehaviour {
 
         Vector3 direction = playerPosition - targetPosition;
         direction.Normalize();
-        Debug.Log(direction);
+        //Debug.Log(direction);
         //rb.AddForce(damegeMoveX * 50.0f, 5.0f, damegeMoveZ * 50.0f,ForceMode.VelocityChange);
         rb.AddForce(direction.x * 100.0f, 5.0f, direction.z * 100.0f, ForceMode.VelocityChange);
     }
